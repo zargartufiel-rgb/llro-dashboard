@@ -1,5 +1,5 @@
 /* LLRO Dashboard service worker: the app works offline with the last data it saw */
-var V = 'llro-app-1cfa45b9fb', DATA = 'llro-data';
+var V = 'llro-app-fa7e560bd2', DATA = 'llro-data';
 var SHELL = ['./', './index.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
 self.addEventListener('install', function (e) { e.waitUntil(caches.open(V).then(function (c) { return c.addAll(SHELL); }).then(function () { return self.skipWaiting(); })); });
 self.addEventListener('activate', function (e) { e.waitUntil(caches.keys().then(function (ks) { return Promise.all(ks.filter(function (k) { return k.indexOf('llro-app-') === 0 && k !== V; }).map(function (k) { return caches.delete(k); })); }).then(function () { return self.clients.claim(); })); });
@@ -15,7 +15,7 @@ self.addEventListener('fetch', function (e) {
     return;
   }
   if (req.mode === 'navigate') { // newest code when online, cached page when not
-    e.respondWith(fetch(req).then(function (r) { if (r.ok) { var c = r.clone(); caches.open(V).then(function (x) { x.put('./index.html', c); }); } return r; }).catch(function () { return caches.match('./index.html'); }));
+    e.respondWith(fetch(req.url, { cache: 'no-store', credentials: 'same-origin' }).then(function (r) { if (r.ok) { var c = r.clone(); caches.open(V).then(function (x) { x.put('./index.html', c); }); return r; } return caches.match('./index.html').then(function (m) { return m || r; }); }).catch(function () { return caches.match('./index.html'); }));
     return;
   }
   e.respondWith(caches.match(req).then(function (m) { return m || fetch(req); }));
