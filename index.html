@@ -450,6 +450,58 @@ select[data-sel=cardCode]{max-width:100%;min-width:0;flex:1 1 220px;width:auto}
 .drawer .db>*,.drawer .rgrid>*{min-width:0;max-width:100%}
 .drawer select{max-width:100%;min-width:0}
 .drawer .rsec{padding:12px}
+
+/* ---- Ask the dashboard (v8.7) ---- */
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.askrow{padding:0 22px 10px}
+.askform{position:relative;display:flex;align-items:center;gap:8px;background:var(--surface-2);border:1px solid var(--line-2);border-radius:10px;padding:4px 5px 4px 11px;max-width:980px}
+.askform:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.askform>svg{width:17px;height:17px;flex:none;color:var(--muted)}
+.askform .askin{flex:1;min-width:0;border:0!important;background:transparent!important;font:inherit;font-size:14px;color:var(--ink);padding:6px 2px!important;outline:none;min-height:30px}
+.askform.big{max-width:none;padding:6px 6px 6px 14px;border-radius:12px;background:var(--surface)}
+.askform.big .askin{font-size:16px;min-height:38px}
+.assug{position:absolute;left:0;right:0;top:calc(100% + 4px);background:var(--surface);border:1px solid var(--line-2);border-radius:10px;box-shadow:var(--shadow);z-index:60;padding:4px;max-height:340px;overflow:auto}
+.assug button{display:flex;width:100%;justify-content:space-between;gap:10px;align-items:baseline;border:0;background:transparent;text-align:left;padding:7px 9px;border-radius:7px;cursor:pointer;color:var(--ink);font:inherit;font-size:13.5px}
+.assug button small{color:var(--muted);font-size:11.5px;white-space:nowrap}
+.assug button:hover,.assug button.on{background:var(--accent-soft)}
+.askhero{display:grid;gap:10px}
+.asrow{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+.aschipq{border:1px solid var(--line-2);background:var(--surface);color:var(--ink-2);border-radius:999px;padding:5px 11px;font:inherit;font-size:12.5px;cursor:pointer;text-align:left;line-height:1.3}
+.aschipq:hover{border-color:var(--accent);color:var(--accent)}
+.aschipq.pin{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.aschipq.ghost{border-style:dashed;color:var(--muted)}
+.askcard{scroll-margin-top:120px}
+.askh{align-items:flex-start}
+.askq{flex:1;min-width:0;display:grid;gap:3px}
+.askq h2{font-size:17px;margin:0;overflow-wrap:anywhere}
+.askread{color:var(--muted)}
+.askread b{color:var(--ink-2);font-weight:600}
+.askbtns{display:flex;gap:4px;flex-wrap:wrap}
+.askbtns .btn.on{color:var(--accent)}
+.askctl{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;padding-bottom:10px}
+.aslbl{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted)}
+.aslbl select,.asadd{background:var(--surface);border:1px solid var(--line-2);border-radius:7px;padding:4px 6px;min-height:30px;max-width:230px;font-size:12.5px;color:var(--ink)}
+.askseg button{min-height:30px}
+.askents{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:8px 0 12px;border-bottom:1px dashed var(--line);margin-bottom:12px}
+.aschip{display:inline-flex;align-items:center;gap:6px;background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:2px 4px 2px 9px;font-size:12.5px;font-weight:600}
+.aschip i{width:9px;height:9px;border-radius:50%;background:var(--c,var(--accent))}
+.aschip.grp i{background:transparent;border:2px solid var(--muted)}
+.aschip button{border:0;background:transparent;color:var(--muted);cursor:pointer;font-size:15px;line-height:1;padding:2px 6px;border-radius:50%}
+.aschip button:hover{background:var(--surface-3);color:var(--bad)}
+.asnarr{display:grid;gap:6px;margin-bottom:12px;font-size:14px;line-height:1.55;max-width:980px}
+.asnarr p{margin:0}
+.ascharts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr));gap:14px 22px}
+.aschart{margin:4px 0 12px;min-width:0}
+.asmore{margin-top:6px}
+.asmore>summary{cursor:pointer;font-weight:600;font-size:13px;color:var(--accent);padding:6px 0}
+.asfollow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:12px;padding-top:10px;border-top:1px dashed var(--line)}
+.ashelp h3{font-size:13px;margin:10px 0 4px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.ashelp p{margin:0 0 8px}
+.asml{display:grid;gap:4px;line-height:1.45}
+.asexg{display:grid;gap:6px;margin-top:12px}
+@media (max-width:980px){.askrow{padding:0 14px 8px}.askform{max-width:none}}
+@media (max-width:560px){.askform .askin{font-size:16px}.askform>button{padding:4px 10px}.askq h2{font-size:15.5px}.aslbl select,.asadd{max-width:170px}.askbtns .btn{padding:4px 7px}}
+@media print{.askrow,.askctl,.askbtns,.asfollow,.askhero{display:none!important}.asmore{display:block}.asmore>summary{display:none}}
 </style>
 </head>
 <body>
@@ -4782,7 +4834,7 @@ var Store = (function () {
   'use strict';
   var FF = typeof fflate !== 'undefined' ? fflate : null;
   var TITLE = 'LUCKNOW LPG REGIONAL OFFICE DASHBOARD';
-  var NAT_KEEP = ['dDomDel', 'dDomDac', 'dPmuyDel', 'dPmuyDac', 'dNdDel', 'dNdDac', 'dFtrDel', 'dFtrDac', 'yDomDel', 'yDomDac', 'yNdDel', 'yNdDac', 'kCum', 'kHold', 'kPend', 'kMonth', 'kCumP', 'kHoldP', 'miSafeFy', 'miStartFy', 'miSafeM', 'miStartM', 'miPend', 'miHoseFy', 'hpBook', 'hpTotal', 'hpUniqBook', 'hpCust', 'hpBookPay'];
+  var NAT_KEEP = ['dDomDel', 'dDomDac', 'dPmuyDel', 'dPmuyDac', 'dNdDel', 'dNdDac', 'dFtrDel', 'dFtrDac', 'yDomDel', 'yDomDac', 'yNdDel', 'yNdDac', 'kCum', 'kHold', 'kPend', 'kMonth', 'kCumP', 'kHoldP', 'miSafeFy', 'miStartFy', 'miSafeM', 'miStartM', 'miPend', 'miHoseFy', 'hpBook', 'hpTotal', 'hpUniqBook', 'hpCust', 'hpBookPay', 'domCur', 'domHist', 'ndCur', 'ndHist', 'blkCur', 'blkHist', 'bPend', 'aTot', 'a8', 'a15', 'a21', 'bRecv', 'bCanc', 'bAvgSale', 'dgOnline', 'dgBook', 'kYday', 'kFy', 'iyTot', 'iyHose', 'miHoseM', 'miExc', 'miDists', 'yPmuyDel', 'yPmuyDac', 'dpAmt'];
   var DEFAULTS = { keepFull: 60, keepDaily: 60, hoseRate: 51.17 };   // ORC per plant hose: 100 hoses = ₹5,117 in the official ARB-ORC workbook
   var ITER = 250000, MAGIC = [76, 76, 82, 49]; // "LLR1"
   /* <head> of the website page (PWA links live here) */
@@ -7860,6 +7912,1006 @@ function insights(kp, rows, drow, ms) {
   return '<ul class="obs">' + out.join('') + '</ul>';
 }
 })(App);
+
+/* ============================================================
+   LLRO Dashboard — Ask: type a question or a command, get a live answer
+   Built into the page: no external service, no cost, works for every viewer,
+   on phones and offline. The question is read into a structured query
+   (measures × places × period × what to do), answered from the loaded day
+   and the saved days, and drawn as a narrative, a chart and a table. Every
+   part of the reading can be changed on the answer card itself.
+   ============================================================ */
+(function (A) {
+'use strict';
+var S = A.S, SAS = A.SAS, U = A.U, fmt = A.fmt, pct = A.pct, esc = A.esc, dLabel = A.dLabel, cap = A.cap, title = A.title, $ = A.$, $$ = A.$$;
+var PAGES = A.PAGES;
+var HOME = A.HOME;
+
+/* ---------------- measures ---------------- */
+function fld(k) { return function (F) { return F && F[k] != null && isFinite(F[k]) ? F[k] : null; }; }
+function lk(k) { return function (F) { return F && F[k] != null && isFinite(F[k]) ? F[k] / 1e5 : null; }; }
+function rat(a, b, min) { return function (F) { if (!F || F[a] == null || !F[b] || F[b] < (min || 1e-9)) return null; return F[a] / F[b] * 100; }; }
+function sum(keys) { return function (F) { if (!F) return null; var t = 0, any = false; keys.forEach(function (k) { if (F[k] != null && isFinite(F[k])) { t += F[k]; any = true; } }); return any ? t : null; }; }
+function firstOf(fs) { return function (F) { for (var i = 0; i < fs.length; i++) { var v = fs[i](F); if (v != null) return v; } return null; }; }
+/* kind: flow = adds up over time (MTD / FY), stock = position as on the day, ratio = % of two flows or positions.
+   d: 1 = higher is better, -1 = lower is better.  add: values of places can be added (share of a total makes sense). */
+var MEAS = [
+  { k: 'dom', g: 'Sales', l: 'Domestic sales', u: 'MT', dec: 1, d: 1, kind: 'flow', add: 1, m: fld('domCur'), fy: fld('domYtd'), lyM: fld('domHist'), lyFy: fld('domYtdH'), track: 'dom', distLy: 1,
+    syn: ['domestic sales?', 'domestic', 'dom sales?', 'dom', '14\\.2 ?kg sales?', 'gharelu'] },
+  { k: 'nd', g: 'Sales', l: 'ND packed sales', u: 'MT', dec: 1, d: 1, kind: 'flow', add: 1, m: fld('ndCur'), fy: fld('ndYtd'), lyM: fld('ndHist'), lyFy: fld('ndYtdH'), track: 'nd', distLy: 1,
+    syn: ['non[ -]?domestic sales?', 'non[ -]?domestic', 'non[ -]?dom', 'nd packed', 'nd sales?', 'nd', 'commercial sales?', 'commercial'] },
+  { k: 'appu', g: 'Sales', l: '5 kg FTL sales', u: 'MT', dec: 2, d: 1, kind: 'flow', add: 1, m: fld('nd5Cur'), fy: fld('nd5Ytd'), lyM: fld('nd5Hist'), lyFy: fld('nd5YtdH'), track: 'appu', distLy: 1,
+    syn: ['5 ?kg ftl', '5 ?kg', 'ftl', 'appu', 'chhotu', 'chotu', 'munna'] },
+  { k: 'blk', g: 'Sales', l: 'Bulk LPG sales', u: 'MT', dec: 1, d: 1, kind: 'flow', add: 1, m: fld('blkCur'), fy: fld('blkYtd'), lyM: fld('blkHist'), lyFy: fld('blkYtdH'), track: 'blk', syn: ['bulk lpg', 'bulk'] },
+  { k: 'prop', g: 'Sales', l: 'Bulk propane sales', u: 'MT', dec: 1, d: 1, kind: 'flow', add: 1, m: fld('propCur'), fy: fld('propYtd'), lyM: fld('propHist'), lyFy: fld('propYtdH'), syn: ['propane'] },
+  { k: 'tot', g: 'Sales', l: 'Total LPG sales (DOM + ND + bulk)', u: 'MT', dec: 1, d: 1, kind: 'flow', add: 1, generic: 1, m: sum(['domCur', 'ndCur', 'blkCur']), fy: sum(['domYtd', 'ndYtd', 'blkYtd']), lyM: sum(['domHist', 'ndHist', 'blkHist']), lyFy: sum(['domYtdH', 'ndYtdH', 'blkYtdH']), track: 'tot',
+    syn: ['total lpg sales?', 'total sales?', 'overall sales?', 'all sales', 'sales?', 'bikri', 'volume'] },
+  { k: 'k19', g: 'Sales', l: '19 kg sales', u: 'MT', dec: 1, d: 1, kind: 'flow', add: 1, m: fld('cs19'), syn: ['19 ?kg'] },
+  { k: 'k475', g: 'Sales', l: '47.5 kg sales', u: 'MT', dec: 1, d: 1, kind: 'flow', add: 1, m: fld('cs475'), syn: ['47\\.5 ?kg', '47 ?kg'] },
+  { k: 'del', g: 'Delivery', l: 'Domestic deliveries', u: 'nos', dec: 0, d: 1, kind: 'flow', add: 1, m: firstOf([fld('dDomDel'), fld('bDel')]), y: fld('yDomDel'), syn: ['deliveries', 'delivery', 'delivered', 'refills? delivered'] },
+  { k: 'dac', g: 'Delivery', l: 'Domestic DAC', u: '%', dec: 1, d: 1, kind: 'ratio', m: rat('dDomDac', 'dDomDel'), y: rat('yDomDac', 'yDomDel'), track: 'dacDom', syn: ['domestic dac', 'dom dac', 'dac', 'delivery authentication( code)?', 'otp deliver(y|ies)'] },
+  { k: 'dacPmuy', g: 'Delivery', l: 'PMUY DAC', u: '%', dec: 1, d: 1, kind: 'ratio', m: rat('dPmuyDac', 'dPmuyDel'), y: rat('yPmuyDac', 'yPmuyDel'), syn: ['pmuy dac', 'ujjwala dac'] },
+  { k: 'dacNd', g: 'Delivery', l: 'ND DAC', u: '%', dec: 1, d: 1, kind: 'ratio', m: rat('dNdDac', 'dNdDel', 1), y: rat('yNdDac', 'yNdDel', 1), track: 'dacNd', syn: ['nd dac', 'non[ -]?domestic dac', 'commercial dac'] },
+  { k: 'dacFtr', g: 'Delivery', l: 'FTR DAC', u: '%', dec: 1, d: 1, kind: 'ratio', m: rat('dFtrDac', 'dFtrDel', 1), y: rat('yFtrDac', 'yFtrDel', 1), syn: ['ftr dac'] },
+  { k: 'ekyc', g: 'e-KYC', l: 'e-KYC coverage', u: '%', dec: 2, d: 1, kind: 'ratio', m: rat('kCum', 'kHold'), syn: ['ekyc coverage', 'ekyc %', 'ekyc percent(age)?', 'ekyc status', 'ekyc', 'aadhaar authentication', 'biometric'] },
+  { k: 'ekycPend', g: 'e-KYC', l: 'e-KYC pending', u: 'customers', dec: 0, d: -1, kind: 'stock', add: 1, m: fld('kPend'), syn: ['ekyc pending', 'pending ekyc', 'non[ -]?ekyc', 'ekyc balance', 'ekyc not done', 'ekyc left'] },
+  { k: 'ekycDone', g: 'e-KYC', l: 'e-KYC done', u: 'customers', dec: 0, d: 1, kind: 'flow', add: 1, m: fld('kMonth'), fy: fld('kFy'), y: fld('kYday'), track: 'ekyc', syn: ['ekyc done', 'ekyc completed', 'ekyc progress', 'ekyc achievement', 'ekyc achieved', 'ekyc this month'] },
+  { k: 'ekycPmuy', g: 'e-KYC', l: 'PMUY e-KYC coverage', u: '%', dec: 2, d: 1, kind: 'ratio', m: rat('kCumP', 'kHoldP'), syn: ['pmuy ekyc', 'ujjwala ekyc'] },
+  { k: 'mi', g: 'MI', l: 'MI done', u: 'nos', dec: 0, d: 1, kind: 'flow', add: 1, m: fld('miSafeM'), fy: fld('miSafeFy'), y: fld('iyTot'), track: 'mi',
+    syn: ['mi done', 'mi completed', 'mi achievement', 'mandatory inspections?', 'safety inspections?', 'inspections? done', 'mi'] },
+  { k: 'miPend', g: 'MI', l: 'MI pending', u: 'nos', dec: 0, d: -1, kind: 'stock', add: 1, m: fld('miPend'), syn: ['mi pending', 'pending mi', 'inspections? pending', 'pending inspections?', 'mi balance', 'mi due'] },
+  { k: 'hose', g: 'MI', l: 'Hose conversion on MI', u: '%', dec: 1, d: 1, kind: 'ratio', m: rat('miHoseM', 'miSafeM'), fy: rat('miHoseFy', 'miSafeFy'), y: rat('iyHose', 'iyTot'), track: 'hose',
+    syn: ['hose conversion', 'hose change', 'hose %', 'suraksha hose', 'hose'] },
+  { k: 'miExc', g: 'MI', l: 'MI exception distributors', u: 'nos', dec: 0, d: -1, kind: 'stock', add: 1, m: fld('miExc'), syn: ['mi exceptions?', 'exception list', 'exceptions?'] },
+  { k: 'pend', g: 'Bookings', l: 'Pending bookings', u: 'nos', dec: 0, d: -1, kind: 'stock', add: 1, m: firstOf([fld('bPend'), fld('aTot')]), syn: ['pending bookings?', 'pending refills?', 'booking pend(ing|ency)', 'pendency', 'backlog bookings', 'pending', 'backlog'] },
+  { k: 'aged', g: 'Bookings', l: 'Bookings older than 7 days', u: 'nos', dec: 0, d: -1, kind: 'stock', add: 1, m: sum(['a8', 'a15', 'a21']),
+    syn: ['aged7d', 'aged bookings?', 'ageing', 'aging', 'aged', 'old bookings', 'delayed bookings'] },
+  { k: 'aged14', g: 'Bookings', l: 'Bookings older than 14 days', u: 'nos', dec: 0, d: -1, kind: 'stock', add: 1, m: sum(['a15', 'a21']), syn: ['aged14d', 'aged15d', '14 days', '15 days'] },
+  { k: 'aged21', g: 'Bookings', l: 'Bookings older than 21 days', u: 'nos', dec: 0, d: -1, kind: 'stock', add: 1, m: fld('a21'), syn: ['aged21d', '21 days'] },
+  { k: 'agedPct', g: 'Bookings', l: 'Share of pending older than 7 days', u: '%', dec: 1, d: -1, kind: 'ratio', m: function (F) { if (!F || !F.aTot) return null; return ((F.a8 || 0) + (F.a15 || 0) + (F.a21 || 0)) / F.aTot * 100; }, syn: ['% aged', 'aged %', 'aged share', 'share of aged'] },
+  { k: 'backlog', g: 'Bookings', l: 'Backlog (days of sale)', u: 'days', dec: 2, d: -1, kind: 'ratio', m: function (F) { var p = F ? (F.bPend != null ? F.bPend : F.aTot) : null; return p != null && F.bAvgSale ? p / F.bAvgSale : null; }, syn: ['backlog days', 'days of (sale|backlog)', 'pending days', 'backlog in days'] },
+  { k: 'cover', g: 'Bookings', l: '14.2 kg stock cover', u: 'days', dec: 2, d: 1, kind: 'ratio', m: function (F) { return F && F.st14_2F != null && F.bAvgSale ? F.st14_2F / F.bAvgSale : null; }, syn: ['stock cover', 'cover days', 'days of stock', 'cover'] },
+  { k: 'filled', g: 'Bookings', l: '14.2 kg filled stock', u: 'cyl', dec: 0, d: 1, kind: 'stock', add: 1, m: firstOf([fld('st14_2F'), fld('bFilled')]), syn: ['filled stock', 'filled cylinders', 'stock position', 'inventory', 'stock'] },
+  { k: 'snr', g: 'Bookings', l: 'Stock not returned', u: 'cyl', dec: 0, d: -1, kind: 'stock', add: 1, m: fld('snrTot'), syn: ['stock not returned', 'snr', 'empties not returned', 'empty not returned', 'return pending', 'not returned'] },
+  { k: 'recv', g: 'Bookings', l: 'Bookings received', u: 'nos', dec: 0, d: 1, kind: 'flow', add: 1, m: fld('bRecv'), y: fld('bYBk'), syn: ['bookings? received', 'bookings? made', 'number of bookings', 'refill bookings', 'bookings?'] },
+  { k: 'canc', g: 'Bookings', l: 'Bookings cancelled', u: '%', dec: 1, d: -1, kind: 'ratio', m: rat('bCanc', 'bRecv'), syn: ['cancell?ations?', 'cancell?ed( bookings)?', 'cancel'] },
+  { k: 'rc', g: 'Stock', l: 'Excess cylinders to recover', u: 'cyl', dec: 0, d: -1, kind: 'stock', add: 1, m: fld('rcCyl'), syn: ['recovery', 'recoverable', 'excess stock', 'stock recovery', 'excess cylinders'] },
+  { k: 'arb', g: 'ARB', l: 'ARB ORC', u: '₹ lakh', dec: 2, d: 1, kind: 'flow', add: 1, m: lk('arbM'), fy: lk('arbFy'), lyM: lk('arbMLy'), lyFy: lk('arbFyLy'), track: 'arb', syn: ['arb[ -]?orc', 'arb', 'orc', 'accessories', 'non[ -]fuel'] },
+  { k: 'phose', g: 'ARB', l: 'Plant hose ORC', u: '₹ lakh', dec: 2, d: 1, kind: 'flow', add: 1, m: lk('arbHoseM'), fy: lk('arbHoseFy'), syn: ['plant hose', 'hose from plant', 'hose billing'] },
+  { k: 'hppay', g: 'Digital', l: 'HP Pay booking share', u: '%', dec: 2, d: 1, kind: 'ratio', m: firstOf([rat('hpBook', 'hpTotal'), rat('bcHppay', 'bcTotal')]), syn: ['hppay', 'hp pay'] },
+  { k: 'online', g: 'Digital', l: 'Online booking share', u: '%', dec: 2, d: 1, kind: 'ratio', m: rat('bcOnline', 'bcTotal'), syn: ['online bookings?', 'digital bookings?', 'online share'] },
+  { k: 'wa', g: 'Digital', l: 'WhatsApp booking share', u: '%', dec: 2, d: 1, kind: 'ratio', m: rat('bcWa', 'bcTotal'), syn: ['whatsapp'] },
+  { k: 'paid', g: 'Digital', l: 'Deliveries paid online (cashless)', u: '%', dec: 2, d: 1, kind: 'ratio', m: rat('dgOnline', 'dgBook'), track: 'cashless', syn: ['paid online', 'cashless', 'online payments?', 'digital payments?', 'prepaid'] },
+  { k: 'payAmt', g: 'Digital', l: 'Online payments received', u: '₹ lakh', dec: 2, d: 1, kind: 'flow', add: 1, m: lk('dpAmt'), syn: ['payment amount', 'amount paid online', 'online amount', 'collections?'] },
+  { k: 'nc', g: 'Sales', l: 'ND new connections', u: 'nos', dec: 0, d: 1, kind: 'flow', add: 1, m: fld('ncConns'), lyM: fld('ncConnsH'), syn: ['new connections?', 'nd connections?', 'nc', 'connections? released', 'connections?'] },
+  { k: 'navya', g: 'Sales', l: 'HP Navya connections (10 kg)', u: 'nos', dec: 0, d: 1, kind: 'flow', add: 1, m: fld('ncNavya'), track: 'navya', syn: ['navya', '10 ?kg'] },
+  { k: 'score', g: 'Overall', l: 'Composite performance score', u: '0–100', dec: 1, d: 1, kind: 'score', m: function () { return null; }, syn: ['composite score', 'performance score', 'overall performance', 'overall score', 'score', 'scorecard'] }
+];
+var PH = { dom: 'domestic sales', nd: 'ND sales', appu: '5 kg sales', blk: 'bulk sales', prop: 'propane sales', tot: 'total sales', k19: '19 kg sales', k475: '47.5 kg sales', del: 'deliveries', dac: 'DAC', dacPmuy: 'PMUY DAC', dacNd: 'ND DAC', dacFtr: 'FTR DAC', ekyc: 'e-KYC coverage', ekycPend: 'e-KYC pending', ekycDone: 'e-KYC done', ekycPmuy: 'PMUY e-KYC', mi: 'MI done', miPend: 'MI pending', hose: 'hose conversion', miExc: 'MI exceptions', pend: 'pending bookings', aged: 'bookings older than 7 days', aged14: 'bookings older than 14 days', aged21: 'bookings older than 21 days', agedPct: 'aged share %', backlog: 'backlog days', cover: 'stock cover', filled: 'filled stock', snr: 'stock not returned', recv: 'bookings received', canc: 'cancellations', rc: 'excess stock', arb: 'ARB ORC', phose: 'plant hose', hppay: 'HP Pay', online: 'online bookings', wa: 'WhatsApp', paid: 'paid online', payAmt: 'payment amount', nc: 'new connections', navya: 'Navya', score: 'composite score' };
+function ph(m) { return PH[m.k] || m.l; }
+var MM = {}; MEAS.forEach(function (m) {
+  MM[m.k] = m;
+  m.re = new RegExp('(^|[^a-z0-9])(' + m.syn.join('|') + ')(?=[^a-z0-9]|$)', 'g');
+});
+var GROUPS = ['Sales', 'Delivery', 'e-KYC', 'MI', 'Bookings', 'Stock', 'ARB', 'Digital', 'Overall'];
+
+/* ---------------- text helpers ---------------- */
+var NUMW = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, twelve: 12, fifteen: 15, twenty: 20, thirty: 30, fifty: 50, hundred: 100 };
+var MON = { jan: 1, january: 1, feb: 2, february: 2, mar: 3, march: 3, apr: 4, april: 4, may: 5, jun: 6, june: 6, jul: 7, july: 7, aug: 8, august: 8, sep: 9, sept: 9, september: 9, oct: 10, october: 10, nov: 11, november: 11, dec: 12, december: 12 };
+function normText(s) {
+  var t = ' ' + String(s || '').toLowerCase()
+    .replace(/[‘’']/g, '').replace(/−|–|—/g, '-')
+    .replace(/e[\s-]?k\.?y\.?c/g, 'ekyc').replace(/hp[\s-]?pay/g, 'hppay').replace(/whats[\s-]?app/g, 'whatsapp')
+    .replace(/\bv\/s\b|\bv\.s\.?|\bvs\.?(?=\s)/g, ' vs ').replace(/\bversus\b/g, ' vs ')
+    .replace(/(\d),(?=\d)/g, '$1')
+    .replace(/[^a-z0-9%.<>=+\-\/ ]+/g, ' ')
+    .replace(/(\D)\.(?=\D|$)/g, '$1 ')
+    .replace(/\s+/g, ' ') + ' ';
+  Object.keys(NUMW).forEach(function (w) { t = t.replace(new RegExp(' ' + w + ' ', 'g'), ' ' + NUMW[w] + ' '); });
+  return t;
+}
+function blank(t, a, b) { return t.slice(0, a) + ' '.repeat(b - a) + t.slice(b); }
+function ymdOf(y, m, d) { return y + '-' + (m < 10 ? '0' : '') + m + '-' + (d < 10 ? '0' : '') + d; }
+function dateFrom(d, m, y, ref) {
+  if (!(m >= 1 && m <= 12 && d >= 1 && d <= 31)) return null;
+  var r = U.parseYmd(ref), yy = y ? (+y < 100 ? 2000 + +y : +y) : r.getFullYear();
+  var s = ymdOf(yy, m, d); if (!y && s > ref) s = ymdOf(yy - 1, m, d);
+  return s;
+}
+function eName(e) {
+  if (!e) return '';
+  if (e.t === 'RO') return 'Lucknow RO';
+  if (e.t === 'SA') return cap(e.k) + ' SA';
+  if (e.t === 'IN') return 'All India';
+  if (e.t === 'ZONE') return e.k + ' zone';
+  if (e.t === 'NRO') return cap(e.k) + ' RO';
+  if (e.t === 'NSA') { var x = S.V && S.V.nat.sa[e.k]; return x ? title(x.name) + ' SA' + (String(x.name).toUpperCase() !== x.ro ? ' (' + cap(x.ro) + ' RO)' : ' (' + cap(x.ro) + ' RO)') : e.k; }
+  if (e.t === 'D') { var r = distByCode(e.k); return r ? title(r.name) : e.k; }
+  return e.k || e.t;
+}
+function eShort(e) { if (e.t === 'D') { var n = eName(e); return n.length > 26 ? n.slice(0, 25) + '…' : n; } return eName(e).replace(/ SA \(.*\)$/, ' SA'); }
+var ECOL = { RO: 'var(--accent)', IN: 'var(--s7)', ZONE: 'var(--s6)', NRO: 'var(--other)', NSA: 'var(--other)', D: 'var(--s3)' };
+function eColor(e, i) { if (e.t === 'SA') return A.SA_COLOR[e.k] || 'var(--s1)'; if (e.t === 'NRO' && e.k === HOME) return 'var(--accent)'; if (e.t === 'D') return ['var(--s1)', 'var(--s2)', 'var(--s3)', 'var(--s4)', 'var(--s5)', 'var(--s7)', 'var(--s8)', 'var(--s6)'][(i || 0) % 8]; return ECOL[e.t] || 'var(--s1)'; }
+function eKey(e) { return e.t + ':' + (e.k || ''); }
+function distByCode(c) { var V = S.V; if (!V) return null; for (var i = 0; i < V.dists.length; i++) if (V.dists[i].code === c) return V.dists[i]; var o = V.others || []; for (var j = 0; j < o.length; j++) if (o[j].code === c) return o[j]; return null; }
+function unitTxt(m) { return m.u === '%' ? '%' : ' ' + m.u; }
+function fv(m, v, extra) { if (v == null || !isFinite(v)) return '—'; return m.u === '%' ? pct(v, m.dec) : fmt(v, m.dec + (extra || 0)); }
+function fvu(m, v) { if (v == null || !isFinite(v)) return '—'; return m.u === '%' ? pct(v, m.dec) : m.u === '₹ lakh' ? '₹' + fmt(v, m.dec) + ' lakh' : fmt(v, m.dec) + ' ' + m.u; }
+function grTxt(g) { return g == null || !isFinite(g) ? '—' : (g > 0 ? '+' : g < 0 ? '−' : '') + fmt(Math.abs(g), 1) + '%'; }
+function ppTxt(g) { return g == null || !isFinite(g) ? '—' : (g > 0 ? '+' : g < 0 ? '−' : '') + fmt(Math.abs(g), 1) + ' pp'; }
+
+/* ---------------- vocabulary from the loaded data ---------------- */
+var STOP = { gas: 1, service: 1, services: 1, agency: 1, agencies: 1, hp: 1, hpgas: 1, gramin: 1, grameen: 1, vitrak: 1, vitr: 1, vitra: 1, vitran: 1, enterprises: 1, enterprise: 1, the: 1, 'm/s': 1, ms: 1, shri: 1, sri: 1, shree: 1, and: 1, of: 1, in: 1, distributor: 1, distributors: 1, maa: 1, ma: 1, jai: 1, devi: 1, lpg: 1, co: 1, bharat: 1, india: 1, new: 1, sales: 1, area: 1, ro: 1, all: 1, top: 1, best: 1, show: 1, with: 1, for: 1, what: 1, which: 1, how: 1, this: 1, month: 1, today: 1, kumar: 1, singh: 1, ram: 1, shiv: 1, ji: 1 };
+var vocab = null, vocabFor = null;
+function buildVocab() {
+  var V = S.V; if (!V) return null; if (vocabFor === V) return vocab;
+  var words = {}; MEAS.forEach(function (m) { m.syn.forEach(function (s) { s.replace(/[^a-z0-9 ]/g, ' ').split(' ').forEach(function (w) { if (w.length > 2) words[w] = 1; }); }); });
+  ['compare', 'trend', 'growth', 'target', 'month', 'year', 'week', 'yesterday', 'today', 'zone', 'india', 'national', 'distributors', 'area', 'areas', 'rank', 'ranking', 'show', 'list', 'between', 'below', 'above', 'under', 'over', 'less', 'more', 'than', 'highest', 'lowest', 'worst', 'best', 'pending', 'last', 'days', 'daily', 'sale', 'sales', 'where', 'which', 'with', 'what', 'when', 'from', 'since', 'kanpur', 'lucknow', 'etawah', 'jhansi', 'sitapur', 'other', 'each', 'every', 'total', 'average', 'share', 'drop', 'down', 'fall', 'decline', 'reason', 'why', 'explain', 'top', 'bottom', 'least', 'most', 'below', 'above', 'show', 'give', 'tell', 'about', 'report', 'card', 'profile', 'details', 'region', 'comparison', 'against', 'national', 'city', 'rural', 'urban', 'public', 'performance', 'status', 'stock', 'cover', 'zero', 'number', 'count', 'many', 'much', 'there', 'their', 'have', 'has', 'been', 'into', 'than', 'then', 'only', 'also', 'please', 'kindly', 'data', 'figure', 'figures', 'value', 'values', 'chart', 'table', 'graph'].forEach(function (w) { words[w] = 1; });
+  var tok = {}; V.dists.forEach(function (r) {
+    String(r.name || '').toLowerCase().replace(/[^a-z0-9 ]/g, ' ').split(/\s+/).forEach(function (w) { if (w.length >= 4 && !STOP[w] && !words[w]) (tok[w] = tok[w] || []).push(r.code); });
+  });
+  var ros = Object.keys(V.nat.ro || {}).filter(function (k) { return k !== HOME; }).map(function (k) { return k.toLowerCase(); });
+  var zones = {}; for (var k in V.nat.ro) if (V.nat.ro[k].zone) zones[V.nat.ro[k].zone] = 1;
+  vocab = { words: words, tok: tok, ros: ros, zones: Object.keys(zones) }; vocabFor = V; return vocab;
+}
+
+/* ---------------- the parser ---------------- */
+var ZONE_NAMES = [['north central zone', 'NCZ'], ['north central', 'NCZ'], ['ncz', 'NCZ'], ['north west zone', 'NWZ'], ['nwz', 'NWZ'], ['south central zone', 'SCZ'], ['scz', 'SCZ'], ['north zone', 'NZ'], ['south zone', 'SZ'], ['east zone', 'EZ'], ['west zone', 'WZ']];
+var PAGE_WORDS = [['ask', /\bask( page)?\b/], ['overview', /\b(home|dashboard|overview)\b/], ['sa', /\bsales areas? (page|dashboard)\b/], ['aop', /\baop( tracker)?\b/], ['dist', /\bdistributors? (page|list)\b/], ['national', /\b(all india|national|ncz) (page|ranking)\b/], ['kpi', /\bkpi( deep dive)?\b/], ['sales', /\bsales (page|deep dive)\b/], ['dac', /\bdac (page|deep dive)\b/], ['book', /\bbookings? (page|deep dive)\b/], ['ekyc', /\bekyc (page|deep dive)\b/], ['mi', /\bmi (page|deep dive)\b/], ['digital', /\b(digital|hppay) (page|deep dive)\b/], ['arb', /\barb (page|deep dive)\b/], ['trends', /\btrends?( page)?\b/], ['rcard', /\breport cards?\b/], ['pbook', /\bpending booking report\b/], ['insp', /\binspection (status|page)\b/]];
+
+function parse(text) {
+  var V = S.V, q = { text: String(text || '').trim(), ms: [], ents: [], grp: null, per: { kind: 'm' }, op: null, n: null, dir: null, cond: null, basis: 'value', notes: [], daily: false, unknown: [] };
+  var t = normText(q.text), vc = buildVocab();
+  if (!q.text) { q.op = 'help'; return q; }
+  if (/^\s*(help|\?|examples?|what can (you|i) (do|ask)|how (do|to) (i )?use)\b/.test(t)) { q.op = 'help'; return q; }
+  var m0;
+  /* navigation */
+  if ((m0 = /^\s*(open|go to|goto|take me to|navigate to|show( me)? the)\s+(.+?)\s*$/.exec(t))) {
+    var rest = ' ' + m0[3] + ' ';
+    for (var pi = 0; pi < PAGE_WORDS.length; pi++) if (PAGE_WORDS[pi][1].test(rest) && /page|tracker|deep dive|dashboard|overview|home|trends?|ranking|report cards?|list|status|kpi/.test(rest)) { q.op = 'nav'; q.page = PAGE_WORDS[pi][0]; return q; }
+  }
+  /* numbers for top / bottom */
+  var mn = /\b(top|bottom|best|worst|highest|lowest|first|last|leading|lagging|weakest|strongest|poorest)\s+(\d{1,3})\b/.exec(t) || /\b(\d{1,3})\s+(best|worst|top|bottom|highest|lowest|weakest|strongest)\b/.exec(t);
+  if (mn) { var nn = +(isNaN(+mn[2]) ? mn[1] : mn[2]); if (nn > 0 && nn <= 200) q.n = nn; }
+  /* dates and periods (read first, then blanked so their numbers are not taken as values) */
+  var ref = V ? V.date : U.ymd(new Date());
+  var DT = '(\\d{4}-\\d{1,2}-\\d{1,2}|\\d{1,2}[/.-]\\d{1,2}(?:[/.-]\\d{2,4})?|\\d{1,2}(?:st|nd|rd|th)? ?(?:of )?(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|june?|july?|aug(?:ust)?|sept?(?:ember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)(?: \\d{4})?|(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|june?|july?|aug(?:ust)?|sept?(?:ember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?) \\d{1,2}(?:st|nd|rd|th)?(?: \\d{4})?)';
+  function pDate(s) {
+    s = s.trim(); var mm;
+    if ((mm = /^(\d{4})-(\d{1,2})-(\d{1,2})$/.exec(s))) return ymdOf(+mm[1], +mm[2], +mm[3]);
+    if ((mm = /^(\d{1,2})[/.-](\d{1,2})(?:[/.-](\d{2,4}))?$/.exec(s))) return dateFrom(+mm[1], +mm[2], mm[3], ref);
+    if ((mm = /^(\d{1,2})(?:st|nd|rd|th)? ?(?:of )?([a-z]+)(?: (\d{4}))?$/.exec(s))) return dateFrom(+mm[1], MON[mm[2]], mm[3], ref);
+    if ((mm = /^([a-z]+) (\d{1,2})(?:st|nd|rd|th)?(?: (\d{4}))?$/.exec(s))) return dateFrom(+mm[2], MON[mm[1]], mm[3], ref);
+    return null;
+  }
+  var rg;
+  if ((rg = new RegExp('\\b(?:from|between)\\s+' + DT + '\\s+(?:to|till|until|and|-)\\s+' + DT).exec(t))) { var f1 = pDate(rg[1]), t1 = pDate(rg[2]); if (f1 && t1) { q.per = { kind: 'range', from: f1 < t1 ? f1 : t1, to: f1 < t1 ? t1 : f1 }; t = blank(t, rg.index, rg.index + rg[0].length); } }
+  else if ((rg = new RegExp('\\b(?:since|after|from)\\s+' + DT).exec(t))) { var f2 = pDate(rg[1]); if (f2) { q.per = { kind: 'range', from: f2, to: ref }; t = blank(t, rg.index, rg.index + rg[0].length); } }
+  else if ((rg = new RegExp('\\b(?:on|as on|as of|for|dated)\\s+' + DT).exec(t))) { var d3 = pDate(rg[1]); if (d3) { q.per = { kind: 'asof', date: d3 }; t = blank(t, rg.index, rg.index + rg[0].length); } }
+  if ((rg = /\b(?:last|past|previous)\s+(\d{1,3})\s+days?\b/.exec(t))) { var nd = +rg[1]; q.per = { kind: 'range', from: U.addDays(ref, -(nd - 1)), to: ref, label: 'last ' + nd + ' days' }; t = blank(t, rg.index, rg.index + rg[0].length); }
+  else if ((rg = /\b(last|past|previous|this) week\b|\blast 7 days\b|\bweek on week\b|\bwow\b/.exec(t))) { q.per = { kind: 'range', from: U.addDays(ref, -6), to: ref, label: 'last 7 days' }; t = blank(t, rg.index, rg.index + rg[0].length); }
+  if ((rg = /\b(yesterday|yday|today|daily|day on day|dod|on the day|single day|for the day|kal)\b/.exec(t))) {
+    if (/daily|day on day|dod/.test(rg[1])) q.daily = true;
+    if (!/daily/.test(rg[1]) && q.per.kind === 'm') q.per = { kind: 'y' };
+    t = blank(t, rg.index, rg.index + rg[0].length);
+  }
+  if ((rg = /\b(fy|ytd|y\.t\.d|year to date|financial year|this year|current year|since april|fiscal|cumulative|annual|full year|so far this year|fytd)\b/.exec(t))) { if (q.per.kind === 'm') q.per = { kind: 'fy' }; t = blank(t, rg.index, rg.index + rg[0].length); }
+  if ((rg = /\b(mtd|this month|month to date|current month|month till date|so far this month|in the month|monthly)\b/.exec(t))) { if (q.per.kind !== 'range') q.per = { kind: 'm' }; t = blank(t, rg.index, rg.index + rg[0].length); }
+  if ((rg = /\b(last|previous|prev) month\b/.exec(t))) { var d0 = U.parseYmd(ref), pm = new Date(d0.getFullYear(), d0.getMonth() - 1, 1); q.per = { kind: 'month', mk: U.ymd(pm).slice(0, 7) }; t = blank(t, rg.index, rg.index + rg[0].length); }
+  else if ((rg = /\b(?:in|for|during|of)\s+(jan(?:uary)?|feb(?:ruary)?|march|apr(?:il)?|may|june?|july?|aug(?:ust)?|sept?(?:ember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)(?:\s+(\d{4}))?\b/.exec(t))) {
+    var mo = MON[rg[1]], yr = rg[2] ? +rg[2] : U.parseYmd(ref).getFullYear(), mk = ymdOf(yr, mo, 1).slice(0, 7); if (mk > ref.slice(0, 7)) mk = ymdOf(yr - 1, mo, 1).slice(0, 7);
+    q.per = mk === ref.slice(0, 7) ? { kind: 'm' } : { kind: 'month', mk: mk }; t = blank(t, rg.index, rg.index + rg[0].length);
+  }
+  t = t.replace(/\b(?:(?:pending )?(?:bookings?|refills?|orders?) )?(?:(?:which are|that are|pending|lying|aged|old) )?(?:for )?(?:more than|over|older than|above|beyond|greater than|>)\s?(7|14|15|21) ?days?( old)?\b/g, ' aged$1d ');
+  /* comparisons with a number: below 90, more than 500, < 85%, at least 2 */
+  var cmpRe = /\b(below|under|less than|lower than|fewer than|not more than|at most|upto|up to|<=|=<|<|above|over|more than|greater than|higher than|exceeding|exceeds|at least|not less than|>=|=>|>|equal to|equals|=)\s*(-?\d+(?:\.\d+)?)\s*(%|percent|mt|days?|lakh|l\b|nos)?/;
+  var cm = cmpRe.exec(t);
+  if (cm) {
+    var w = cm[1], op = /below|under|less|lower|fewer|^<$|not more|at most|up ?to/.test(w) ? (/at most|not more|up ?to/.test(w) ? '<=' : '<') : /<=|=</.test(w) ? '<=' : /at least|not less|>=|=>/.test(w) ? '>=' : /above|over|more|greater|higher|exceed|^>$/.test(w) ? '>' : '=';
+    q.cond = { cmp: op, v: +cm[2], at: cm.index }; t = blank(t, cm.index, cm.index + cm[0].length);
+  } else if ((cm = /\b(zero|nil|no|without any|not done any|without)\s+(?=[a-z])/.exec(t)) && /\b(distributors?|which|who|list|sales areas?)\b/.test(t)) {
+    q.cond = { cmp: '=', v: 0, at: cm.index, zero: true }; t = blank(t, cm.index, cm.index + cm[0].length);
+  }
+  /* entity groups (before single names so "other sales areas" is not read as one SA) */
+  var g;
+  if ((g = /\b(all india|across india|india wide|national|nationwide) (sales areas|sas)\b|\bsales areas (in|across|of) india\b/.exec(t))) { q.grp = { t: 'NSAS' }; t = blank(t, g.index, g.index + g[0].length); }
+  if ((g = /\b(all|other|each|every|rest of the|remaining)\s+(sales areas?|sas?)\b|\b(sales areas|sas)\b|\b(sa|sales area|area)[\s-]?wise\b|\bby (sales )?areas?\b|\beach (sa|sales area)\b/.exec(t))) { q.grp = q.grp || { t: /other|rest|remaining/.test(g[1] || '') ? 'OTHERSAS' : 'SAS' }; t = blank(t, g.index, g.index + g[0].length); }
+  if ((g = /\b(all|other|each|every)?\s*(ros|regional offices)\b|\bro[\s-]?wise\b|\bacross ros\b|\bamong ros\b|\bnational (rank|ranking|position)\b|\ball india (rank|ranking|position)\b/.exec(t))) { q.grp = q.grp || { t: 'NROS' }; if (/rank|position/.test(g[0])) q.op = q.op || 'rank'; t = blank(t, g.index, g.index + g[0].length); }
+  if ((g = /\b(all )?zones\b|\bzone[\s-]?wise\b|\bby zones?\b/.exec(t))) { q.grp = q.grp || { t: 'ZONES' }; t = blank(t, g.index, g.index + g[0].length); }
+  var distGeneric = /\b(distributors?|dealers?|agenc(y|ies)|distributorships?|distributor[\s-]wise|vitraks?)\b/.exec(t);
+  /* zones */
+  for (var zi = 0; zi < ZONE_NAMES.length; zi++) { var zr = new RegExp('\\b' + ZONE_NAMES[zi][0] + '\\b'); var zm = zr.exec(t); if (zm) { q.ents.push({ t: 'ZONE', k: ZONE_NAMES[zi][1], at: zm.index }); t = blank(t, zm.index, zm.index + zm[0].length); } }
+  if ((g = /\b(our|my|this|the|own) zone\b|\bzone\b/.exec(t))) { q.ents.push({ t: 'ZONE', k: 'NCZ', at: g.index }); t = blank(t, g.index, g.index + g[0].length); }
+  /* all India */
+  if ((g = /\b(all[\s-]?india|pan[\s-]?india|across india|india|national(ly)?|nationwide|hpcl|whole country|country)\b/.exec(t))) { q.ents.push({ t: 'IN', at: g.index }); t = blank(t, g.index, g.index + g[0].length); }
+  /* Lucknow RO */
+  if ((g = /\b(lucknow (lpg )?(ro|regional office|region)|llro|(our|my|whole|entire|total|the|this) (ro|region|regional office)|regional office|\bro\b)/.exec(t))) { q.ents.push({ t: 'RO', at: g.index }); t = blank(t, g.index, g.index + g[0].length); }
+  /* this / my sales area */
+  if ((g = /\b(this|my|our|selected|current) (sales area|sa)\b/.exec(t))) {
+    var cur = S.page === 'sa' && SAS.indexOf(S.ui.saTab) >= 0 ? S.ui.saTab : (SAS.indexOf(S.ui.askSa) >= 0 ? S.ui.askSa : null);
+    if (cur) q.ents.push({ t: 'SA', k: cur, at: g.index }); else q.needSa = true;
+    t = blank(t, g.index, g.index + g[0].length);
+  }
+  /* other ROs by name (before SAs: "lucknow" is the only RO that is also an SA) */
+  if (vc) vc.ros.forEach(function (r) {
+    var re = new RegExp('\\b' + r.replace(/[^a-z ]/g, '.') + '( (lpg )?(ro|regional office|sa|sales area))?\\b'), mm = re.exec(t);
+    if (!mm) return;
+    if (/\b(sa|sales area)$/.test(mm[0]) && V) { var nk = Object.keys(V.nat.sa).filter(function (k) { return V.nat.sa[k].name.toLowerCase().indexOf(r) === 0; })[0]; if (nk) { q.ents.push({ t: 'NSA', k: nk, at: mm.index }); t = blank(t, mm.index, mm.index + mm[0].length); return; } }
+    q.ents.push({ t: 'NRO', k: r.toUpperCase(), at: mm.index }); t = blank(t, mm.index, mm.index + mm[0].length);
+  });
+  /* our sales areas */
+  SAS.forEach(function (sa) {
+    var re = new RegExp('\\b' + sa.toLowerCase() + '( (lpg )?(sa|sales area|area))?\\b', 'g'), mm;
+    while ((mm = re.exec(t))) { if (!q.ents.some(function (e) { return e.t === 'SA' && e.k === sa; })) q.ents.push({ t: 'SA', k: sa, at: mm.index }); t = blank(t, mm.index, mm.index + mm[0].length); }
+  });
+  /* distributor codes and names */
+  var cre = /\b(4\d{7})\b/g, cc;
+  while ((cc = cre.exec(t))) { if (distByCode(cc[1])) { q.ents.push({ t: 'D', k: cc[1], at: cc.index }); t = blank(t, cc.index, cc.index + cc[0].length); } }
+  /* measures (longest match wins) */
+  var hits = [];
+  MEAS.forEach(function (m) { m.re.lastIndex = 0; var mm; while ((mm = m.re.exec(t))) { var st = mm.index + mm[1].length; hits.push({ m: m, a: st, b: st + mm[2].length }); if (m.re.lastIndex === mm.index) m.re.lastIndex++; } });
+  hits.sort(function (x, y) { return (y.b - y.a) - (x.b - x.a) || x.a - y.a; });
+  var took = [];
+  hits.forEach(function (h) { if (took.some(function (o) { return h.a < o.b && o.a < h.b; })) return; took.push(h); });
+  took.sort(function (x, y) { return x.a - y.a; });
+  if (took.some(function (h) { return h.m.g === 'Sales' && !h.m.generic; })) took = took.filter(function (h) { return !h.m.generic; });
+  /* "aged" + "%" → share; "pending" with "ekyc" or "mi" next to it is already a longer match */
+  took.forEach(function (h) { if (q.ms.indexOf(h.m.k) < 0) q.ms.push(h.m.k); });
+  if (q.ms.indexOf('aged') >= 0 && /%|percent|share|proportion/.test(t)) q.ms[q.ms.indexOf('aged')] = 'agedPct';
+  if (q.ms.some(function (k) { return /^aged/.test(k); })) q.ms = q.ms.filter(function (k) { return k !== 'recv'; });
+  took.forEach(function (h) { t = blank(t, h.a, h.b); });
+  if (q.cond) { var best = null; took.forEach(function (h) { if (h.a <= q.cond.at && (!best || h.a > best.a)) best = h; }); if (!best) took.forEach(function (h) { if (!best || Math.abs(h.a - q.cond.at) < Math.abs(best.a - q.cond.at)) best = h; }); q.cond.m = best ? best.m.k : q.ms[0]; }
+  /* distributor names: distinctive words left over */
+  if (vc) {
+    var words = t.split(/\s+/).filter(function (w) { return w.length >= 4 && vc.tok[w]; }), cand = {};
+    words.forEach(function (w) { vc.tok[w].forEach(function (c) { cand[c] = (cand[c] || 0) + 1; }); });
+    var codes = Object.keys(cand); if (codes.length) {
+      var top = Math.max.apply(null, codes.map(function (c) { return cand[c]; })), best2 = codes.filter(function (c) { return cand[c] === top; });
+      if (best2.length <= 4) best2.forEach(function (c) { if (q.ents.some(function (e) { return e.k === c; })) return; var at = 999; words.forEach(function (w) { if (vc.tok[w].indexOf(c) >= 0) { var ix = t.search(new RegExp('\\b' + w + '\\b')); if (ix >= 0 && ix < at) at = ix; } }); q.ents.push({ t: 'D', k: c, at: at }); });
+      else { q.ambiguous = best2.slice(0, 12); }
+      words.forEach(function (w) { t = t.replace(new RegExp('\\b' + w + '\\b'), ' '); });
+    }
+  }
+  /* distributors as a group ("distributors in Jhansi") */
+  var namedD = q.ents.some(function (e) { return e.t === 'D'; });
+  if (distGeneric && (!namedD || /s\b|wise/.test(distGeneric[0]))) {
+    var saF = q.ents.filter(function (e) { return e.t === 'SA'; }).map(function (e) { return e.k; });
+    q.grp = { t: 'DISTS', sa: saF.length ? saF : null }; if (q.grp.sa) q.ents = q.ents.filter(function (e) { return e.t !== 'SA'; });
+  }
+  /* what to do */
+  var T0 = normText(q.text), T1 = T0.replace(/\b(vs|against|compared (to|with)|with) (ly|last year|previous year|aop|target|targets|plan|pro[\s-]?rata)\b/g, ' ');
+  if (!q.op) {
+    if (/\b(why|reason|reasons|driver|drivers|cause|explain|contribut\w*|dragging|pulling down|who (is|are) (behind|responsible))\b/.test(T0) || (/\b(drop|fall|fell|decline|declin\w+|down|lost|loss)\b/.test(T0) && /\b(who|which|where)\b/.test(T0))) q.op = 'why';
+    else if (/\b(trend|over time|day by day|day wise|daywise|history|historical|movement|progress(ion)?|graph|timeline|track(ing)? over)\b/.test(T0) || (q.daily && q.per.kind !== 'y')) q.op = 'trend';
+    else if (/\b(aop|target|targets|pro[\s-]?rata|run[\s-]?rate|required rate|need(ed)? per day|per day needed|required per day|achievement|achieved|plan|projection|projected|forecast)\b/.test(T0)) q.op = 'target';
+    else if (q.cond) q.op = 'filter';
+    else if (/\b(top|bottom|best|worst|highest|lowest|least|most|leading|lagging|weakest|strongest|poorest|rank|ranking|ranked|which|who)\b/.test(T0)) q.op = 'rank';
+    else if ((/\b(break[\s-]?up|breakdown|break down|split|composition|contribution|share of)\b/.test(T0) && !/\b(compare|vs|against|versus)\b/.test(T1) && !q.ents.some(function (e) { return /IN|NRO|ZONE|NSA|D/.test(e.t); })) || (q.grp && q.grp.t === 'SAS' && !/compare|vs|with|against/.test(T1) && q.ents.length <= 1)) q.op = 'breakdown';
+    else if (/\b(profile|report card|details?|everything|status|scorecard|overview)\b/.test(T0) && q.ents.length === 1 && q.ents[0].t === 'D') q.op = 'profile';
+    else if (/\b(compare|comparison|vs|against|with|tulna|relative to|versus)\b/.test(T1) || q.ents.length + (q.grp ? 1 : 0) > 1) q.op = 'compare';
+  }
+  if (q.op === 'rank') {
+    q.dir = /\b(bottom|lowest|least|minimum|min|fewest|smallest)\b/.test(T0) ? 'asc' : /\b(top|highest|most|maximum|max|largest|biggest)\b/.test(T0) ? 'desc' : /\b(worst|lagging|weakest|poorest|poor|weak|behind|bad)\b/.test(T0) ? 'bad' : 'good';
+    if (/\b(rank|position|where (does|do|is))\b/.test(T0) && !q.grp && q.ents.length === 1 && q.ents[0].t !== 'D') q.grp = { t: q.ents[0].t === 'SA' ? 'SAS' : q.ents[0].t === 'NRO' || q.ents[0].t === 'RO' || q.ents[0].t === 'IN' ? 'NROS' : 'SAS' };
+  }
+  if (/\b(growth|grow|growing|vs (ly|last year)|over last year|compared to last year|last year|previous year|prev year|ly|pichhle saal|yoy|y-o-y|declin\w+|drop|fall)\b/.test(T0)) q.basis = 'growth';
+  if (/\b(share|contribution|percent of|% of)\b/.test(T0) && q.op !== 'why') q.basis = q.basis === 'growth' ? 'growth' : 'share';
+  if (/\b(table|tabular|list)\b/.test(T0)) q.view = 'table';
+  if (q.op === 'profile' && !q.ms.length) q.ms = [];
+  /* nothing recognised */
+  if (!q.ms.length && !q.ents.length && !q.grp && !q.op) { q.op = 'none'; q.unknown = t.trim().split(/\s+/).filter(function (w) { return w.length > 2; }); }
+  return finish(q);
+}
+/* defaults: measure, places and operation when the question leaves them out */
+function finish(q) {
+  if (q.op === 'nav' || q.op === 'help' || q.op === 'none') return q;
+  var seen0 = {}; q.ents = q.ents.filter(function (e) { var k = eKey(e); if (seen0[k]) return false; seen0[k] = 1; return true; });
+  var oneD = q.ents.length === 1 && q.ents[0].t === 'D';
+  if (!q.ms.length) {
+    if (q.cond) q.ms = ['dac'];
+    else if (oneD && !q.op) q.op = 'profile';
+    else if (q.op === 'rank' || q.op === 'filter') q.ms = ['score'];
+    else if (q.op === 'target') q.ms = ['dom', 'nd', 'appu', 'mi', 'ekycDone', 'arb', 'dac'];
+    else if (q.op === 'why') q.ms = ['dom'];
+    else if (q.op !== 'profile') { q.op = q.op || 'overview'; q.ms = ['dom', 'nd', 'appu', 'dac', 'ekyc', 'mi', 'pend', 'aged', 'snr', 'arb']; }
+  }
+  if (q.cond && !q.cond.m) q.cond.m = q.ms[0];
+  if (!q.op && q.grp && q.grp.t === 'DISTS') { q.op = 'rank'; q.dir = q.dir || 'desc'; }
+  if (!q.op) q.op = q.ents.length > 1 || q.grp ? 'compare' : (q.ents.length === 1 ? 'value' : 'compare');
+  if (q.op === 'value' && q.ms.length > 3) q.op = 'overview';
+  if (!q.ents.length && !q.grp) {
+    if (q.op === 'rank' || q.op === 'filter') q.grp = { t: 'DISTS' };
+    else if (q.op === 'trend') q.ents = [{ t: 'RO' }];
+    else if (q.op === 'why') q.ents = [{ t: 'RO' }];
+    else if (q.op !== 'profile') { q.ents = [{ t: 'RO' }]; q.grp = { t: 'SAS' }; }
+  }
+  if ((q.op === 'rank' || q.op === 'filter') && !q.grp) {
+    var e0 = q.ents[0];
+    if (q.ents.length === 1 && e0.t === 'SA') { q.grp = { t: 'DISTS', sa: [e0.k] }; q.ents = []; }
+    else if (q.ents.length === 1 && (e0.t === 'IN' || e0.t === 'NRO')) q.grp = { t: 'NROS' };
+    else if (q.ents.length === 1 && e0.t === 'ZONE') { q.grp = { t: 'NROS', zone: e0.k }; q.ents = []; }
+    else if (q.ents.every(function (e) { return e.t === 'SA'; }) && q.ents.length > 1) { q.grp = { t: 'DISTS', sa: q.ents.map(function (e) { return e.k; }) }; q.ents = []; }
+    else q.grp = { t: 'DISTS' };
+  }
+  if (q.op === 'rank' && q.grp && q.grp.t === 'NROS' && q.ents.length === 1 && q.ents[0].t === 'ZONE') { q.grp.zone = q.ents[0].k; q.ents = []; }
+  if (q.op === 'why' && !q.ents.length) q.ents = [{ t: 'RO' }];
+  if (q.grp && q.grp.t === 'NROS') q.ents = q.ents.map(function (e) { return e.t === 'SA' && e.k === 'LUCKNOW' ? { t: 'RO' } : e; });
+  if (q.grp && q.grp.t === 'NROS' && !q.grp.zone) { var zs = q.ents.filter(function (e) { return e.t === 'ZONE'; }); if (zs.length === 1) q.grp.zone = zs[0].k; }
+  q.ents.sort(function (a, b) { return (a.at || 0) - (b.at || 0); });
+  var seen = {}; q.ents = q.ents.filter(function (e) { var k = eKey(e); if (seen[k]) return false; seen[k] = 1; return true; });
+  q.ents.forEach(function (e) { delete e.at; });
+  if (q.cond) delete q.cond.at;
+  return q;
+}
+
+/* ---------------- describing a query (canonical text, also re-parsable) ---------------- */
+function perLabel(p) {
+  if (!p) return '';
+  if (p.kind === 'm') return 'month to date';
+  if (p.kind === 'fy') return 'FY to date';
+  if (p.kind === 'y') return 'yesterday';
+  if (p.kind === 'range') return p.label || ('from ' + dShortY(p.from) + ' to ' + dShortY(p.to));
+  if (p.kind === 'month') return 'in ' + A.mLabel(p.mk);
+  if (p.kind === 'asof') return 'on ' + dShortY(p.date);
+  return '';
+}
+function dShortY(s) { var d = U.parseYmd(s); return d.getDate() + ' ' + Model.MONTHS[d.getMonth()] + ' ' + d.getFullYear(); }
+function grpNoun(g) { return !g ? 'places' : g.t === 'DISTS' ? 'distributors' + (g.sa ? ' in ' + g.sa.map(cap).join(', ') : '') : g.t === 'NROS' ? (g.zone ? g.zone + ' ROs' : 'ROs in India') : g.t === 'NSAS' ? 'sales areas in India' : g.t === 'ZONES' ? 'zones' : 'sales areas'; }
+function grpLabel(g) {
+  if (!g) return '';
+  if (g.t === 'SAS') return 'all sales areas';
+  if (g.t === 'OTHERSAS') return 'other sales areas';
+  if (g.t === 'NROS') return g.zone ? g.zone + ' ROs' : 'all ROs';
+  if (g.t === 'NSAS') return 'all India sales areas';
+  if (g.t === 'ZONES') return 'all zones';
+  if (g.t === 'DISTS') return 'distributors' + (g.sa ? ' in ' + g.sa.map(cap).join(', ') : '');
+  return '';
+}
+function describe(q) {
+  var opw = { compare: 'compare', rank: q.dir === 'asc' ? 'bottom' : q.dir === 'bad' ? 'worst' : q.dir === 'desc' ? 'top' : 'best', trend: 'trend of', target: 'vs AOP', filter: 'which', breakdown: 'breakdown of', why: 'why', profile: 'profile of', overview: 'overview', value: '' }[q.op] || '';
+  var parts = [];
+  if (q.op === 'rank') parts.push(opw + ' ' + (q.n || 10)); else if (q.op === 'trend' || q.op === 'breakdown' || q.op === 'why' || q.op === 'compare' || q.op === 'profile') parts.push(opw);
+  if (q.ms.length && !(q.op === 'overview' && !q.custom) && !(q.op === 'compare' && q.ms.length >= 9 && !q.custom)) parts.push(q.ms.map(function (k) { return MM[k] ? ph(MM[k]) : k; }).join(', '));
+  if (q.basis === 'share') parts.push('share');
+  if (q.basis === 'growth' && q.ms.some(function (k) { return MM[k] && MM[k].lyM; })) parts.push('growth vs last year');
+  if (q.cond) parts.push((MM[q.cond.m] ? ph(MM[q.cond.m]) : '') + ' ' + { '<': 'below', '<=': 'at most', '>': 'above', '>=': 'at least', '=': 'equal to' }[q.cond.cmp] + ' ' + q.cond.v);
+  var ents = q.ents.map(eName); if (q.grp) ents.push(grpLabel(q.grp));
+  if (ents.length) parts.push((q.op === 'compare' ? '' : 'for ') + ents.join(' vs '));
+  if (q.op === 'target') parts.push('vs AOP');
+  parts.push(perLabel(q.per));
+  if (q.daily) parts.push('daily');
+  return parts.filter(Boolean).join(' · ');
+}
+
+/* ---------------- reading values ---------------- */
+function sums() { return S.days.map(function (d) { return S.summaries[d]; }).filter(Boolean); }
+function natSum(src, zone) {
+  var out = {}, any = false;
+  for (var k in src) { var x = src[k]; if (zone && (x.zone || x.z) !== zone) continue; var F = x.F; if (!F) continue; any = true; for (var f in F) { var v = F[f]; if (typeof v === 'number' && isFinite(v)) out[f] = (out[f] || 0) + v; } }
+  return any ? out : null;
+}
+var memo = {};
+function FofV(e) {
+  var V = S.V; if (!V) return null;
+  if (e.t === 'RO') return V.roF;
+  if (e.t === 'SA') return V.saF[e.k] || null;
+  if (e.t === 'D') { var r = distByCode(e.k); return r ? r.F : null; }
+  if (e.t === 'NRO') return V.nat.ro[e.k] ? V.nat.ro[e.k].F : null;
+  if (e.t === 'NSA') return V.nat.sa[e.k] ? V.nat.sa[e.k].F : null;
+  var mk = 'V' + V.date + eKey(e); if (memo[mk] !== undefined) return memo[mk];
+  return (memo[mk] = e.t === 'IN' ? natSum(V.nat.ro) : e.t === 'ZONE' ? natSum(V.nat.ro, e.k) : null);
+}
+function FofS(e, s) {
+  if (!s) return null;
+  if (e.t === 'RO') return s.ro;
+  if (e.t === 'SA') return s.sa ? s.sa[e.k] : null;
+  if (e.t === 'D') return s.dist ? s.dist[e.k] : null;
+  if (e.t === 'NRO') return s.natRo && s.natRo[e.k] ? s.natRo[e.k].F : null;
+  if (e.t === 'NSA') return null;
+  var mk = 'S' + s.date + eKey(e); if (memo[mk] !== undefined) return memo[mk];
+  return (memo[mk] = e.t === 'IN' ? natSum(s.natRo) : e.t === 'ZONE' ? natSum(s.natRo, e.k) : null);
+}
+function lastSumIn(mk) { var r = null; S.days.forEach(function (d) { if (d.slice(0, 7) === mk && (!S.current || d <= S.current)) r = d; }); return r; }
+function sumAtOrBefore(date) { var r = null; S.days.forEach(function (d) { if (d <= date) r = d; }); return r; }
+/* one value: {v, ly, g, note} */
+function valueOf(m, e, per, opt) {
+  opt = opt || {};
+  if (m.k === 'score') {
+    var V = S.V; if (!V) return { v: null };
+    if (e.t === 'D') { var r = distByCode(e.k); return { v: r ? r.score : null }; }
+    if (e.t === 'SA') return { v: V.saScore ? V.saScore[e.k] : null };
+    if (e.t === 'NRO') return { v: V.natScore ? V.natScore[e.k] : null };
+    if (e.t === 'RO') return { v: V.natScore ? V.natScore[HOME] : null, note: 'national composite' };
+    return { v: null };
+  }
+  var F = null, v = null, ly = null, note = null, isFy = false;
+  if (per.kind === 'm' || per.kind === 'fy' || per.kind === 'y') {
+    F = FofV(e);
+    if (per.kind === 'fy') { if (m.fy) { v = m.fy(F); ly = m.lyFy ? m.lyFy(F) : null; isFy = true; } else { v = m.m(F); ly = m.lyM ? m.lyM(F) : null; note = m.kind === 'flow' ? 'month figure (no FY figure in the files)' : null; } }
+    else if (per.kind === 'y') {
+      if (m.y) v = m.y(F);
+      else if (m.kind === 'flow' || m.kind === 'ratio') { var R = rangeFor(e, S.V.date, S.V.date); if (R && !R.empty) { v = m.m(R.F); ly = m.lyM ? m.lyM(R.F) : null; if (R.notes.length) note = R.notes[0]; } else note = 'needs the previous day saved'; }
+      else v = m.m(F);
+    }
+    else { v = m.m(F); ly = m.lyM ? m.lyM(F) : null; }
+  } else if (per.kind === 'range') {
+    if (m.kind === 'stock') { var sd = sumAtOrBefore(per.to); F = sd === (S.V && S.V.date) ? FofV(e) : FofS(e, S.summaries[sd]); v = m.m(F); note = sd && sd !== per.to ? 'as on ' + dShortY(sd) : null; }
+    else { var R2 = rangeFor(e, per.from, per.to); if (R2 && !R2.empty) { v = m.m(R2.F); ly = m.lyM ? m.lyM(R2.F) : null; if (R2.notes.length) note = R2.notes.join(' '); } else note = 'no saved days in the range'; }
+  } else if (per.kind === 'month' || per.kind === 'asof') {
+    var d = per.kind === 'month' ? lastSumIn(per.mk) : sumAtOrBefore(per.date);
+    if (!d) return { v: null, note: 'no saved day ' + (per.kind === 'month' ? 'in ' + A.mLabel(per.mk) : 'on or before ' + dShortY(per.date)) };
+    F = S.V && d === S.V.date ? FofV(e) : FofS(e, S.summaries[d]); v = m.m(F); ly = m.lyM ? m.lyM(F) : null;
+    if (per.kind === 'asof' && d !== per.date) note = 'as on ' + dShortY(d) + ' (nearest saved day)';
+    if (per.kind === 'month') note = 'as on ' + dShortY(d);
+  }
+  var g = v != null && ly ? (v - ly) / ly * 100 : null;
+  return { v: v, ly: ly, g: g, note: note, fy: isFy };
+}
+function rangeFor(e, from, to) {
+  var all = sums(); if (!all.length) return null;
+  return Model.rangeF(all, from, to, function (s) { return S.V && s.date === S.V.date && e.t !== 'D' ? FofV(e) : FofS(e, s); });
+}
+/* AOP tracking for RO / SA (month or FY) from the dashboard's own tracker */
+function trackOf(m, e, per) {
+  if (!m.track || !S.T || !S.T[m.track]) return null;
+  var ek = e.t === 'RO' ? 'RO' : e.t === 'SA' ? e.k : null; if (!ek) return null;
+  var t = S.T[m.track][ek]; if (!t) return null;
+  if (per.kind === 'fy' && !t.fy && t.m && m.kind === 'ratio') return { T: t.m.T, P: t.m.T, A: t.m.A, ach: t.m.ach, src: t.m.src };
+  if (per.kind === 'fy') return t.fy ? { T: t.fy.AOP, P: t.fy.PF, A: t.fy.A, ach: t.fy.ach, need: t.fy.need, rate: t.fy.rate, proj: t.fy.proj, projAch: t.fy.projAch, fy: true } : null;
+  if (per.kind === 'm') return t.m ? { T: t.m.T, P: t.m.P != null ? t.m.P : t.m.T, A: t.m.A, ach: t.m.ach, need: t.m.need, rate: t.m.rate, proj: t.m.proj, projAch: t.m.projAch, src: t.m.src } : null;
+  return null;
+}
+
+/* ---------------- expanding places ---------------- */
+function expandGroup(g, q) {
+  var V = S.V; if (!g || !V) return [];
+  if (g.t === 'SAS') return SAS.map(function (sa) { return { t: 'SA', k: sa }; });
+  if (g.t === 'OTHERSAS') { var named = q.ents.filter(function (e) { return e.t === 'SA'; }).map(function (e) { return e.k; }); return SAS.filter(function (sa) { return named.indexOf(sa) < 0; }).map(function (sa) { return { t: 'SA', k: sa }; }); }
+  if (g.t === 'NROS') return Object.keys(V.nat.ro).filter(function (k) { return !g.zone || V.nat.ro[k].zone === g.zone; }).map(function (k) { return { t: 'NRO', k: k }; });
+  if (g.t === 'NSAS') return Object.keys(V.nat.sa).filter(function (k) { return !g.ro || V.nat.sa[k].ro === g.ro; }).map(function (k) { return { t: 'NSA', k: k }; });
+  if (g.t === 'ZONES') { var z = {}; for (var k in V.nat.ro) if (V.nat.ro[k].zone) z[V.nat.ro[k].zone] = 1; return Object.keys(z).sort().map(function (k) { return { t: 'ZONE', k: k }; }); }
+  if (g.t === 'DISTS') return V.dists.concat(g.others ? V.others || [] : []).filter(function (r) { return !r.noData && (!g.sa || g.sa.indexOf(r.sa) >= 0); }).map(function (r) { return { t: 'D', k: r.code }; });
+  return [];
+}
+function placesOf(q) {
+  var list = q.ents.slice(), g = expandGroup(q.grp, q), seen = {};
+  list.forEach(function (e) { seen[eKey(e)] = 1; });
+  g.forEach(function (e) { if (!seen[eKey(e)]) { seen[eKey(e)] = 1; list.push(e); } });
+  return list;
+}
+function peerSet(e) { return e.t === 'SA' ? expandGroup({ t: 'SAS' }) : e.t === 'D' ? expandGroup({ t: 'DISTS' }) : e.t === 'NRO' ? expandGroup({ t: 'NROS' }) : e.t === 'NSA' ? expandGroup({ t: 'NSAS' }) : e.t === 'ZONE' ? expandGroup({ t: 'ZONES' }) : e.t === 'RO' ? [{ t: 'NRO', k: HOME }].concat(expandGroup({ t: 'NROS' }).filter(function (x) { return x.k !== HOME; })) : []; }
+function rankIn(m, e, per, basis) {
+  var peers = peerSet(e); if (peers.length < 2) return null;
+  var me = e.t === 'RO' ? { t: 'NRO', k: HOME } : e, vals = [];
+  peers.forEach(function (p) { var x = valueOf(m, p, per), k = basis === 'growth' ? x.g : x.v; if (k != null && isFinite(k)) vals.push({ e: p, v: k }); });
+  var mine = vals.filter(function (x) { return eKey(x.e) === eKey(me); })[0]; if (!mine) return null;
+  var better = vals.filter(function (x) { return basis === 'growth' || m.d >= 0 ? x.v > mine.v : x.v < mine.v; }).length;
+  return { r: better + 1, n: vals.length };
+}
+function rankTxt(rk, e) { if (!rk) return ''; var of = e.t === 'SA' ? 'sales areas' : e.t === 'D' ? 'distributors' : e.t === 'NSA' ? 'sales areas in India' : e.t === 'ZONE' ? 'zones' : 'ROs in India'; return ordinal(rk.r) + ' of ' + rk.n + ' ' + of; }
+function ordinal(n) { var s = ['th', 'st', 'nd', 'rd'], v = n % 100; return n + (s[(v - 20) % 10] || s[v] || s[0]); }
+
+/* ---------------- answers ---------------- */
+var uid = 0;
+function card(q, body, opts) {
+  opts = opts || {};
+  var id = q.id;
+  var pinned = pins().indexOf(q.text) >= 0;
+  var h = '<section class="panel askcard" id="ac-' + id + '" data-acid="' + id + '">';
+  h += '<div class="ph askh"><div class="askq"><span class="eyebrow">Question</span><h2>' + esc(q.text) + '</h2>' + (opts.noControls && (q.op === 'help' || q.op === 'none') ? '' : '<div class="askread small">Read as: <b>' + esc(describe(q)) + '</b>' + (S.V ? ' · data date ' + esc(dLabel(S.V.date)) : '') + '</div>') + '</div>';
+  h += '<div class="askbtns"><button class="btn sm ghost" type="button" data-ask-act="edit" data-ac="' + id + '" title="Edit this question">Edit</button><button class="btn sm ghost' + (pinned ? ' on' : '') + '" type="button" data-ask-act="pin" data-ac="' + id + '" aria-pressed="' + pinned + '" title="Keep this question on your Ask page (this device)">' + (pinned ? '★ Saved' : '☆ Save') + '</button><button class="btn sm ghost" type="button" data-ask-act="link" data-ac="' + id + '" title="Copy a link that opens this answer">Link</button><button class="btn sm ghost icon" type="button" data-ask-act="close" data-ac="' + id + '" aria-label="Remove this answer" title="Remove">×</button></div></div>';
+  h += '<div class="pb">' + (opts.noControls ? '' : controls(q)) + body + '</div></section>';
+  return h;
+}
+function controls(q) {
+  var id = q.id, h = '<div class="askctl">';
+  // measure
+  var opts = GROUPS.map(function (gname) { var ms = MEAS.filter(function (m) { return m.g === gname; }); return '<optgroup label="' + esc(gname) + '">' + ms.map(function (m) { return '<option value="' + m.k + '"' + (q.ms[0] === m.k ? ' selected' : '') + '>' + esc(m.l) + '</option>'; }).join('') + '</optgroup>'; }).join('');
+  if (q.op !== 'profile' && q.op !== 'overview') h += '<label class="aslbl">Measure <select data-askset="m0" data-ac="' + id + '">' + opts + '</select></label>';
+  h += '<label class="aslbl">Add <select data-askset="madd" data-ac="' + id + '"><option value="">+ measure…</option>' + MEAS.filter(function (m) { return q.ms.indexOf(m.k) < 0; }).map(function (m) { return '<option value="' + m.k + '">' + esc(m.l) + '</option>'; }).join('') + '</select></label>';
+  // view
+  var views = [['compare', 'Compare'], ['rank', 'Rank'], ['trend', 'Trend'], ['target', 'vs AOP'], ['breakdown', 'By sales area'], ['why', 'Why / drivers']];
+  h += '<div class="seg askseg" role="group" aria-label="View">' + views.map(function (v) { var on = q.op === v[0] || (v[0] === 'compare' && (q.op === 'value' || q.op === 'overview' || q.op === 'filter')); return '<button type="button" data-ask-op="' + v[0] + '" data-ac="' + id + '" aria-pressed="' + on + '">' + v[1] + '</button>'; }).join('') + '</div>';
+  // period
+  var pers = [['m', 'Month to date'], ['fy', 'FY to date'], ['y', 'Yesterday'], ['w', 'Last 7 days']];
+  var pk = q.per.kind === 'range' && q.per.label === 'last 7 days' ? 'w' : q.per.kind;
+  h += '<div class="seg askseg" role="group" aria-label="Period">' + pers.map(function (p) { return '<button type="button" data-ask-per="' + p[0] + '" data-ac="' + id + '" aria-pressed="' + (pk === p[0]) + '">' + p[1] + '</button>'; }).join('') + '</div>';
+  h += '<div class="seg askseg" role="group" aria-label="Basis"><button type="button" data-ask-basis="value" data-ac="' + id + '" aria-pressed="' + (q.basis !== 'growth') + '">Value</button><button type="button" data-ask-basis="growth" data-ac="' + id + '" aria-pressed="' + (q.basis === 'growth') + '">Growth vs LY</button></div>';
+  h += '</div>';
+  // places
+  h += '<div class="askents">';
+  q.ents.forEach(function (e, i) { h += '<span class="aschip" style="--c:' + eColor(e, i) + '"><i></i>' + esc(eName(e)) + '<button type="button" data-ask-drop="' + i + '" data-ac="' + id + '" aria-label="Remove ' + esc(eName(e)) + '">×</button></span>'; });
+  if (q.grp) h += '<span class="aschip grp"><i></i>' + esc(grpLabel(q.grp)) + '<button type="button" data-ask-drop="grp" data-ac="' + id + '" aria-label="Remove group">×</button></span>';
+  var add = [['RO', 'Lucknow RO']].concat(SAS.map(function (sa) { return ['SA:' + sa, cap(sa) + ' SA']; })).concat([['IN', 'All India'], ['ZONE:NCZ', 'NCZ zone'], ['G:SAS', 'All sales areas'], ['G:DISTS', 'All distributors'], ['G:NROS', 'All ROs in India'], ['G:ZONES', 'All zones']]);
+  if (S.V) Object.keys(S.V.nat.ro).filter(function (k) { return k !== HOME; }).sort().forEach(function (k) { add.push(['NRO:' + k, cap(k) + ' RO']); });
+  h += '<select class="asadd" data-askset="eadd" data-ac="' + id + '" aria-label="Add a place"><option value="">+ add place…</option>' + add.map(function (a) { return '<option value="' + esc(a[0]) + '">' + esc(a[1]) + '</option>'; }).join('') + '</select>';
+  if (q.op === 'rank') h += '<label class="aslbl">Show <select data-askset="n" data-ac="' + id + '">' + [5, 10, 15, 20, 30, 50].map(function (n) { return '<option' + ((q.n || 10) === n ? ' selected' : '') + '>' + n + '</option>'; }).join('') + '</select></label><div class="seg askseg"><button type="button" data-ask-dir="good" data-ac="' + id + '" aria-pressed="' + (q.dir === 'good' || q.dir === 'desc' && MM[q.ms[0]] && MM[q.ms[0]].d >= 0) + '">Best first</button><button type="button" data-ask-dir="bad" data-ac="' + id + '" aria-pressed="' + (q.dir === 'bad' || q.dir === 'asc' && MM[q.ms[0]] && MM[q.ms[0]].d >= 0) + '">Worst first</button></div>';
+  h += '</div>';
+  return h;
+}
+function narr(lines) { return lines.length ? '<div class="asnarr">' + lines.map(function (l) { return '<p>' + l + '</p>'; }).join('') + '</div>' : ''; }
+function noteList(ns) { var u = []; ns.forEach(function (n) { if (n && u.indexOf(n) < 0) u.push(n); }); return u.length ? '<p class="note small">' + u.map(esc).join(' · ') + '</p>' : ''; }
+function followUps(q, items) { return items.length ? '<div class="asfollow"><span class="small muted">Next:</span>' + items.map(function (s) { return '<button type="button" class="aschipq" data-askq="' + esc(s) + '">' + esc(s) + '</button>'; }).join('') + '</div>' : ''; }
+function b(s) { return '<b>' + s + '</b>'; }
+function scaleClass(e) { return e.t === 'D' ? 'd' : e.t === 'SA' ? 'sa' : e.t === 'RO' || e.t === 'NRO' || e.t === 'NSA' ? 'ro' : 'big'; }
+
+/* compare / value / overview: rows = places, columns = measures */
+function ansCompare(q) {
+  var places = placesOf(q), per = q.per, notes = [], lines = [];
+  if (!places.length) return '<p class="muted">Pick at least one place.</p>';
+  if (places.length > 60) { places = places.slice(0, 60); notes.push('Only the first 60 places are shown; use Rank to see the full list.'); }
+  var ms = q.ms.map(function (k) { return MM[k]; }).filter(Boolean);
+  var data = places.map(function (e, i) {
+    var row = { e: e, name: eName(e), i: i, vals: {} };
+    ms.forEach(function (m) { var x = valueOf(m, e, per); x.tr = trackOf(m, e, per); x.rk = places.length <= 12 ? rankIn(m, e, per, q.basis) : null; row.vals[m.k] = x; if (x.note) notes.push(/^no saved day|^needs the previous|^no saved days/.test(x.note) ? x.note.charAt(0).toUpperCase() + x.note.slice(1) : eName(e) + ': ' + x.note); });
+    return row;
+  });
+  // shares: SA and distributors of Lucknow RO; ROs and zones of All India
+  ms.forEach(function (m) {
+    if (!m.add || m.kind === 'ratio') return;
+    var roX = valueOf(m, { t: 'RO' }, per), inX = valueOf(m, { t: 'IN' }, per);
+    data.forEach(function (r) { var x = r.vals[m.k]; if (x.v == null) return; if ((r.e.t === 'SA' || r.e.t === 'D') && roX.v) x.share = x.v / roX.v * 100; else if ((r.e.t === 'RO' || r.e.t === 'NRO' || r.e.t === 'ZONE') && inX.v) x.share = x.v / inX.v * 100; });
+  });
+  /* narrative */
+  ms.slice(0, 3).forEach(function (m) {
+    var miss = data.filter(function (r) { return r.vals[m.k].v == null; });
+    if (miss.length === data.length) { lines.push(b(esc(m.l)) + ' — ' + perLabel(per) + ': no figures for these places' + (per.kind === 'month' || per.kind === 'asof' ? ' (no saved day for that date)' : places.some(function (e) { return /IN|NRO|ZONE|NSA/.test(e.t); }) ? ' (this measure is not in the all-India files)' : '') + '.'); return; }
+    var parts = data.filter(function (r) { return data.length <= 3 || r.vals[m.k].v != null; }).slice(0, 8).map(function (r) {
+      var x = r.vals[m.k]; if (x.v == null) return esc(r.name) + ': not in the files';
+      var s = esc(r.name) + ' ' + b(fvu(m, x.v));
+      if (x.g != null) s += ' (' + grTxt(x.g) + ' vs LY ' + fv(m, x.ly) + ')';
+      if (x.tr && x.tr.ach != null) s += ', ' + fmt(x.tr.ach, 0) + '% of ' + (m.kind === 'ratio' ? 'the ' + fv(m, x.tr.T) + ' target' : x.tr.fy ? 'FY AOP pro-rata' : 'target pro-rata');
+      if (x.share != null && places.length <= 8) s += ', ' + fmt(x.share, 1) + '% of ' + ((r.e.t === 'SA' || r.e.t === 'D') ? 'the RO' : 'India');
+      return s;
+    });
+    lines.push(b(esc(m.l)) + ' — ' + perLabel(per) + ': ' + parts.join('; ') + (data.filter(function (r) { return r.vals[m.k].v != null; }).length > 8 ? '; … (' + (data.length - 8) + ' more in the table)' : '') + '.' + (miss.length && data.length > 3 ? ' <span class="small muted">' + miss.length + ' without this figure in the files.</span>' : ''));
+    var withV = data.filter(function (r) { return r.vals[m.k].v != null; }), scl = {}; withV.forEach(function (r) { scl[scaleClass(r.e)] = 1; });
+    var mixedN = Object.keys(scl).length > 1 && m.kind !== 'ratio' && m.kind !== 'score';
+    if (withV.length > (mixedN ? 1 : 2) && (!mixedN || m.lyM)) {
+      var useGr = (q.basis === 'growth' || mixedN) && m.lyM;
+      var key = useGr ? function (r) { return r.vals[m.k].g; } : function (r) { return r.vals[m.k].v; };
+      var sorted = withV.filter(function (r) { return key(r) != null; }).sort(function (a, c) { return (key(c) - key(a)) * (useGr || m.d >= 0 ? 1 : -1); });
+      if (sorted.length >= 2) lines.push((useGr ? 'Best growth' : 'Best') + ': ' + esc(sorted[0].name) + ' (' + (useGr ? grTxt(key(sorted[0])) : fvu(m, key(sorted[0]))) + '); weakest: ' + esc(sorted[sorted.length - 1].name) + ' (' + (useGr ? grTxt(key(sorted[sorted.length - 1])) : fvu(m, key(sorted[sorted.length - 1]))) + ').');
+    }
+  });
+  if (data.length === 1 && ms.length <= 3) data[0].vals && ms.forEach(function (m) { var x = data[0].vals[m.k]; if (x.rk) lines.push(esc(data[0].name) + ' is ' + b(rankTxt(x.rk, data[0].e)) + ' on ' + esc(m.l) + (q.basis === 'growth' ? ' growth' : '') + '.'); if (x.tr && x.tr.need != null && !x.tr.fy) lines.push('To reach the month target (' + fvu(m, x.tr.T) + ') it needs ' + b(fvu(m, x.tr.need)) + ' a day for the rest of the month; the current rate is ' + fvu(m, x.tr.rate) + ' a day.'); });
+  /* charts: one per measure (up to 3) */
+  var charts = '';
+  if (q.view !== 'table') ms.slice(0, 3).forEach(function (m) {
+    var mixed = {}; data.forEach(function (r) { mixed[scaleClass(r.e)] = 1; });
+    var useG = (q.basis === 'growth' || (Object.keys(mixed).length > 1 && m.kind !== 'ratio' && m.kind !== 'score')) && !!m.lyM;
+    var items = data.filter(function (r) { var x = r.vals[m.k]; return (useG ? x.g : x.v) != null; }).map(function (r) {
+      var x = r.vals[m.k], v = useG ? x.g : x.v;
+      return { label: eShort(r.e), v: v, vl: useG ? grTxt(v) : fv(m, v), mark: !useG && x.ly != null && Object.keys(mixed).length === 1 ? x.ly : null, color: eColor(r.e, r.i), tip: esc(r.name) + ' · ' + esc(m.l) + ': ' + fvu(m, x.v) + (x.ly != null ? '<br>Last year same period: ' + fvu(m, x.ly) + ' (' + grTxt(x.g) + ')' : '') + (x.tr && x.tr.ach != null ? '<br>AOP: ' + fmt(x.tr.ach, 0) + '% of pro-rata' : ''), bold: r.e.t === 'RO' || r.e.t === 'IN' };
+    });
+    if (!items.length) return;
+    if (items.length > 25) items = items.slice(0, 25);
+    var ttl = (useG ? 'Growth vs last year — ' : '') + m.l + (useG ? '' : ' (' + (m.u === '%' ? '%' : m.u) + ')');
+    charts += '<div class="aschart"><div class="small muted">' + esc(ttl) + (useG && Object.keys(mixed).length > 1 && q.basis !== 'growth' ? ' · places of different size, so growth is charted' : '') + (items.some(function (i) { return i.mark != null; }) ? ' · tick = last year' : '') + '</div>' + A.hbars(items, { w: 640, padL: 170, padR: 90, labMax: 26, title: ttl, ref: useG ? 0 : null, tf: useG ? function (t) { return fmt(t, 0) + '%'; } : null }) + '</div>';
+  });
+  /* table */
+  var cols = [{ k: 'name', l: 'Place', get: function (r) { return r.name; }, fmt: function (r) { return r.e.t === 'D' ? '<a href="#" data-dist="' + r.e.k + '">' + esc(r.name) + '</a> <span class="small muted">' + esc(cap((distByCode(r.e.k) || {}).sa || '')) + '</span>' : '<b>' + esc(r.name) + '</b>'; } }];
+  var groups = [['', 1]];
+  ms.forEach(function (m) {
+    var c = [{ k: m.k + 'v', l: (m.u === '%' ? '%' : m.u), n: m.dec, get: function (r) { return r.vals[m.k].v; }, fmt: function (r, v) { return fv(m, v); } }];
+    if (m.lyM) { c.push({ k: m.k + 'ly', l: 'LY', n: m.dec, get: function (r) { return r.vals[m.k].ly; }, fmt: function (r, v) { return fv(m, v); } }); c.push({ k: m.k + 'g', l: 'Growth', n: 1, pct: true, get: function (r) { return r.vals[m.k].g; }, fmt: function (r, v) { return v == null ? '—' : A.delta(v, 1, '%'); } }); }
+    if (m.add && m.kind !== 'ratio') c.push({ k: m.k + 's', l: 'Share', n: 1, pct: true, get: function (r) { return r.vals[m.k].share; }, tip: 'Sales areas and distributors: share of Lucknow RO. ROs and zones: share of All India.' });
+    if (m.track && (per.kind === 'm' || per.kind === 'fy')) { c.push({ k: m.k + 'p', l: per.kind === 'fy' ? 'AOP pro-rata' : 'Target pro-rata', n: m.dec, get: function (r) { var t = r.vals[m.k].tr; return t ? t.P : null; }, fmt: function (r, v) { return fv(m, v); } }); c.push({ k: m.k + 'a', l: 'Ach.', n: 0, pct: true, get: function (r) { var t = r.vals[m.k].tr; return t ? t.ach : null; }, fmt: function (r, v) { return v == null ? '—' : A.achPill(v); } }); }
+    if (data.length <= 12 && m.kind !== 'score') c.push({ k: m.k + 'r', l: 'Rank', get: function (r) { var x = r.vals[m.k].rk; return x ? x.r : null; }, fmt: function (r) { var x = r.vals[m.k].rk; return x ? A.rk(x.r, x.n) + '<span class="small muted"> /' + x.n + '</span>' : '—'; }, num: 1 });
+    groups.push([m.l, c.length]); cols = cols.concat(c);
+  });
+  var tbl = A.tableBlock('ask' + q.id, { cols: cols, rows: data, groups: ms.length > 1 || true ? groups : null, search: data.length > 10, title: describe(q), file: 'LLRO_Ask', maxh: data.length > 15, rowCls: function (r) { return r.e.t === 'RO' || (r.e.t === 'NRO' && r.e.k === HOME) ? 'home' : ''; } });
+  var fu = [];
+  var m0 = ms[0];
+  if (m0 && q.op !== 'trend') fu.push('trend of ' + ph(m0) + ' for ' + places.slice(0, 3).map(eName).join(' vs ') + ' this month');
+  if (m0 && m0.track && !q.ents.some(function (e) { return e.t === 'D'; })) fu.push(ph(m0) + ' vs AOP by sales area');
+  if (m0 && m0.k !== 'score') fu.push('worst 10 distributors on ' + ph(m0) + (q.ents.filter(function (e) { return e.t === 'SA'; }).length === 1 ? ' in ' + cap(q.ents.filter(function (e) { return e.t === 'SA'; })[0].k) : ''));
+  if (m0 && m0.distLy) fu.push('why is ' + ph(m0) + ' down' + (q.ents.filter(function (e) { return e.t === 'SA'; }).length === 1 ? ' in ' + cap(q.ents.filter(function (e) { return e.t === 'SA'; })[0].k) : ''));
+  if (m0 && !q.ents.some(function (e) { return e.t === 'IN'; })) fu.push('compare ' + ph(m0) + ' of Lucknow RO with all India and NCZ');
+  return narr(lines) + '<div class="ascharts">' + charts + '</div>' + tbl + noteList(notes) + followUps(q, fu.slice(0, 4));
+}
+
+/* rank: a list of places sorted on one measure */
+function ansRank(q) {
+  var m = MM[q.ms[0]] || MM.score, per = q.per, places = q.grp ? expandGroup(q.grp, q) : placesOf(q), hiKeys = q.ents.map(function (e) { return e.t === 'RO' ? 'NRO:' + HOME : eKey(e); }), basis = q.basis === 'growth' && m.lyM ? 'growth' : 'value', notes = [];
+  var dir = q.dir || 'good', minVol = basis === 'growth';
+  var rows = places.map(function (e) { var x = valueOf(m, e, per); return { e: e, name: eName(e), x: x, key: basis === 'growth' ? x.g : x.v }; }).filter(function (r) { return r.key != null && isFinite(r.key); });
+  if (minVol && rows.length > 5 && m.add) { var lys = rows.map(function (r) { return r.x.ly || 0; }).filter(function (v) { return v > 0; }), cut = A.median(lys) * 0.25; var before = rows.length; rows = rows.filter(function (r) { return (r.x.ly || 0) >= cut && (r.x.ly || 0) > 0; }); if (rows.length < before) notes.push((before - rows.length) + ' places with very small last-year volume left out of the growth ranking.'); }
+  var hiFirst = dir === 'desc' ? true : dir === 'asc' ? false : dir === 'good' ? (basis === 'growth' || m.d >= 0) : !(basis === 'growth' || m.d >= 0);
+  rows.sort(function (a, c) { return hiFirst ? c.key - a.key : a.key - c.key; });
+  var all = rows.slice(), n = q.n || 10, top = rows.slice(0, n);
+  rows.forEach(function (r) { r.pos = all.indexOf(r) + 1; });
+  // where Lucknow stands in national lists, and RO / median reference
+  var lines = [], home = null;
+  if (q.grp && (q.grp.t === 'NROS')) { home = all.filter(function (r) { return r.e.k === HOME; })[0]; }
+  all.forEach(function (r) { if (hiKeys.indexOf(eKey(r.e)) >= 0 && r.e.k !== HOME) lines.push(esc(r.name) + ' is ' + b(ordinal(r.pos) + ' of ' + all.length) + ' (' + (basis === 'growth' ? grTxt(r.key) : fvu(m, r.key)) + ').'); });
+  var keyF = function (v) { return basis === 'growth' ? grTxt(v) : fvu(m, v); };
+  var what = (basis === 'growth' ? m.l + ' growth vs last year' : m.l) + ', ' + perLabel(per);
+  var dirW = hiFirst === (basis === 'growth' || m.d >= 0) ? (dir === 'desc' || dir === 'asc' ? (hiFirst ? 'Highest' : 'Lowest') : 'Best') : (dir === 'desc' || dir === 'asc' ? (hiFirst ? 'Highest' : 'Lowest') : 'Worst');
+  if (top.length) lines.push(b(dirW + ' ' + Math.min(n, top.length)) + ' of ' + all.length + ' ' + esc(grpNoun(q.grp)) + ' on ' + esc(what) + '. ' + esc(top[0].name) + ' is first at ' + b(keyF(top[0].key)) + (top.length > 1 ? '; ' + esc(top[top.length - 1].name) + ' is ' + ordinal(top.length) + ' at ' + keyF(top[top.length - 1].key) : '') + '.');
+  if (all.length > 4) { var med = A.median(all.map(function (r) { return r.key; })); lines.push('Median of the list: ' + b(keyF(med)) + '.'); }
+  if (home) lines.push('Lucknow RO is ' + b(ordinal(home.pos) + ' of ' + all.length) + ' (' + keyF(home.key) + ').');
+  if (q.grp && q.grp.t === 'DISTS' && m.k !== 'score') { var roV = valueOf(m, q.grp.sa && q.grp.sa.length === 1 ? { t: 'SA', k: q.grp.sa[0] } : { t: 'RO' }, per); var rv = basis === 'growth' ? roV.g : roV.v; if (rv != null) lines.push((q.grp.sa && q.grp.sa.length === 1 ? cap(q.grp.sa[0]) + ' SA' : 'Lucknow RO') + ' as a whole: ' + b(keyF(rv)) + '.'); }
+  var chart = q.view === 'table' || !top.length ? '' : '<div class="aschart">' + A.hbars(top.map(function (r, i) { return { label: (r.pos) + '. ' + eShort(r.e), v: r.key, vl: keyF(r.key).replace(' ' + m.u, ''), color: r.e.k === HOME ? 'var(--accent)' : r.e.t === 'D' ? (A.SA_COLOR[(distByCode(r.e.k) || {}).sa] || 'var(--s3)') : eColor(r.e, i), tip: esc(r.name) + ': ' + keyF(r.key) + (basis === 'growth' ? '<br>' + fvu(m, r.x.v) + ' vs ' + fvu(m, r.x.ly) + ' last year' : r.x.g != null ? '<br>' + grTxt(r.x.g) + ' vs last year' : ''), bold: r.e.k === HOME }; }), { w: 680, padL: 210, padR: 90, labMax: 30, rowH: 24, tf: basis === 'growth' || m.u === '%' ? function (t) { return fmt(t, 0) + '%'; } : null }) + (q.grp && q.grp.t === 'DISTS' ? '<div class="legend">' + SAS.map(function (sa) { return '<span><i style="background:' + A.SA_COLOR[sa] + '"></i>' + cap(sa) + '</span>'; }).join('') + '</div>' : '') + '</div>';
+  var cols = [{ k: 'pos', l: '#', n: 0, get: function (r) { return r.pos; } }, { k: 'name', l: q.grp && q.grp.t === 'DISTS' ? 'Distributor' : 'Place', get: function (r) { return r.name; }, fmt: function (r) { return r.e.t === 'D' ? '<a href="#" data-dist="' + r.e.k + '">' + esc(r.name) + '</a>' : r.e.k === HOME ? '<b>' + esc(r.name) + '</b>' : esc(r.name); } }];
+  if (q.grp && q.grp.t === 'DISTS') cols.push({ k: 'sa', l: 'SA', get: function (r) { return cap((distByCode(r.e.k) || {}).sa || ''); } }, { k: 'code', l: 'Code', get: function (r) { return r.e.k; } });
+  if (q.grp && q.grp.t === 'NROS') cols.push({ k: 'zone', l: 'Zone', get: function (r) { return S.V.nat.ro[r.e.k] ? S.V.nat.ro[r.e.k].zone : ''; } });
+  cols.push({ k: 'v', l: m.l + (m.u === '%' ? ' %' : ' (' + m.u + ')'), n: m.dec, get: function (r) { return r.x.v; }, fmt: function (r, v) { return fv(m, v); } });
+  if (m.lyM) cols.push({ k: 'ly', l: 'Last year', n: m.dec, get: function (r) { return r.x.ly; }, fmt: function (r, v) { return fv(m, v); } }, { k: 'g', l: 'Growth', n: 1, pct: true, get: function (r) { return r.x.g; }, fmt: function (r, v) { return v == null ? '—' : A.delta(v, 1, '%'); } });
+  var tbl = A.tableBlock('ask' + q.id, { cols: cols, rows: all, search: all.length > 12, title: describe(q), file: 'LLRO_Ask_rank', maxh: true, rowCls: function (r) { return r.e.k === HOME || hiKeys.indexOf(eKey(r.e)) >= 0 ? 'home' : ''; } });
+  var fu = [];
+  if (q.grp && q.grp.t === 'DISTS' && top[0]) fu.push('profile of ' + top[0].name);
+  fu.push((hiFirst === (basis === 'growth' || m.d >= 0) ? 'worst ' : 'best ') + n + ' ' + (grpLabel(q.grp) || '') + ' on ' + ph(m));
+  if (q.grp && q.grp.t !== 'NROS' && m.k !== 'score') fu.push('rank of Lucknow RO in ' + ph(m) + ' among all ROs');
+  return narr(lines) + chart + '<details class="asmore"' + (q.view === 'table' ? ' open' : '') + '><summary>Full list (' + all.length + ')</summary>' + tbl + '</details>' + noteList(notes) + followUps(q, fu);
+}
+
+/* filter: places meeting a condition */
+function ansFilter(q) {
+  var m = MM[q.cond.m] || MM[q.ms[0]], per = q.per, places = q.grp ? expandGroup(q.grp, q) : placesOf(q), c = q.cond;
+  var test = function (v) { if (v == null || !isFinite(v)) return false; var x = m.u === '%' ? Math.round(v * 100) / 100 : v; return c.cmp === '<' ? x < c.v : c.cmp === '<=' ? x <= c.v : c.cmp === '>' ? x > c.v : c.cmp === '>=' ? x >= c.v : Math.abs(x - c.v) < 1e-9; };
+  var rows = places.map(function (e) { var x = valueOf(m, e, per); return { e: e, name: eName(e), x: x, v: q.basis === 'growth' ? x.g : x.v }; });
+  var hit = rows.filter(function (r) { return test(r.v); }), total = rows.filter(function (r) { return r.v != null; }).length;
+  hit.sort(function (a, b2) { return (m.d >= 0 ? a.v - b2.v : b2.v - a.v); });
+  var cmpW = { '<': 'below', '<=': 'at most', '>': 'above', '>=': 'at least', '=': 'equal to' }[c.cmp];
+  var lines = [b(hit.length + ' of ' + total) + ' ' + esc(grpNoun(q.grp)) + ' have ' + esc(m.l) + (q.basis === 'growth' ? ' growth' : '') + ' ' + cmpW + ' ' + b(fmt(c.v, m.u === '%' || q.basis === 'growth' ? 1 : m.dec) + (m.u === '%' || q.basis === 'growth' ? '%' : ' ' + m.u)) + ' (' + esc(perLabel(per)) + ').'];
+  if (q.grp && q.grp.t === 'DISTS' && hit.length) { var bySa = {}; hit.forEach(function (r) { var sa = (distByCode(r.e.k) || {}).sa; bySa[sa] = (bySa[sa] || 0) + 1; }); lines.push('By sales area: ' + SAS.filter(function (sa) { return bySa[sa]; }).map(function (sa) { return cap(sa) + ' ' + bySa[sa]; }).join(', ') + '.'); }
+  var cols = [{ k: 'name', l: q.grp && q.grp.t === 'DISTS' ? 'Distributor' : 'Place', get: function (r) { return r.name; }, fmt: function (r) { return r.e.t === 'D' ? '<a href="#" data-dist="' + r.e.k + '">' + esc(r.name) + '</a>' : esc(r.name); } }];
+  if (q.grp && q.grp.t === 'DISTS') cols.push({ k: 'sa', l: 'SA', get: function (r) { return cap((distByCode(r.e.k) || {}).sa || ''); } });
+  cols.push({ k: 'v', l: m.l + (m.u === '%' ? ' %' : ' (' + m.u + ')'), n: m.dec, get: function (r) { return r.x.v; }, fmt: function (r, v) { return fv(m, v); } });
+  if (m.lyM) cols.push({ k: 'g', l: 'Growth', n: 1, pct: true, get: function (r) { return r.x.g; }, fmt: function (r, v) { return v == null ? '—' : A.delta(v, 1, '%'); } });
+  // a second measure gives context (e.g. pending next to aged)
+  var m2 = q.ms.filter(function (k) { return k !== m.k; }).map(function (k) { return MM[k]; })[0];
+  if (m2) cols.push({ k: 'v2', l: m2.l, n: m2.dec, get: function (r) { return valueOf(m2, r.e, per).v; }, fmt: function (r, v) { return fv(m2, v); } });
+  var chart = q.view === 'table' || !hit.length ? '' : '<div class="aschart">' + A.hbars(hit.slice(0, 25).map(function (r, i) { return { label: eShort(r.e), v: r.v, vl: q.basis === 'growth' ? grTxt(r.v) : fv(m, r.v), color: r.e.t === 'D' ? (A.SA_COLOR[(distByCode(r.e.k) || {}).sa] || 'var(--s3)') : eColor(r.e, i), tip: esc(r.name) + ': ' + fvu(m, r.x.v) }; }), { w: 680, padL: 200, padR: 80, labMax: 28, rowH: 24, ref: c.v }) + (hit.length > 25 ? '<p class="small muted">Chart shows 25 of ' + hit.length + '; the table has all.</p>' : '') + '</div>';
+  return narr(lines) + chart + A.tableBlock('ask' + q.id, { cols: cols, rows: hit, search: hit.length > 12, title: describe(q), file: 'LLRO_Ask_list', maxh: true }) + followUps(q, ['worst 10 distributors on ' + ph(m), ph(m) + ' by sales area']);
+}
+
+/* trend: values over the saved days */
+function ansTrend(q) {
+  var ms = q.ms.map(function (k) { return MM[k]; }).filter(function (m) { return m && m.k !== 'score'; }), places = placesOf(q).slice(0, 8), notes = [];
+  if (!ms.length) return '<p class="muted">Pick a measure to see its trend.</p>';
+  var V = S.V, days = S.days.filter(function (d) { return d <= V.date; });
+  var from = q.per.kind === 'range' ? q.per.from : q.per.kind === 'fy' ? V.fy0 : q.per.kind === 'month' ? q.per.mk + '-01' : V.date.slice(0, 7) + '-01', to = q.per.kind === 'range' ? q.per.to : q.per.kind === 'month' ? (lastSumIn(q.per.mk) || V.date) : V.date;
+  if (q.per.kind === 'm' || q.per.kind === 'y') { var inM = days.filter(function (d) { return d >= from; }); if (inM.length < 3) { from = days.length > 1 ? days[Math.max(0, days.length - 30)] : from; if (from < V.date.slice(0, 7) + '-01') notes.push('Few saved days this month, so the chart also shows the days before.'); } }
+  days = days.filter(function (d) { return d >= from && d <= to; });
+  if (!days.length) return '<p class="muted">No saved days in this period.</p>';
+  var out = '', lines = [];
+  ms.slice(0, 3).forEach(function (m) {
+    var daily = q.daily && m.kind === 'flow';
+    var series = places.map(function (e, i) {
+      var pts = days.map(function (d) {
+        var F = d === V.date && e.t !== 'D' ? FofV(e) : FofS(e, S.summaries[d]);
+        var y = m.m(F);
+        if (q.per.kind === 'fy' && m.fy) y = m.fy(F);
+        if (q.basis === 'growth' && m.lyM) { var ly = q.per.kind === 'fy' && m.lyFy ? m.lyFy(F) : m.lyM(F); y = y != null && ly ? (y - ly) / ly * 100 : null; }
+        return { x: d, y: y };
+      });
+      if (daily) {
+        var prev = null; pts = pts.map(function (p) { var o = { x: p.x, y: null }; if (prev && p.y != null && prev.y != null && U.addDays(prev.x, 1) === p.x && p.x.slice(0, 7) === prev.x.slice(0, 7)) o.y = p.y - prev.y; else if (p.y != null && p.x.slice(8) === '01') o.y = p.y; prev = p; return o; });
+      }
+      return { name: eShort(e), color: eColor(e, i), pts: pts };
+    });
+    if (series.every(function (s) { return s.pts.every(function (p) { return p.y == null; }); })) { notes.push(m.l + ': no values in the saved days for these places' + (places.some(function (e) { return e.t === 'IN' || e.t === 'ZONE' || e.t === 'NRO'; }) ? ' (all-India history keeps only some measures)' : '') + '.'); return; }
+    var lab = (q.basis === 'growth' ? 'Growth vs last year — ' : daily ? 'Day by day — ' : '') + m.l + (q.basis === 'growth' ? ' (%)' : m.u === '%' ? ' (%)' : ' (' + m.u + (daily ? ' a day' : q.per.kind === 'fy' && m.fy ? ', FY to date' : m.kind === 'flow' ? ', month to date' : '') + ')');
+    out += '<div class="aschart"><div class="small muted">' + esc(lab) + '</div>' + A.lines(series, { w: 760, h: 250, title: lab, zero: m.kind !== 'ratio' && q.basis !== 'growth', yf: m.u === '%' || q.basis === 'growth' ? function (t) { return fmt(t, 0) + '%'; } : null }) + '</div>';
+    series.forEach(function (s) { var p = s.pts.filter(function (x) { return x.y != null; }); if (p.length === 1) lines.push(esc(s.name) + ' — ' + esc(m.l) + (daily ? ' on the day' : '') + ': ' + b(q.basis === 'growth' ? grTxt(p[0].y) : fvu(m, p[0].y)) + ' on ' + dShortY(p[0].x) + (daily ? ' (day figures need the day before saved; only ' + p.length + ' such day here)' : '') + '.'); if (p.length >= 2) { var a = p[0], z = p[p.length - 1], d = z.y - a.y; lines.push(esc(s.name) + ' — ' + esc(m.l) + (daily ? ' a day' : '') + ': ' + (q.basis === 'growth' ? grTxt(a.y) : fv(m, a.y)) + ' on ' + dShortY(a.x) + ' → ' + b(q.basis === 'growth' ? grTxt(z.y) : fvu(m, z.y)) + ' on ' + dShortY(z.x) + (m.kind !== 'flow' || daily || q.basis === 'growth' ? ' (' + (m.u === '%' || q.basis === 'growth' ? ppTxt(d) : (d > 0 ? '+' : d < 0 ? '−' : '') + fmt(Math.abs(d), m.dec)) + ')' : '') + '.'); } });
+    if (m.kind === 'flow' && !daily && q.basis !== 'growth') lines.push('<span class="small muted">Month-to-date figures rise through the month; ask for "' + esc(m.l) + ' daily" to see each day on its own.</span>');
+  });
+  var rows = days.map(function (d) { return { d: d }; });
+  var cols = [{ k: 'd', l: 'Data date', get: function (r) { return r.d; }, fmt: function (r) { return dShortY(r.d); } }];
+  ms.slice(0, 3).forEach(function (m) { places.forEach(function (e) { cols.push({ k: m.k + eKey(e), l: eShort(e) + (ms.length > 1 ? ' · ' + m.l : ''), n: m.dec, get: function (r) { var F = r.d === V.date && e.t !== 'D' ? FofV(e) : FofS(e, S.summaries[r.d]); return q.per.kind === 'fy' && m.fy ? m.fy(F) : m.m(F); }, fmt: function (r, v) { return fv(m, v); } }); }); });
+  return narr(lines) + out + '<details class="asmore"><summary>Day-by-day table (' + days.length + ' saved days)</summary>' + A.tableBlock('ask' + q.id, { cols: cols, rows: rows, search: false, title: describe(q), file: 'LLRO_Ask_trend' }) + '</details>' + noteList(notes) + followUps(q, ms[0] && ms[0].kind === 'flow' && !q.daily ? [ph(ms[0]) + ' daily for ' + places.slice(0, 3).map(eName).join(' and ')] : []);
+}
+
+/* AOP / target tracking */
+function ansTarget(q) {
+  var per = q.per.kind === 'fy' ? q.per : { kind: 'm' }, ms = q.ms.map(function (k) { return MM[k]; }).filter(Boolean), notes = [], lines = [];
+  var ents = q.ents.filter(function (e) { return e.t === 'RO' || e.t === 'SA'; }); if (q.grp && (q.grp.t === 'SAS' || q.grp.t === 'OTHERSAS')) ents = ents.concat(expandGroup(q.grp, q)); if (!ents.length) ents = [{ t: 'RO' }].concat(expandGroup({ t: 'SAS' }));
+  var seen = {}; ents = ents.filter(function (e) { var k = eKey(e); if (seen[k]) return false; seen[k] = 1; return true; });
+  if (q.per.kind !== 'm' && q.per.kind !== 'fy') notes.push('Targets are tracked for the month and the FY; showing ' + perLabel(per) + '.');
+  var rows = [];
+  ms.forEach(function (m) {
+    if (!m.track) { notes.push(m.l + ' has no AOP or monthly target in the dashboard.'); return; }
+    ents.forEach(function (e) { var t = trackOf(m, e, per); if (t) rows.push({ m: m, e: e, t: t }); });
+  });
+  if (!rows.length) return narr(['No target tracking for these measures.']) + noteList(notes);
+  ms.forEach(function (m) {
+    var r0 = rows.filter(function (r) { return r.m === m && r.e.t === 'RO'; })[0]; if (!r0) return; var t = r0.t, isR = t.T != null && t.P === t.T && t.need == null && m.u === '%';
+    if (isR || m.u === '%') lines.push(b(esc(m.l)) + ': Lucknow RO ' + b(fvu(m, t.A)) + ' against a target of ' + fvu(m, t.T) + (t.ach != null ? ' (' + fmt(t.ach, 0) + '%)' : '') + '.');
+    else lines.push(b(esc(m.l)) + ' ' + (per.kind === 'fy' ? 'FY to date' : 'this month') + ': Lucknow RO ' + b(fvu(m, t.A)) + ' against ' + fvu(m, t.P) + ' pro-rata (' + (t.ach != null ? b(fmt(t.ach, 0) + '%') : '—') + ')' + (t.need != null ? '; needs ' + b(fvu(m, t.need)) + ' a day for the rest of the ' + (per.kind === 'fy' ? 'FY' : 'month') + ' against ' + fvu(m, t.rate) + ' a day so far' : '') + (t.projAch != null ? '; on this pace it ends at ' + fmt(t.projAch, 0) + '% of ' + (per.kind === 'fy' ? 'AOP' : 'target') : '') + '.');
+    var sas = rows.filter(function (r) { return r.m === m && r.e.t === 'SA' && r.t.ach != null; }).sort(function (a, c) { return a.t.ach - c.t.ach; });
+    if (sas.length > 1) lines.push('Furthest behind: ' + esc(eName(sas[0].e)) + ' (' + fmt(sas[0].t.ach, 0) + '%); best: ' + esc(eName(sas[sas.length - 1].e)) + ' (' + fmt(sas[sas.length - 1].t.ach, 0) + '%).');
+  });
+  var chart = q.view === 'table' ? '' : '<div class="aschart"><div class="small muted">Achievement against pro-rata target (100% = on track)</div>' + A.hbars(rows.filter(function (r) { return r.t.ach != null; }).map(function (r, i) { return { label: (ms.length > 1 ? r.m.l.split(' ')[0] + ' · ' : '') + eShort(r.e), v: r.t.ach, vl: fmt(r.t.ach, 0) + '%', color: r.t.ach >= 100 ? 'var(--good)' : r.t.ach >= 85 ? 'var(--warn)' : 'var(--bad)', bold: r.e.t === 'RO', tip: esc(eName(r.e)) + ' · ' + esc(r.m.l) + '<br>Actual ' + fvu(r.m, r.t.A) + ' vs ' + fvu(r.m, r.t.P) + ' pro-rata' }; }), { w: 680, padL: 200, padR: 70, ref: 100, labMax: 30, rowH: 24, tf: function (t) { return fmt(t, 0) + '%'; } }) + '</div>';
+  var cols = [{ k: 'm', l: 'Measure', get: function (r) { return r.m.l; } }, { k: 'e', l: 'Place', get: function (r) { return eName(r.e); }, fmt: function (r) { return r.e.t === 'RO' ? '<b>Lucknow RO</b>' : esc(eName(r.e)); } },
+    { k: 'T', l: per.kind === 'fy' ? 'FY AOP' : 'Month target', n: 1, get: function (r) { return r.t.T; }, fmt: function (r, v) { return fv(r.m, v); } },
+    { k: 'P', l: 'Pro-rata', n: 1, get: function (r) { return r.t.P; }, fmt: function (r, v) { return fv(r.m, v); } },
+    { k: 'A', l: 'Actual', n: 1, get: function (r) { return r.t.A; }, fmt: function (r, v) { return '<b>' + fv(r.m, v) + '</b>'; } },
+    { k: 'ach', l: 'Ach.', n: 0, pct: true, get: function (r) { return r.t.ach; }, fmt: function (r, v) { return v == null ? '—' : A.achPill(v); } },
+    { k: 'rate', l: 'Per day so far', n: 2, get: function (r) { return r.t.rate; }, fmt: function (r, v) { return fv(r.m, v); } },
+    { k: 'need', l: 'Needed per day', n: 2, get: function (r) { return r.t.need; }, fmt: function (r, v) { return fv(r.m, v); } },
+    { k: 'pa', l: 'Projected ach.', n: 0, pct: true, get: function (r) { return r.t.projAch; } }];
+  return narr(lines) + chart + A.tableBlock('ask' + q.id, { cols: cols, rows: rows, search: false, title: describe(q), file: 'LLRO_Ask_AOP', rowCls: function (r) { return r.e.t === 'RO' ? 'home' : ''; } }) + noteList(notes) + followUps(q, ['open AOP tracker']);
+}
+
+/* breakdown by sales area (or by distributor inside one sales area) */
+function ansBreakdown(q) {
+  var m = MM[q.ms[0]], per = q.per;
+  var oneSa = q.ents.filter(function (e) { return e.t === 'SA'; });
+  var ents = expandGroup({ t: 'SAS' }), tot = valueOf(m, { t: 'RO' }, per);
+  var rows = ents.map(function (e, i) { var x = valueOf(m, e, per); x.share = m.add && tot.v ? (x.v || 0) / tot.v * 100 : null; return { e: e, name: eName(e), x: x, i: i }; });
+  var lines = [b(esc(m.l)) + ', ' + esc(perLabel(per)) + ': Lucknow RO ' + b(fvu(m, tot.v)) + (tot.g != null ? ' (' + grTxt(tot.g) + ' vs LY)' : '') + '.'];
+  var srt = rows.filter(function (r) { return r.x.v != null; }).sort(function (a, c) { return (c.x.v || 0) - (a.x.v || 0); });
+  if (srt.length && m.add) lines.push('Largest: ' + esc(srt[0].name) + ' ' + fvu(m, srt[0].x.v) + ' (' + fmt(srt[0].x.share, 1) + '%); smallest: ' + esc(srt[srt.length - 1].name) + ' ' + fvu(m, srt[srt.length - 1].x.v) + ' (' + fmt(srt[srt.length - 1].x.share, 1) + '%).');
+  else if (srt.length) { var bestR = m.d >= 0 ? srt[0] : srt[srt.length - 1], worstR = m.d >= 0 ? srt[srt.length - 1] : srt[0]; lines.push('Best: ' + esc(bestR.name) + ' ' + b(fvu(m, bestR.x.v)) + '; weakest: ' + esc(worstR.name) + ' ' + b(fvu(m, worstR.x.v)) + '. ' + srt.map(function (r) { return esc(cap(r.e.k)) + ' ' + fv(m, r.x.v); }).join(', ') + '.'); }
+  if (m.lyM && tot.ly != null) { var chg = rows.map(function (r) { return { r: r, d: (r.x.v || 0) - (r.x.ly || 0) }; }).sort(function (a, c) { return a.d - c.d; }); var totD = (tot.v || 0) - (tot.ly || 0); lines.push('Change vs LY ' + (totD < 0 ? '−' : '+') + fmt(Math.abs(totD), m.dec) + ' ' + m.u + ': ' + chg.map(function (c) { return esc(c.r.name.replace(' SA', '')) + ' ' + (c.d < 0 ? '−' : '+') + fmt(Math.abs(c.d), m.dec); }).join(', ') + '.'); }
+  var chart = q.view === 'table' ? '' : '<div class="aschart">' + (m.add ? A.columns(rows.map(function (r) { return cap(r.e.k); }), [{ name: m.l, color: 'var(--accent)', v: rows.map(function (r) { return r.x.v || 0; }) }].concat(m.lyM ? [] : []), { w: 620, h: 220, dec: m.dec }) : A.hbars(rows.map(function (r) { return { label: eShort(r.e), v: r.x.v, vl: fv(m, r.x.v), color: eColor(r.e) }; }), { w: 620, padL: 120, ref: valueOf(m, { t: 'RO' }, per).v })) + (m.lyM ? A.hbars(rows.filter(function (r) { return r.x.g != null; }).map(function (r) { return { label: eShort(r.e), v: r.x.g, vl: grTxt(r.x.g), color: r.x.g >= 0 ? 'var(--good)' : 'var(--bad)' }; }), { w: 620, padL: 120, ref: tot.g, title: 'growth', tf: function (t) { return fmt(t, 0) + '%'; } }) + '<p class="small muted">Lower chart: growth vs last year; the line marks the RO.</p>' : '') + '</div>';
+  var cols = [{ k: 'n', l: 'Sales area', get: function (r) { return r.name; } }, { k: 'v', l: m.l, n: m.dec, get: function (r) { return r.x.v; }, fmt: function (r, v) { return fv(m, v); } }];
+  if (m.add) cols.push({ k: 's', l: 'Share of RO', n: 1, pct: true, get: function (r) { return r.x.share; } });
+  if (m.lyM) cols.push({ k: 'ly', l: 'LY', n: m.dec, get: function (r) { return r.x.ly; }, fmt: function (r, v) { return fv(m, v); } }, { k: 'g', l: 'Growth', n: 1, pct: true, get: function (r) { return r.x.g; }, fmt: function (r, v) { return v == null ? '—' : A.delta(v, 1, '%'); } });
+  if (m.track) cols.push({ k: 'a', l: 'Ach. vs pro-rata', n: 0, pct: true, get: function (r) { var t = trackOf(m, r.e, per); return t ? t.ach : null; }, fmt: function (r, v) { return v == null ? '—' : A.achPill(v); } });
+  return narr(lines) + chart + A.tableBlock('ask' + q.id, { cols: cols, rows: rows, search: false, title: describe(q), file: 'LLRO_Ask_breakdown', footRow: m.add ? { e: { t: 'RO' }, name: 'Lucknow RO', x: { v: tot.v, share: 100, ly: tot.ly, g: tot.g } } : null, footLabel: 'Lucknow RO' , rowCls: function (r) { return oneSa.some(function (e) { return e.k === r.e.k; }) ? 'home' : ''; } }) + followUps(q, ['why is ' + ph(m) + ' down', 'top 10 distributors on ' + ph(m)]);
+}
+
+/* why: which distributors (or sales areas) explain the change against last year */
+function ansWhy(q) {
+  var m = MM[q.ms[0]], per = q.per.kind === 'fy' ? q.per : { kind: q.per.kind === 'm' ? 'm' : q.per.kind, from: q.per.from, to: q.per.to, label: q.per.label, mk: q.per.mk, date: q.per.date };
+  if (!m.lyM) return narr(['“Why” works for measures with a last-year figure (domestic, ND, 5 kg, bulk, ARB, connections). For ' + esc(m.l) + ', here is the breakdown instead.']) + ansBreakdown(q);
+  var scope = q.ents.filter(function (e) { return e.t === 'SA'; })[0] || null;
+  var top = valueOf(m, scope || { t: 'RO' }, per), lines = [], notes = [];
+  var dTot = (top.v || 0) - (top.ly || 0);
+  lines.push(b(esc(m.l)) + ' ' + esc(perLabel(per)) + ' — ' + esc(scope ? eName(scope) : 'Lucknow RO') + ': ' + b(fvu(m, top.v)) + ' against ' + fvu(m, top.ly) + ' last year, ' + b((dTot < 0 ? '−' : '+') + fmt(Math.abs(dTot), m.dec) + ' ' + m.u) + ' (' + grTxt(top.g) + ').');
+  if (!scope) { var sar = expandGroup({ t: 'SAS' }).map(function (e) { var x = valueOf(m, e, per); return { e: e, d: (x.v || 0) - (x.ly || 0), x: x }; }).sort(function (a, c) { return a.d - c.d; }); lines.push('By sales area: ' + sar.map(function (r) { return esc(cap(r.e.k)) + ' ' + (r.d < 0 ? '−' : '+') + fmt(Math.abs(r.d), m.dec) + ' (' + grTxt(r.x.g) + ')'; }).join(', ') + '.'); }
+  var dist = expandGroup({ t: 'DISTS', sa: scope ? [scope.k] : null, others: true }).map(function (e) { var x = valueOf(m, e, per); return { e: e, name: eName(e), x: x, d: x.v != null || x.ly != null ? (x.v || 0) - (x.ly || 0) : null }; }).filter(function (r) { return r.d != null; });
+  if (!dist.length) return narr(lines.concat(['Distributor-level last-year figures are not in the files for this measure.'])) + noteList(notes);
+  var down = dist.filter(function (r) { return r.d < 0; }).sort(function (a, c) { return a.d - c.d; }), up = dist.filter(function (r) { return r.d > 0; }).sort(function (a, c) { return c.d - a.d; });
+  var sumDown = down.reduce(function (a, r) { return a + r.d; }, 0), sumUp = up.reduce(function (a, r) { return a + r.d; }, 0);
+  lines.push(b(down.length) + ' distributors / direct customers are below last year (together ' + fmt(Math.abs(sumDown), m.dec) + ' ' + m.u + ' down) and ' + b(up.length) + ' are above (' + fmt(sumUp, m.dec) + ' ' + m.u + ' up).');
+  if (down.length) { var t5 = down.slice(0, 5), t5s = t5.reduce(function (a, r) { return a + r.d; }, 0); lines.push('The five biggest falls explain ' + b(fmt(dTot < 0 && sumDown ? t5s / dTot * 100 : t5s / sumDown * 100, 0) + '%') + ' of the ' + (dTot < 0 ? 'net drop' : 'gross fall') + ': ' + t5.map(function (r) { return '<a href="#" data-dist="' + r.e.k + '">' + esc(r.name) + '</a> ' + (r.d < 0 ? '−' : '+') + fmt(Math.abs(r.d), m.dec) + ' (' + (r.x.v != null ? fv(m, r.x.v) : '0') + ' vs ' + fv(m, r.x.ly) + ')'; }).join('; ') + '.'); }
+  var items = down.slice(0, 10).concat(up.slice(0, 5).reverse()).map(function (r) { return { label: eShort(r.e), v: r.d, vl: (r.d < 0 ? '−' : '+') + fmt(Math.abs(r.d), m.dec), color: r.d < 0 ? 'var(--bad)' : 'var(--good)', tip: esc(r.name) + ': ' + fvu(m, r.x.v) + ' vs ' + fvu(m, r.x.ly) + ' last year' }; });
+  var chart = q.view === 'table' ? '' : '<div class="aschart"><div class="small muted">Change vs last year, ' + esc(m.u) + ' — 10 biggest falls and 5 biggest gains</div>' + A.hbars(items, { w: 680, padL: 210, padR: 70, labMax: 30, rowH: 24 }) + '</div>';
+  var cols = [{ k: 'name', l: 'Distributor', get: function (r) { return r.name; }, fmt: function (r) { return '<a href="#" data-dist="' + r.e.k + '">' + esc(r.name) + '</a>'; } }, { k: 'sa', l: 'SA', get: function (r) { return cap((distByCode(r.e.k) || {}).sa || ''); } },
+    { k: 'v', l: 'This year', n: m.dec, get: function (r) { return r.x.v; } }, { k: 'ly', l: 'Last year', n: m.dec, get: function (r) { return r.x.ly; } }, { k: 'd', l: 'Change', n: m.dec, get: function (r) { return r.d; }, fmt: function (r, v) { return A.delta(v, m.dec, ''); } }, { k: 'g', l: 'Growth', n: 1, pct: true, get: function (r) { return r.x.g; }, fmt: function (r, v) { return v == null ? '—' : A.delta(v, 1, '%'); } }];
+  return narr(lines) + chart + '<details class="asmore"><summary>Every distributor (' + dist.length + ')</summary>' + A.tableBlock('ask' + q.id, { cols: cols, rows: dist.sort(function (a, c) { return a.d - c.d; }), search: true, title: describe(q), file: 'LLRO_Ask_drivers', sort: { k: 'd', dir: 'asc' } }) + '</details>' + noteList(notes) + followUps(q, [ph(m) + ' by sales area', 'trend of ' + ph(m) + ' growth' + (scope ? ' for ' + cap(scope.k) : '')]);
+}
+
+/* one distributor: key measures against its sales area and the RO */
+function ansProfile(q) {
+  var e = q.ents.filter(function (x) { return x.t === 'D'; })[0]; if (!e) return '<p class="muted">Name a distributor.</p>';
+  var r = distByCode(e.k); if (!r) return '<p class="muted">That distributor is not in this day\'s data.</p>';
+  var keys = q.ms.length ? q.ms : ['dom', 'nd', 'appu', 'dac', 'ekyc', 'ekycPend', 'mi', 'miPend', 'hose', 'pend', 'aged', 'backlog', 'cover', 'snr', 'canc', 'arb', 'paid', 'score'];
+  var per = q.per, saE = { t: 'SA', k: r.sa };
+  var rows = keys.map(function (k) { var m = MM[k]; var me = valueOf(m, e, per), sa = valueOf(m, saE, per), ro = valueOf(m, { t: 'RO' }, per); return { m: m, me: me, sa: sa, ro: ro, rk: m.k === 'score' ? (r.rank ? { r: r.rank, n: S.V.rankedN } : null) : rankIn(m, e, per, 'value') }; });
+  var weak = rows.filter(function (x) { return x.rk && x.rk.n > 10 && x.rk.r > x.rk.n * 0.75; }).map(function (x) { return x.m.l; });
+  var strong = rows.filter(function (x) { return x.rk && x.rk.n > 10 && x.rk.r <= x.rk.n * 0.25; }).map(function (x) { return x.m.l; });
+  var lines = [b(esc(title(r.name))) + ' (' + esc(r.code) + ', ' + esc(cap(r.sa)) + ' SA' + (r.status === 'SUSPENDED' ? ', suspended' : '') + ')' + (r.score != null ? ' — composite score ' + b(fmt(r.score, 1)) + ', ' + ordinal(r.rank) + ' of ' + S.V.rankedN + ' in the RO' : '') + '.'];
+  if (weak.length) lines.push('In the bottom quarter of the RO on: ' + esc(weak.join(', ')) + '.');
+  if (strong.length) lines.push('In the top quarter on: ' + esc(strong.join(', ')) + '.');
+  var cols = [{ k: 'm', l: 'Measure', get: function (x) { return x.m.l; }, fmt: function (x) { return esc(x.m.l) + ' <span class="small muted">' + esc(x.m.u === '%' ? '%' : x.m.u) + '</span>'; } },
+    { k: 'me', l: esc(title(r.name).slice(0, 22)), n: 2, get: function (x) { return x.me.v; }, fmt: function (x, v) { return '<b>' + fv(x.m, v) + '</b>'; } },
+    { k: 'g', l: 'vs LY', n: 1, pct: true, get: function (x) { return x.me.g; }, fmt: function (x, v) { return v == null ? '—' : A.delta(v, 1, '%'); } },
+    { k: 'sa', l: cap(r.sa) + ' SA', n: 2, get: function (x) { return x.sa.v; }, fmt: function (x, v) { return fv(x.m, v); } },
+    { k: 'ro', l: 'Lucknow RO', n: 2, get: function (x) { return x.ro.v; }, fmt: function (x, v) { return fv(x.m, v); } },
+    { k: 'rk', l: 'Rank in RO', get: function (x) { return x.rk ? x.rk.r : null; }, fmt: function (x) { return x.rk ? A.rk(x.rk.r, x.rk.n) + '<span class="small muted"> /' + x.rk.n + '</span>' : '—'; }, num: 1 }];
+  var btn = '<div class="toolbar" style="margin:6px 0 10px"><button class="btn sm primary" type="button" data-dist="' + r.code + '">Open full report card</button></div>';
+  return narr(lines) + btn + A.tableBlock('ask' + q.id, { cols: cols, rows: rows, search: false, title: describe(q), file: 'LLRO_Ask_profile' }) + followUps(q, ['trend of pending bookings for ' + title(r.name), 'compare ' + title(r.name) + ' with ' + cap(r.sa) + ' on DAC and e-KYC']);
+}
+
+function ansOverview(q) {
+  var places = placesOf(q);
+  if (places.length > 3) { q.op = 'compare'; var h0 = ansCompare(q); q.op = 'overview'; return h0; }
+  var per = q.per, ms = q.ms.map(function (k) { return MM[k]; }).filter(Boolean), lines = [];
+  var rows = ms.map(function (m) { var r = { m: m, x: {} }; places.forEach(function (e) { var x = valueOf(m, e, per); x.tr = trackOf(m, e, per); x.rk = rankIn(m, e, per, 'value'); r.x[eKey(e)] = x; }); return r; });
+  places.forEach(function (e) {
+    var k = eKey(e), gs = rows.filter(function (r) { return r.x[k].g != null; }).sort(function (a, c) { return a.x[k].g - c.x[k].g; });
+    var ach = rows.filter(function (r) { return r.x[k].tr && r.x[k].tr.ach != null; }).sort(function (a, c) { return a.x[k].tr.ach - c.x[k].tr.ach; });
+    var bits = [];
+    if (gs.length) bits.push('weakest growth on ' + esc(gs[0].m.l) + ' (' + grTxt(gs[0].x[k].g) + ')' + (gs.length > 1 && gs[gs.length - 1].x[k].g > gs[0].x[k].g ? ', best on ' + esc(gs[gs.length - 1].m.l) + ' (' + grTxt(gs[gs.length - 1].x[k].g) + ')' : ''));
+    if (ach.length) bits.push('furthest behind target on ' + esc(ach[0].m.l) + ' (' + fmt(ach[0].x[k].tr.ach, 0) + '% of pro-rata)');
+    var lows = rows.filter(function (r) { var rk = r.x[k].rk; return rk && rk.n >= 4 && rk.r === rk.n; }).map(function (r) { return esc(r.m.l); });
+    if (lows.length) bits.push('last among its peers on ' + lows.join(', '));
+    if (bits.length) lines.push(b(esc(eName(e))) + ' (' + esc(perLabel(per)) + '): ' + bits.join('; ') + '.');
+  });
+  var cols = [{ k: 'm', l: 'Measure', get: function (r) { return r.m.l; }, fmt: function (r) { return esc(r.m.l) + ' <span class="small muted">' + esc(r.m.u === '%' ? '%' : r.m.u) + '</span>'; } }], groups = [['', 1]];
+  places.forEach(function (e) {
+    var k = eKey(e), c = [
+      { k: k + 'v', l: 'Value', n: 2, get: function (r) { return r.x[k].v; }, fmt: function (r, v) { return '<b>' + fv(r.m, v) + '</b>'; } },
+      { k: k + 'g', l: 'vs LY', n: 1, pct: true, get: function (r) { return r.x[k].g; }, fmt: function (r, v) { return v == null ? '—' : A.delta(v, 1, '%'); } },
+      { k: k + 'a', l: 'Target', n: 0, pct: true, get: function (r) { return r.x[k].tr ? r.x[k].tr.ach : null; }, fmt: function (r, v) { return v == null ? '—' : A.achPill(v); } },
+      { k: k + 'r', l: 'Rank', get: function (r) { return r.x[k].rk ? r.x[k].rk.r : null; }, fmt: function (r) { var x = r.x[k].rk; return x ? A.rk(x.r, x.n) + '<span class="small muted"> /' + x.n + '</span>' : '—'; }, num: 1 }];
+    groups.push([eName(e), c.length]); cols = cols.concat(c);
+  });
+  var fu = places.length === 1 ? ['compare ' + eName(places[0]) + ' with Lucknow RO and all India on DAC and e-KYC', 'trend of pending bookings for ' + eName(places[0])] : [];
+  return narr(lines) + A.tableBlock('ask' + q.id, { cols: cols, rows: rows, groups: groups, search: false, title: describe(q), file: 'LLRO_Ask_overview' }) + '<p class="small muted">Rank: sales areas among the 5, distributors within the RO, ROs among all ROs in India. Target = achievement against the pro-rata target where the dashboard tracks one.</p>' + followUps(q, fu);
+}
+
+function ansHelp(q, prefix) {
+  var ex = EXAMPLES.map(function (g) { return '<div class="asexg"><span class="eyebrow">' + esc(g[0]) + '</span><div class="chips">' + g[1].map(function (s) { return '<button type="button" class="aschipq" data-askq="' + esc(s) + '">' + esc(s) + '</button>'; }).join('') + '</div></div>'; }).join('');
+  var mlist = GROUPS.map(function (gname) { return '<div><b>' + esc(gname) + ':</b> ' + MEAS.filter(function (m) { return m.g === gname; }).map(function (m) { return esc(m.l); }).join(', ') + '</div>'; }).join('');
+  return (prefix || '') + '<div class="ashelp"><p>Type in plain words. Name what to look at, where, and when — in any order. For example <i>“ND sales of Kanpur vs RO vs all India this month”</i>.</p>' +
+    '<div class="g2"><div><h3>Places</h3><p class="small">Lucknow RO · Etawah, Jhansi, Kanpur, Lucknow, Sitapur · “all sales areas” · “other sales areas” · any distributor by name or code · “distributors in Jhansi” · All India · NCZ or any zone · any RO by name (Varanasi RO…) · “all ROs”.</p><h3>When</h3><p class="small">this month (default) · FY / YTD · yesterday · last 7 days · last 15 days · from 1 Oct to 10 Oct · since 5 Oct · on 12 Oct · last month · in September.</p><h3>What to do</h3><p class="small">compare / vs · top 10 / worst 10 / lowest 5 · trend / daily · vs AOP / target / run rate · by sales area · why is … down · which distributors have DAC below 90 · profile of &lt;distributor&gt; · open the AOP tracker.</p></div><div><h3>Measures</h3><div class="small asml">' + mlist + '</div></div></div>' + ex + '</div>';
+}
+var EXAMPLES = [
+  ['Sales', ['compare ND sales of Kanpur with Lucknow RO and all India this month', 'domestic sales by sales area vs last year', 'why is ND down in Kanpur', 'domestic sales vs AOP', '5 kg sales FY to date all sales areas', 'trend of domestic sales daily this month']],
+  ['Bookings & stock', ['top 10 distributors with bookings older than 7 days', 'which distributors have stock cover below 0.5 days', 'stock not returned by sales area', 'pending bookings trend last 7 days for all sales areas', 'backlog days Jhansi vs Kanpur']],
+  ['Compliance', ['worst 10 distributors on DAC', 'e-KYC coverage of all sales areas vs all India', 'MI done vs AOP FY', 'distributors with zero MI this month', 'hose conversion by sales area']],
+  ['All India & distributors', ['rank of Lucknow RO in DAC among all ROs', 'compare e-KYC of NCZ ROs', 'Lucknow RO vs Varanasi RO vs Gorakhpur RO on DAC and e-KYC', 'profile of Pitambra', 'ARB ORC FY by sales area']]
+];
+
+/* ---------------- running a question ---------------- */
+function feed() { return S.ui.askFeed = S.ui.askFeed || []; }
+function store(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem(k) || 'null'); localStorage.setItem(k, JSON.stringify(v)); } catch (e) { return null; } }
+function pins() { return store('llro.askPins') || []; }
+function hist() { return store('llro.askHist') || []; }
+function remember(text) { var h = hist().filter(function (x) { return x !== text; }); h.unshift(text); store('llro.askHist', h.slice(0, 25)); }
+function answer(q) {
+  memo = {};
+  if (!q.id) q.id = ++uid;
+  if (q.op === 'help') return card(q, ansHelp(q), { noControls: true });
+  if (q.op === 'none') return card(q, ansHelp(q, '<p class="note">I could not match <b>' + esc(q.unknown.join(' ') || q.text) + '</b> to a measure, place or period. Try one of these, or pick from the lists below.</p>' + suggestFor(q.text)), { noControls: true });
+  if (!S.V) return card(q, '<p class="muted">No day is loaded yet.</p>', { noControls: true });
+  var body;
+  try {
+    if (q.needSa) body = '<p class="note">Which sales area? ' + SAS.map(function (sa) { return '<button type="button" class="aschipq" data-ask-sa="' + sa + '" data-ac="' + q.id + '">' + cap(sa) + '</button>'; }).join(' ') + ' — showing all five meanwhile.</p>';
+    else body = '';
+    if (q.ambiguous) body += '<p class="note">Several distributors match: ' + q.ambiguous.map(function (c) { var r = distByCode(c); return r ? '<button type="button" class="aschipq" data-ask-dist="' + c + '" data-ac="' + q.id + '">' + esc(title(r.name)) + ' <span class="muted">' + cap(r.sa) + '</span></button>' : ''; }).join(' ') + '</p>';
+    if (q.needSa && !q.grp && !q.ents.some(function (e) { return e.t === 'SA'; })) q.grp = { t: 'SAS' };
+    body += q.op === 'rank' ? ansRank(q) : q.op === 'filter' ? ansFilter(q) : q.op === 'trend' ? ansTrend(q) : q.op === 'target' ? ansTarget(q) : q.op === 'breakdown' ? ansBreakdown(q) : q.op === 'why' ? ansWhy(q) : q.op === 'profile' ? ansProfile(q) : q.op === 'overview' || (q.op === 'compare' && q.ms.length >= 4 && !q.grp && q.ents.length <= 3) ? ansOverview(q) : ansCompare(q);
+  } catch (err) { console.error(err); body = '<p class="note bad">This answer could not be drawn: ' + esc(err.message) + '</p>'; }
+  return card(q, body);
+}
+function suggestFor(text) {
+  var t = normText(text), sc = [];
+  EXAMPLES.forEach(function (g) { g[1].forEach(function (s) { var n = 0; normText(s).split(' ').forEach(function (w) { if (w.length > 2 && t.indexOf(' ' + w + ' ') >= 0) n++; }); sc.push([n, s]); }); });
+  sc.sort(function (a, b2) { return b2[0] - a[0]; });
+  return '<div class="chips" style="margin:8px 0">' + sc.slice(0, 5).map(function (x) { return '<button type="button" class="aschipq" data-askq="' + esc(x[1]) + '">' + esc(x[1]) + '</button>'; }).join('') + '</div>';
+}
+function ask(text, opt) {
+  opt = opt || {};
+  text = String(text || '').trim(); if (!text) { A.go('ask'); return; }
+  var q = parse(text);
+  if (q.op === 'nav') { remember(text); A.go(q.page === 'rcard' ? 'rcard' : q.page); return; }
+  q.id = ++uid; var f = feed(); f.unshift(q); if (f.length > 8) f.length = 8;
+  remember(text);
+  try { history.replaceState(null, '', '#ask=' + encodeURIComponent(text)); } catch (e) {}
+  if (S.page !== 'ask') A.go('ask'); else { A.render(); }
+  setTimeout(function () { var el = document.getElementById('ac-' + q.id); if (el && el.scrollIntoView) el.scrollIntoView({ block: 'start', behavior: 'smooth' }); }, 30);
+}
+function rerun(id) { var q = feed().filter(function (x) { return String(x.id) === String(id); })[0]; if (!q) return; q.text = describe(q); var el = document.getElementById('ac-' + id); if (el) { var w = document.createElement('div'); w.innerHTML = answer(q); el.replaceWith(w.firstChild); } }
+A.ask = ask; A.askParse = parse; A.askDescribe = describe;
+
+/* ---------------- the Ask page ---------------- */
+PAGES.ask = function () {
+  if (S.ui.askPending) { var p = S.ui.askPending; S.ui.askPending = null; var q = parse(p); if (q.op !== 'nav') { q.id = ++uid; feed().unshift(q); } }
+  var h = '<section class="askhero"><form class="askform big" id="askForm2" autocomplete="off"><label class="sr" for="askIn2">Ask the dashboard</label><input id="askIn2" class="askin" type="search" placeholder="Ask anything — e.g. compare ND sales of Kanpur with RO and all India" value="" enterkeyhint="go"><button class="btn primary" type="submit">Ask</button></form>';
+  var pn = pins(), hs = hist().filter(function (x) { return pn.indexOf(x) < 0; }).slice(0, 8);
+  if (pn.length) h += '<div class="asrow"><span class="eyebrow">Saved</span><div class="chips">' + pn.map(function (s) { return '<button type="button" class="aschipq pin" data-askq="' + esc(s) + '">★ ' + esc(s) + '</button>'; }).join('') + '</div></div>';
+  if (hs.length) h += '<div class="asrow"><span class="eyebrow">Recent</span><div class="chips">' + hs.map(function (s) { return '<button type="button" class="aschipq" data-askq="' + esc(s) + '">' + esc(s) + '</button>'; }).join('') + '<button type="button" class="aschipq ghost" data-ask-act="clearhist">Clear</button></div></div>';
+  h += '</section>';
+  var f = feed();
+  if (!f.length) h += '<section class="panel"><div class="ph"><h2>Try a question</h2><span class="sub">Built into the dashboard: answers come from the loaded data, on any device, with no internet service behind it.</span></div><div class="pb">' + ansHelp({}) + '</div></section>';
+  else h += f.map(function (q) { return answer(q); }).join('');
+  return h;
+};
+
+/* ---------------- command bar in the top bar ---------------- */
+function mountBar() {
+  if (document.getElementById('askForm')) return;
+  var tb = document.querySelector('.topbar'); if (!tb) return;
+  var row = document.createElement('div'); row.className = 'askrow';
+  row.innerHTML = '<form class="askform" id="askForm" autocomplete="off" role="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><label class="sr" for="askIn">Ask the dashboard</label><input id="askIn" class="askin" type="search" placeholder="Ask or filter anything — “ND sales Kanpur vs RO vs all India”   ( / )" enterkeyhint="go" aria-autocomplete="list" aria-controls="askSug"><button class="btn sm primary" type="submit">Ask</button><div class="assug" id="askSug" role="listbox" hidden></div></form>';
+  tb.appendChild(row);
+}
+var sugIdx = -1;
+function phrases() {
+  var V = S.V, out = [];
+  MEAS.forEach(function (m) { out.push({ t: ph(m), k: 'measure' }); });
+  ['Lucknow RO', 'all India', 'NCZ', 'all sales areas', 'other sales areas', 'all ROs', 'distributors'].forEach(function (s) { out.push({ t: s, k: 'place' }); });
+  SAS.forEach(function (sa) { out.push({ t: cap(sa), k: 'sales area' }); });
+  if (V) { Object.keys(V.nat.ro).forEach(function (k) { if (k !== HOME) out.push({ t: cap(k) + ' RO', k: 'RO' }); }); V.dists.forEach(function (r) { out.push({ t: title(r.name), k: 'distributor · ' + cap(r.sa) }); }); }
+  ['this month', 'FY to date', 'yesterday', 'last 7 days', 'last month', 'trend', 'daily', 'vs AOP', 'vs last year', 'by sales area', 'top 10', 'worst 10', 'compare', 'why'].forEach(function (s) { out.push({ t: s, k: 'how' }); });
+  return out;
+}
+function suggest(inp) {
+  var box = document.getElementById(inp.id === 'askIn' ? 'askSug' : 'askSug2'); if (!box) return;
+  var v = inp.value, m = /(^|\s)([^\s]{2,})$/.exec(v), items = [];
+  if (!v.trim()) { items = pins().map(function (s) { return { t: s, k: 'saved', full: 1 }; }).concat(hist().slice(0, 6).map(function (s) { return { t: s, k: 'recent', full: 1 }; })); if (!items.length) EXAMPLES.forEach(function (g) { items.push({ t: g[1][0], k: 'example', full: 1 }); }); }
+  else if (m) { var w = m[2].toLowerCase(); items = phrases().filter(function (p) { var t = p.t.toLowerCase(); return t.indexOf(w) === 0 || t.indexOf(' ' + w) > 0; }).slice(0, 8); }
+  sugIdx = -1;
+  if (!items.length) { box.hidden = true; box.innerHTML = ''; return; }
+  box.innerHTML = items.slice(0, 9).map(function (it, i) { return '<button type="button" role="option" data-sug="' + esc(it.t) + '" data-full="' + (it.full ? 1 : 0) + '" id="sg' + i + '"><span>' + esc(it.t) + '</span><small>' + esc(it.k) + '</small></button>'; }).join('');
+  box.hidden = false;
+}
+function takeSug(inp, el) {
+  if (el.dataset.full === '1') { inp.value = el.dataset.sug; hideSug(); ask(inp.value); return; }
+  inp.value = inp.value.replace(/(^|\s)([^\s]{2,})$/, '$1') + el.dataset.sug + ' '; inp.focus(); suggest(inp);
+}
+function hideSug() { $$('.assug').forEach(function (b2) { b2.hidden = true; }); sugIdx = -1; }
+
+document.addEventListener('submit', function (e) {
+  if (e.target.id !== 'askForm' && e.target.id !== 'askForm2') return;
+  e.preventDefault(); var inp = e.target.querySelector('.askin'); var v = inp.value; hideSug(); if (e.target.id === 'askForm') inp.value = ''; ask(v); if (e.target.id === 'askForm') inp.blur();
+});
+document.addEventListener('input', function (e) { if (e.target.id === 'askIn') suggest(e.target); });
+document.addEventListener('focusin', function (e) { if (e.target.id === 'askIn') suggest(e.target); });
+document.addEventListener('keydown', function (e) {
+  var inp = document.getElementById('askIn');
+  if (e.key === '/' && document.activeElement && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName) && inp) { e.preventDefault(); inp.focus(); return; }
+  if (e.target.id !== 'askIn') return;
+  var box = document.getElementById('askSug'), opts = box && !box.hidden ? $$('button', box) : [];
+  if (e.key === 'ArrowDown' && opts.length) { e.preventDefault(); sugIdx = (sugIdx + 1) % opts.length; opts.forEach(function (o, i) { o.classList.toggle('on', i === sugIdx); }); inp.setAttribute('aria-activedescendant', opts[sugIdx].id); }
+  else if (e.key === 'ArrowUp' && opts.length) { e.preventDefault(); sugIdx = (sugIdx - 1 + opts.length) % opts.length; opts.forEach(function (o, i) { o.classList.toggle('on', i === sugIdx); }); }
+  else if ((e.key === 'Enter' || e.key === 'Tab') && sugIdx >= 0 && opts[sugIdx]) { e.preventDefault(); takeSug(inp, opts[sugIdx]); }
+  else if (e.key === 'Escape') { hideSug(); }
+});
+document.addEventListener('mousedown', function (e) { var s = e.target.closest && e.target.closest('[data-sug]'); if (s) { e.preventDefault(); takeSug(document.getElementById('askIn'), s); return; } if (!e.target.closest || !e.target.closest('.askform')) hideSug(); });
+
+/* switching the view keeps the question's places sensible for the new view */
+function reshape(q, op) {
+  var was = q.op; q.op = op;
+  var saOfGrp = q.grp && q.grp.t === 'DISTS' && q.grp.sa ? q.grp.sa : null;
+  if (op === 'rank' || op === 'filter') {
+    if (!q.grp || q.grp.t === 'SAS' || q.grp.t === 'OTHERSAS') { var sas = q.ents.filter(function (x) { return x.t === 'SA'; }).map(function (x) { return x.k; }); q.grp = { t: 'DISTS', sa: sas.length ? sas : null }; }
+    q.ents = q.ents.filter(function (x) { return x.t !== 'SA'; }); q.dir = q.dir || 'good';
+    if (op === 'filter' && !q.cond) q.op = 'rank';
+    return;
+  }
+  if (q.grp && q.grp.t === 'DISTS') {
+    if (saOfGrp) saOfGrp.forEach(function (sa) { if (!q.ents.some(function (x) { return x.t === 'SA' && x.k === sa; })) q.ents.push({ t: 'SA', k: sa }); });
+    q.grp = null;
+  }
+  if (op === 'why') { if (!q.ms.some(function (k) { return MM[k] && MM[k].lyM; })) q.ms.unshift('dom'); else q.ms.sort(function (a, c) { return (MM[c].lyM ? 1 : 0) - (MM[a].lyM ? 1 : 0); }); }
+  if ((op === 'compare' || op === 'target') && !q.ents.some(function (x) { return x.t === 'RO'; }) && !q.ents.some(function (x) { return x.t === 'D'; })) q.ents.unshift({ t: 'RO' });
+  if ((op === 'compare' || op === 'target') && q.ents.length <= 1 && !q.grp) q.grp = { t: 'SAS' };
+  if (op === 'trend' && !q.ents.length) q.ents = [{ t: 'RO' }];
+  if (op === 'trend' && q.grp && q.grp.t === 'NROS') { q.grp = null; if (!q.ents.length) q.ents = [{ t: 'RO' }, { t: 'IN' }]; }
+  if (op === 'compare' && was === 'profile' && !q.ms.length) { q.op = 'overview'; }
+  if (op !== 'profile' && !q.ms.length) q.ms = ['dom', 'nd', 'appu', 'dac', 'ekyc', 'mi', 'pend', 'aged', 'snr', 'arb'];
+}
+function qOf(id) { return feed().filter(function (x) { return String(x.id) === String(id); })[0]; }
+document.addEventListener('click', function (e) {
+  var t = e.target.closest && e.target.closest('[data-askq],[data-ask-act],[data-ask-op],[data-ask-per],[data-ask-basis],[data-ask-drop],[data-ask-dir],[data-ask-sa],[data-ask-dist]'); if (!t) return;
+  e.preventDefault();
+  if (t.dataset.askq) { ask(t.dataset.askq); return; }
+  var q = qOf(t.dataset.ac), act = t.dataset.askAct;
+  if (act === 'clearhist') { store('llro.askHist', []); A.render(); return; }
+  if (!q) return;
+  if (act === 'close') { S.ui.askFeed = feed().filter(function (x) { return x !== q; }); var el = document.getElementById('ac-' + q.id); if (el) el.remove(); if (!feed().length) A.render(); return; }
+  if (act === 'edit') { var inp = document.getElementById('askIn2') || document.getElementById('askIn'); if (inp) { inp.value = q.text; inp.focus(); window.scrollTo({ top: 0, behavior: 'smooth' }); } return; }
+  if (act === 'pin') { var p = pins(), i = p.indexOf(q.text); if (i >= 0) p.splice(i, 1); else p.unshift(q.text); store('llro.askPins', p.slice(0, 30)); A.toast(i >= 0 ? 'Removed from your saved questions.' : 'Saved on this device — it stays on your Ask page.'); rerun(q.id); return; }
+  if (act === 'link') { var url = location.href.split('#')[0] + '#ask=' + encodeURIComponent(q.text); (navigator.clipboard ? navigator.clipboard.writeText(url) : Promise.reject()).then(function () { A.toast('Link copied. Anyone who can open the dashboard sees this answer with their own data.'); }, function () { prompt('Copy this link:', url); }); return; }
+  if (t.dataset.askOp) { reshape(q, t.dataset.askOp); rerun(q.id); return; }
+  if (t.dataset.askPer) { var k = t.dataset.askPer, ref = S.V.date; q.per = k === 'w' ? { kind: 'range', from: U.addDays(ref, -6), to: ref, label: 'last 7 days' } : { kind: k }; rerun(q.id); return; }
+  if (t.dataset.askBasis) { q.basis = t.dataset.askBasis; rerun(q.id); return; }
+  if (t.dataset.askDir) { q.dir = t.dataset.askDir; rerun(q.id); return; }
+  if (t.dataset.askDrop) { if (t.dataset.askDrop === 'grp') q.grp = null; else q.ents.splice(+t.dataset.askDrop, 1); if (!q.ents.length && !q.grp) q.ents = [{ t: 'RO' }]; rerun(q.id); return; }
+  if (t.dataset.askSa) { q.needSa = false; q.ents.push({ t: 'SA', k: t.dataset.askSa }); if (q.grp && q.grp.t === 'SAS') q.grp = null; S.ui.askSa = t.dataset.askSa; rerun(q.id); return; }
+  if (t.dataset.askDist) { q.ambiguous = null; q.ents.push({ t: 'D', k: t.dataset.askDist }); if (q.op === 'compare' && q.ents.length === 1 && !q.ms.length) q.op = 'profile'; rerun(q.id); return; }
+}, true);
+document.addEventListener('change', function (e) {
+  var t = e.target; if (!t.dataset || !t.dataset.askset) return;
+  var q = qOf(t.dataset.ac); if (!q) return; var v = t.value;
+  if (t.dataset.askset === 'm0' && v) { if (q.ms.length) q.ms[0] = v; else q.ms = [v]; if (q.cond) q.cond.m = v; }
+  else if (t.dataset.askset === 'madd' && v) { if (q.ms.indexOf(v) < 0) q.ms.push(v); q.custom = true; }
+  else if (t.dataset.askset === 'n') { q.n = +v; }
+  else if (t.dataset.askset === 'eadd' && v) {
+    if (v.indexOf('G:') === 0) { q.grp = { t: v.slice(2) }; if (q.grp.t === 'DISTS' && q.op === 'compare') q.op = 'rank'; }
+    else { var p = v.split(':'), e2 = p[0] === 'RO' ? { t: 'RO' } : p[0] === 'IN' ? { t: 'IN' } : { t: p[0], k: p[1] }; if (!q.ents.some(function (x) { return eKey(x) === eKey(e2); })) q.ents.push(e2); if (q.op === 'value' || q.op === 'profile') q.op = 'compare'; }
+  } else return;
+  rerun(q.id);
+});
+
+/* ---------------- start-up hooks ---------------- */
+A.NAV[0][1].unshift(['ask', 'Ask the dashboard']);
+A.PAGE_TITLE.ask = 'Ask the dashboard';
+A.ICON.ask = 'M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2zM8 9h8M8 13h5';
+if (/^#ask=/.test(location.hash)) { try { S.ui.askPending = decodeURIComponent(location.hash.slice(5)); S.page = 'ask'; } catch (e) {} }
+window.addEventListener('hashchange', function () { if (/^#ask=/.test(location.hash)) { var t = decodeURIComponent(location.hash.slice(5)); var f = feed(); if (!f[0] || f[0].text !== t) ask(t); } });
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mountBar); else mountBar();
+var mo = new MutationObserver(function () { if (!document.getElementById('askForm')) mountBar(); }); mo.observe(document.body, { childList: true, subtree: false });
+})(App);
+
 
 /* ============================================================
    LLRO Dashboard — Excel export, backup, start-up
