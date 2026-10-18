@@ -1,9 +1,12 @@
-# LLRO watchdog — runs on GitHub, outside the Mac. If the LLRO Mac is off, asleep or stuck, it cannot send its own alerts;
-# this check fails instead, and GitHub e-mails the repository owner about the failed run.
-#   12:45 IST: today's daily dashboard upload must have happened.   17:45 IST: the dashboard must have been updated in the last 5 hours.
+# LLRO watchdog — runs on GitHub, outside the Mac. When it fails, GitHub e-mails the repository owner about the failed run;
+# that e-mail is how the LLRO system reaches you without anything on the Mac (Outlook there cannot send).
+#   every hour 08:20–20:20 IST: a new warning from the LLRO server (data/status.json: a sign-in needed, the fetcher quiet…)
+#   12:45 IST: today's daily dashboard upload must have happened, and any warning still open is repeated
+#   17:45 IST: the dashboard must have been updated in the last 5 hours, and any warning still open is repeated
 name: LLRO watchdog
 on:
   schedule:
+    - cron: '50 2-14 * * *'   # hourly, 08:20–20:20 IST, every day
     - cron: '15 7 * * 1-6'    # 12:45 IST, Monday to Saturday
     - cron: '15 12 * * 1-6'   # 17:45 IST
   workflow_dispatch:
@@ -15,11 +18,31 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with: { fetch-depth: 200 }
-      - name: Check that the dashboard is being updated
+      - name: Warnings from the LLRO server
+        env:
+          HOURLY: ${{ github.event.schedule == '50 2-14 * * *' }}
         run: |
-          now=$(date +%s); last=$(git log -1 --format=%ct -- data); age=$(( (now - last) / 60 ))
+          [ -f data/status.json ] || { echo "No status published yet."; exit 0; }
+          python3 - <<'EOF'
+          import json, os, sys, datetime as dt
+          s = json.load(open('data/status.json'))
+          now = dt.datetime.now(dt.timezone.utc)
+          age = lambda t: (now - dt.datetime.fromisoformat(t.replace('Z', '+00:00'))).total_seconds() / 60
+          print('Status written %s (%.0f minutes ago), %d open' % (s.get('updated'), age(s['updated']), len(s.get('open', []))))
+          hourly = os.environ.get('HOURLY') == 'true'
+          show = [a for a in s.get('open', []) if not hourly or age(a['since']) <= 65]
+          for a in s.get('open', []): print('  open since %s: %s' % (a['since'], a['say']))
+          if show:
+              for say in dict.fromkeys(a['say'] for a in show): print('::error::LLRO: ' + say)
+              sys.exit(1)
+          print('OK')
+          EOF
+      - name: Check that the dashboard is being updated
+        if: always() && github.event.schedule != '50 2-14 * * *'
+        run: |
+          now=$(date +%s); last=$(git log -1 --format=%ct -- data/day-* data/latest.json data/live.bin); age=$(( (now - last) / 60 ))
           today=$(TZ=Asia/Kolkata date +%Y-%m-%d); hour=$(TZ=Asia/Kolkata date +%-H)
-          echo "Last dashboard data: $(git log -1 --format='%ci  %s' -- data)  ($age minutes ago)"
+          echo "Last dashboard data: $(git log -1 --format='%ci  %s' -- data/day-* data/latest.json data/live.bin)  ($age minutes ago)"
           if [ "$hour" -lt 15 ]; then
             if ! git log --since="${today}T00:00:00+05:30" --format=%s -- data | grep -q "Daily data"; then
               echo "::error::No daily LLRO dashboard upload yet today. The LLRO Mac may be off, asleep or offline, or Chrome closed. Check the Mac."
