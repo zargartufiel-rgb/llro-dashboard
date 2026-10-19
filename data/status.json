@@ -1,12 +1,5 @@
 {
  "app": "llro-status",
- "updated": "2026-10-19T05:14:38.624Z",
- "open": [
-  {
-   "key": "mailsync",
-   "level": "warn",
-   "since": "2026-10-19T05:13:38.609Z",
-   "say": "Mailed reports are not reaching the Mac: open OneDrive on the Mac and sign in"
-  }
- ]
+ "updated": "2026-10-19T05:21:03.857Z",
+ "open": []
 }
