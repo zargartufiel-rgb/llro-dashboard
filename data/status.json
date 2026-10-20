@@ -1,5 +1,12 @@
 {
  "app": "llro-status",
- "updated": "2026-10-20T05:43:42.467Z",
- "open": []
+ "updated": "2026-10-20T06:51:56.163Z",
+ "open": [
+  {
+   "key": "publish",
+   "level": "error",
+   "since": "2026-10-20T06:50:56.157Z",
+   "say": "The dashboard could not be updated"
+  }
+ ]
 }
