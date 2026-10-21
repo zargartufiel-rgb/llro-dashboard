@@ -1,0 +1,31 @@
+# LLRO pages catch-up — GitHub sometimes skips deploying a push to the website (seen 21 Oct 2026: the night's history
+# publish sat undeployed for 30+ minutes). Every 30 minutes this checks that the newest commit is the one the site was
+# last built from, and if not (and the push is more than 10 minutes old) asks GitHub Pages to build again.
+name: LLRO pages catch-up
+on:
+  schedule:
+    - cron: '7,37 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+jobs:
+  catchup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Rebuild the site if the newest push was not deployed
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          head=$(gh api repos/$REPO/commits/${{ github.event.repository.default_branch }} --jq .sha)
+          at=$(gh api repos/$REPO/commits/$head --jq .commit.committer.date)
+          built=$(gh api repos/$REPO/pages/builds/latest --jq '.commit + " " + .status' || echo "unknown none")
+          echo "newest push $head at $at; last site build: $built"
+          age=$(( $(date +%s) - $(date -d "$at" +%s) ))
+          case "$built" in
+            "$head "*) echo "Site is up to date."; exit 0;;
+            *" building"|*" queued") echo "A build is already running."; exit 0;;
+          esac
+          if [ "$age" -lt 600 ]; then echo "Push is only $((age/60)) min old; GitHub may still pick it up."; exit 0; fi
+          gh api -X POST repos/$REPO/pages/builds --jq .status && echo "Asked GitHub Pages to rebuild."
