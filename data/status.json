@@ -1,13 +1,7 @@
 {
  "app": "llro-status",
- "updated": "2026-10-22T03:36:07.209Z",
+ "updated": "2026-10-22T03:44:13.328Z",
  "open": [
-  {
-   "key": "preflight",
-   "level": "warn",
-   "since": "2026-10-22T02:20:59.113Z",
-   "say": "Morning self-check found something that needs you on the Mac"
-  },
   {
    "key": "agentstuck",
    "level": "warn",
