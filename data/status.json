@@ -1,12 +1,24 @@
 {
  "app": "llro-status",
- "updated": "2026-10-22T02:42:58.929Z",
+ "updated": "2026-10-22T03:36:07.209Z",
  "open": [
   {
    "key": "preflight",
    "level": "warn",
    "since": "2026-10-22T02:20:59.113Z",
    "say": "Morning self-check found something that needs you on the Mac"
+  },
+  {
+   "key": "agentstuck",
+   "level": "warn",
+   "since": "2026-10-22T03:35:07.205Z",
+   "say": "Report fetcher stuck on one job in Chrome"
+  },
+  {
+   "key": "mailsync",
+   "level": "warn",
+   "since": "2026-10-22T03:35:07.234Z",
+   "say": "Mailed reports are not reaching the Mac: open OneDrive on the Mac and sign in"
   }
  ]
 }
