@@ -1,12 +1,5 @@
 {
  "app": "llro-status",
- "updated": "2026-10-23T04:36:54.504Z",
- "open": [
-  {
-   "key": "agentstuck",
-   "level": "warn",
-   "since": "2026-10-23T04:29:44.060Z",
-   "say": "Report fetcher stuck on one job in Chrome"
-  }
- ]
+ "updated": "2026-10-23T04:41:24.479Z",
+ "open": []
 }
