@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-10-26T02:37:27.845Z",
+ "updated": "2026-10-26T03:59:44.236Z",
  "open": [
   {
    "key": "gaveup",
@@ -9,10 +9,16 @@
    "say": "A report could not be fetched today"
   },
   {
-   "key": "agentstuck",
+   "key": "jobsignin",
    "level": "warn",
-   "since": "2026-10-26T02:37:27.823Z",
-   "say": "Report fetcher stuck on one job in Chrome"
+   "since": "2026-10-26T03:12:03.177Z",
+   "say": "Sign-in needed on the Mac: HP Gas web"
+  },
+  {
+   "key": "jobsignin",
+   "level": "warn",
+   "since": "2026-10-26T03:12:20.639Z",
+   "say": "Sign-in needed on the Mac: ARB"
   }
  ]
 }
