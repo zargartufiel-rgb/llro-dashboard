@@ -1,12 +1,12 @@
 {
  "app": "llro-status",
- "updated": "2026-10-24T06:28:13.925Z",
+ "updated": "2026-10-26T01:12:03.301Z",
  "open": [
   {
-   "key": "incomplete",
+   "key": "gaveup",
    "level": "warn",
-   "since": "2026-10-24T06:05:50.513Z",
-   "say": "Today's reports are not complete"
+   "since": "2026-10-25T15:23:38.391Z",
+   "say": "A report could not be fetched today"
   }
  ]
 }
