@@ -1,19 +1,7 @@
 {
  "app": "llro-status",
- "updated": "2026-10-26T03:59:44.236Z",
+ "updated": "2026-10-26T04:29:08.579Z",
  "open": [
-  {
-   "key": "gaveup",
-   "level": "warn",
-   "since": "2026-10-25T15:23:38.391Z",
-   "say": "A report could not be fetched today"
-  },
-  {
-   "key": "jobsignin",
-   "level": "warn",
-   "since": "2026-10-26T03:12:03.177Z",
-   "say": "Sign-in needed on the Mac: HP Gas web"
-  },
   {
    "key": "jobsignin",
    "level": "warn",
