@@ -1,12 +1,5 @@
 {
  "app": "llro-status",
- "updated": "2026-10-26T04:29:08.579Z",
- "open": [
-  {
-   "key": "jobsignin",
-   "level": "warn",
-   "since": "2026-10-26T03:12:20.639Z",
-   "say": "Sign-in needed on the Mac: ARB"
-  }
- ]
+ "updated": "2026-10-26T04:38:34.051Z",
+ "open": []
 }
