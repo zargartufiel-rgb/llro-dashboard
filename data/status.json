@@ -1,18 +1,12 @@
 {
  "app": "llro-status",
- "updated": "2026-10-27T12:35:40.953Z",
+ "updated": "2026-10-27T12:41:33.372Z",
  "open": [
   {
    "key": "dashlate",
    "level": "warn",
    "since": "2026-10-27T04:25:07.500Z",
    "say": "LLRO Dashboard not up by 09:55 IST — see the Mac notice for the reason"
-  },
-  {
-   "key": "incomplete",
-   "level": "warn",
-   "since": "2026-10-27T06:09:53.046Z",
-   "say": "Today's reports are not complete"
   }
  ]
 }
