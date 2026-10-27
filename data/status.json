@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-10-27T12:31:32.603Z",
+ "updated": "2026-10-27T12:33:33.970Z",
  "open": [
   {
    "key": "dashlate",
@@ -17,8 +17,8 @@
   {
    "key": "jobsignin",
    "level": "warn",
-   "since": "2026-10-27T12:30:25.455Z",
-   "say": "Sign-in needed on the Mac: HP Gas web"
+   "since": "2026-10-27T12:32:34.191Z",
+   "say": "Sign-in needed on the Mac: ARB"
   }
  ]
 }
