@@ -1,12 +1,12 @@
 /* LLRO Dashboard service worker: the app works offline with the last data it saw */
-var V = 'llro-app-a1e0d222', DATA = 'llro-data';
+var V = 'llro-app-2a0c1c57', DATA = 'llro-data';
 var SHELL = ['./', './index.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
 self.addEventListener('install', function (e) { e.waitUntil(caches.open(V).then(function (c) { return c.addAll(SHELL); }).then(function () { return self.skipWaiting(); })); });
 self.addEventListener('activate', function (e) { e.waitUntil(caches.keys().then(function (ks) { return Promise.all(ks.filter(function (k) { return k.indexOf('llro-app-') === 0 && k !== V; }).map(function (k) { return caches.delete(k); })); }).then(function () { return self.clients.claim(); })); });
 self.addEventListener('fetch', function (e) {
   var req = e.request, u = new URL(req.url);
   if (req.method !== 'GET' || u.origin !== location.origin) return;
-  if (/\/data\/(latest\.json|live\.bin|status\.json|hist\.bin)$/.test(u.pathname)) { // files rewritten in place: always try the network first
+  if (/\/data\/(latest\.json|live\.bin|status\.json|hist\.bin|booking\.bin|navya\.bin)$/.test(u.pathname)) { // files rewritten in place: always try the network first
     e.respondWith(fetch(req).then(function (r) { if (r.ok) { var c = r.clone(); caches.open(DATA).then(function (x) { x.put(u.pathname, c); }); } return r; }).catch(function () { return caches.open(DATA).then(function (x) { return x.match(u.pathname); }); }));
     return;
   }
