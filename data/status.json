@@ -1,24 +1,12 @@
 {
  "app": "llro-status",
- "updated": "2026-10-28T09:28:14.139Z",
+ "updated": "2026-10-28T09:30:44.828Z",
  "open": [
   {
    "key": "incomplete",
    "level": "warn",
    "since": "2026-10-28T06:05:38.295Z",
    "say": "Today's reports are not complete"
-  },
-  {
-   "key": "jobsignin",
-   "level": "warn",
-   "since": "2026-10-28T09:23:33.375Z",
-   "say": "Sign-in needed on the Mac: ARB"
-  },
-  {
-   "key": "dashlate",
-   "level": "warn",
-   "since": "2026-10-28T09:27:14.131Z",
-   "say": "LLRO Dashboard not up by 09:55 IST — see the Mac notice for the reason"
   }
  ]
 }
