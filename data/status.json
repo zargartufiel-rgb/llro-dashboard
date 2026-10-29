@@ -1,5 +1,12 @@
 {
  "app": "llro-status",
- "updated": "2026-10-29T10:05:04.765Z",
- "open": []
+ "updated": "2026-10-29T12:31:20.193Z",
+ "open": [
+  {
+   "key": "jobsignin",
+   "level": "warn",
+   "since": "2026-10-29T12:30:20.185Z",
+   "say": "Sign-in needed on the Mac: https://hpgasweb.hpcl.co.in"
+  }
+ ]
 }
