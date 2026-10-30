@@ -1,5 +1,12 @@
 {
  "app": "llro-status",
- "updated": "2026-10-30T09:26:08.330Z",
- "open": []
+ "updated": "2026-10-30T09:33:08.748Z",
+ "open": [
+  {
+   "key": "stale",
+   "level": "warn",
+   "since": "2026-10-30T09:32:08.739Z",
+   "say": "LLRO needs attention: see the server console on the Mac"
+  }
+ ]
 }
