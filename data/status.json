@@ -1,12 +1,5 @@
 {
  "app": "llro-status",
- "updated": "2026-10-31T14:40:30.518Z",
- "open": [
-  {
-   "key": "incomplete",
-   "level": "warn",
-   "since": "2026-10-31T06:00:30.202Z",
-   "say": "Today's reports are not complete"
-  }
- ]
+ "updated": "2026-10-31T18:46:08.463Z",
+ "open": []
 }
