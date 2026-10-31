@@ -1,12 +1,18 @@
 {
  "app": "llro-status",
- "updated": "2026-10-31T09:10:29.900Z",
+ "updated": "2026-10-31T11:26:37.655Z",
  "open": [
   {
    "key": "incomplete",
    "level": "warn",
    "since": "2026-10-31T06:00:30.202Z",
    "say": "Today's reports are not complete"
+  },
+  {
+   "key": "signin",
+   "level": "warn",
+   "since": "2026-10-31T11:25:37.645Z",
+   "say": "Sign-in needed on the Mac: Spotfire"
   }
  ]
 }
