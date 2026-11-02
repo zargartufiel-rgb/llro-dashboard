@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-02T00:23:55.088Z",
+ "updated": "2026-11-02T01:24:11.260Z",
  "open": [
   {
    "key": "jobsignin",
@@ -13,6 +13,12 @@
    "level": "warn",
    "since": "2026-11-02T00:08:41.268Z",
    "say": "Morning self-check found something that needs you on the Mac"
+  },
+  {
+   "key": "agentstuck",
+   "level": "warn",
+   "since": "2026-11-02T01:24:11.243Z",
+   "say": "Report fetcher stuck on one job in Chrome"
   }
  ]
 }
