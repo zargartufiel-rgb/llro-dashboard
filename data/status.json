@@ -1,13 +1,7 @@
 {
  "app": "llro-status",
- "updated": "2026-11-02T03:25:36.572Z",
+ "updated": "2026-11-02T04:07:53.869Z",
  "open": [
-  {
-   "key": "jobsignin",
-   "level": "warn",
-   "since": "2026-11-01T16:46:17.642Z",
-   "say": "Sign-in needed on the Mac: https://hpgasweb.hpcl.co.in"
-  },
   {
    "key": "preflight",
    "level": "warn",
@@ -19,12 +13,6 @@
    "level": "warn",
    "since": "2026-11-02T01:39:32.609Z",
    "say": "Sign-in needed on the Mac: ARB, HP Gas web, Dealer evaluation"
-  },
-  {
-   "key": "jobsignin",
-   "level": "warn",
-   "since": "2026-11-02T03:02:50.161Z",
-   "say": "Sign-in needed on the Mac: Dealer evaluation"
   },
   {
    "key": "jobsignin",
