@@ -1,13 +1,7 @@
 {
  "app": "llro-status",
- "updated": "2026-11-02T04:15:36.655Z",
+ "updated": "2026-11-02T04:25:36.640Z",
  "open": [
-  {
-   "key": "preflight",
-   "level": "warn",
-   "since": "2026-11-02T00:08:41.268Z",
-   "say": "Morning self-check found something that needs you on the Mac"
-  },
   {
    "key": "jobsignin",
    "level": "warn",
