@@ -1,18 +1,12 @@
 {
  "app": "llro-status",
- "updated": "2026-11-03T14:54:24.931Z",
+ "updated": "2026-11-03T14:57:57.783Z",
  "open": [
   {
    "key": "signin",
    "level": "warn",
    "since": "2026-11-03T10:38:46.528Z",
    "say": "Sign-in needed on the Mac: LPG MIS, ARB, HP Gas web, Spotfire, Dealer evaluation"
-  },
-  {
-   "key": "jobsignin",
-   "level": "warn",
-   "since": "2026-11-03T13:28:56.094Z",
-   "say": "Sign-in needed on the Mac: https://hpgasweb.hpcl.co.in"
   },
   {
    "key": "preflight",
