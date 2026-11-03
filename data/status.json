@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-03T02:19:47.075Z",
+ "updated": "2026-11-03T02:25:47.139Z",
  "open": [
   {
    "key": "jobsignin",
@@ -12,13 +12,13 @@
    "key": "signin",
    "level": "warn",
    "since": "2026-11-03T01:34:51.313Z",
-   "say": "Sign-in needed on the Mac: LPG MIS, ARB, HP Gas web, Spotfire"
+   "say": "Sign-in needed on the Mac: ARB, HP Gas web, Spotfire"
   },
   {
-   "key": "agentstuck",
+   "key": "preflight",
    "level": "warn",
-   "since": "2026-11-03T02:05:23.390Z",
-   "say": "Report fetcher stuck on one job in Chrome"
+   "since": "2026-11-03T02:25:42.861Z",
+   "say": "Morning self-check found something that needs you on the Mac"
   }
  ]
 }
