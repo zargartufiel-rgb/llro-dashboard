@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-03T02:25:47.139Z",
+ "updated": "2026-11-03T02:29:47.232Z",
  "open": [
   {
    "key": "jobsignin",
@@ -12,7 +12,7 @@
    "key": "signin",
    "level": "warn",
    "since": "2026-11-03T01:34:51.313Z",
-   "say": "Sign-in needed on the Mac: ARB, HP Gas web, Spotfire"
+   "say": "Sign-in needed on the Mac: ARB"
   },
   {
    "key": "preflight",
