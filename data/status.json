@@ -1,12 +1,12 @@
 {
  "app": "llro-status",
- "updated": "2026-11-04T11:49:13.477Z",
+ "updated": "2026-11-04T13:59:13.500Z",
  "open": [
   {
    "key": "signin",
    "level": "warn",
    "since": "2026-11-04T07:56:43.035Z",
-   "say": "Sign-in needed on the Mac: LPG MIS, Spotfire"
+   "say": "Sign-in needed on the Mac: Spotfire"
   },
   {
    "key": "preflight",
