@@ -1,12 +1,18 @@
 {
  "app": "llro-status",
- "updated": "2026-11-04T07:57:43.044Z",
+ "updated": "2026-11-04T08:37:08.236Z",
  "open": [
   {
    "key": "signin",
    "level": "warn",
    "since": "2026-11-04T07:56:43.035Z",
    "say": "Sign-in needed on the Mac: Spotfire"
+  },
+  {
+   "key": "preflight",
+   "level": "warn",
+   "since": "2026-11-04T08:36:08.229Z",
+   "say": "Morning self-check found something that needs you on the Mac"
   }
  ]
 }
