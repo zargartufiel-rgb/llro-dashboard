@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Jarvis">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#04121c">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="icon" href="icon.png">
+<title>Jarvis</title>
+<!-- The fixed address of Jarvis on Tufiel's phone. It holds no data: it reads the Mac's current address from where.json
+     (encrypted with a key only his linked phone has) and opens Jarvis there with the phone's own key. -->
+<style>
+  :root { --bg: #04121c; --glass: rgba(120, 220, 255, .07); --line: rgba(120, 220, 255, .28); --cyan: #7fe3ff; --ink: #d9f4ff; --dim: #7fa6b8; --amber: #ffc46b; }
+  html, body { margin: 0; height: 100%; background: radial-gradient(ellipse at 50% 30%, #0b2a3c 0%, var(--bg) 70%); color: var(--ink); font: 16px/1.5 -apple-system, "SF Pro Text", "Helvetica Neue", Arial, sans-serif; }
+  main { min-height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px 16px calc(24px + env(safe-area-inset-bottom)); box-sizing: border-box; text-align: center; }
+  .core { width: 132px; height: 132px; margin-bottom: 28px; }
+  .core circle { fill: none; stroke: var(--cyan); }
+  .spin { transform-origin: 66px 66px; animation: spin 6s linear infinite; }
+  @media (prefers-reduced-motion: reduce) { .spin { animation: none; } }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .panel { max-width: 420px; width: 100%; background: var(--glass); border: 1px solid var(--line); border-radius: 18px; padding: 20px; box-sizing: border-box; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+  h1 { font-size: 22px; font-weight: 600; letter-spacing: .02em; margin: 0 0 8px; color: var(--cyan); }
+  p { margin: 8px 0; color: var(--ink); }
+  .dim { color: var(--dim); font-size: 14px; }
+  .warn { color: var(--amber); }
+  button { margin-top: 16px; font: 600 16px/1 inherit; color: #021018; background: var(--cyan); border: 0; border-radius: 12px; padding: 14px 22px; width: 100%; }
+  button:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+</style>
+</head>
+<body>
+<main>
+  <svg class="core" viewBox="0 0 132 132" aria-hidden="true">
+    <circle cx="66" cy="66" r="62" stroke-opacity=".25" stroke-width="1"/>
+    <g class="spin"><circle cx="66" cy="66" r="50" stroke-width="3" stroke-dasharray="40 22" stroke-opacity=".8"/></g>
+    <circle cx="66" cy="66" r="30" stroke-width="1.5" stroke-opacity=".6"/>
+    <circle cx="66" cy="66" r="12" fill="#7fe3ff" fill-opacity=".85" stroke="none"/>
+  </svg>
+  <div class="panel" role="status" aria-live="polite">
+    <h1 id="h">Jarvis</h1>
+    <p id="msg">Finding your Mac…</p>
+    <p class="dim" id="sub"></p>
+    <button id="go" hidden>Try again</button>
+  </div>
+</main>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var KEY = 'jarvisPhoneKey';
+  function say(h, m, sub, btn) { $('h').textContent = h; $('msg').textContent = m; $('sub').textContent = sub || ''; $('go').hidden = !btn; if (btn) $('go').textContent = btn; }
+  function store(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+  function stored() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  var b64 = function (s) { s = s.replace(/-/g, '+').replace(/_/g, '/'); while (s.length % 4) s += '='; var b = atob(s), u = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return u; };
+
+  // 1) just linked: the Mac sent this phone's key here (#save=). Kept in this page's storage and in the address itself,
+  //    so a Home Screen icon made from this page carries it too (the part after # never leaves the phone).
+  var h = location.hash, m = /#save=([\w-]+\.[\w-]+)/.exec(h) || /#k=([\w-]+\.[\w-]+)/.exec(h);
+  if (m) { store(m[1]); history.replaceState(null, '', location.pathname + '#k=' + m[1]); }
+  var k = (m && m[1]) || stored();
+  if (/#save=/.test(h)) {
+    say('Jarvis is set up on this phone', 'Add it to your Home Screen now: tap Share, then Add to Home Screen.', 'This address never changes. It finds your Mac by itself, even after the Mac restarts.', 'Open Jarvis');
+    $('go').onclick = function () { open(); };
+    return;
+  }
+  if (!k) { say('This phone is not linked', 'Open the Jarvis link Claude sent you, once. After that this page opens Jarvis by itself.', ''); return; }
+
+  function open() {
+    say('Jarvis', 'Finding your Mac…', '');
+    var parts = k.split('.'), dev = parts[0], s = parts[1];
+    fetch('where.json?t=' + Date.now(), { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error('where ' + r.status); return r.json(); })
+      .then(function (w) { return crypto.subtle.importKey('raw', b64(s), 'AES-GCM', false, ['decrypt']).then(function (ck) { return crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(w.iv) }, ck, b64(w.ct)); }); })
+      .then(function (buf) {
+        var w = JSON.parse(new TextDecoder().decode(buf));
+        say('Jarvis', 'Connecting…', '');
+        location.replace(w.url + '/jarvis.html#dev=' + dev);
+      })
+      .catch(function (e) {
+        if (/OperationError/.test(String(e && e.name)) ) say('This phone needs a new link', 'Open the newest Jarvis link Claude sent you, once.', '');
+        else say('Your Mac is not answering', 'It may be asleep, offline, or restarting. Jarvis comes back by itself when the Mac is on.', String(e && e.message || e).slice(0, 80), 'Try again');
+        $('go').onclick = open;
+      });
+  }
+  open();
+})();
+</script>
+</body>
+</html>
