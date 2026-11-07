@@ -3,89 +3,369 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="robots" content="noindex, nofollow">
+<title>Jarvis</title>
+<meta name="theme-color" content="#050b14">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Jarvis">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#04121c">
+<meta name="robots" content="noindex, nofollow">
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="icon" href="icon.png">
-<title>Jarvis</title>
-<!-- The fixed address of Jarvis on Tufiel's phone. It holds no data: it reads the Mac's current address from where.json
-     (encrypted with a key only his linked phone has) and opens Jarvis there with the phone's own key. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  :root { --bg: #04121c; --glass: rgba(120, 220, 255, .07); --line: rgba(120, 220, 255, .28); --cyan: #7fe3ff; --ink: #d9f4ff; --dim: #7fa6b8; --amber: #ffc46b; }
-  html, body { margin: 0; height: 100%; background: radial-gradient(ellipse at 50% 30%, #0b2a3c 0%, var(--bg) 70%); color: var(--ink); font: 16px/1.5 -apple-system, "SF Pro Text", "Helvetica Neue", Arial, sans-serif; }
-  main { min-height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px 16px calc(24px + env(safe-area-inset-bottom)); box-sizing: border-box; text-align: center; }
-  .core { width: 132px; height: 132px; margin-bottom: 28px; }
-  .core circle { fill: none; stroke: var(--cyan); }
-  .spin { transform-origin: 66px 66px; animation: spin 6s linear infinite; }
-  @media (prefers-reduced-motion: reduce) { .spin { animation: none; } }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  .panel { max-width: 420px; width: 100%; background: var(--glass); border: 1px solid var(--line); border-radius: 18px; padding: 20px; box-sizing: border-box; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-  h1 { font-size: 22px; font-weight: 600; letter-spacing: .02em; margin: 0 0 8px; color: var(--cyan); }
-  p { margin: 8px 0; color: var(--ink); }
-  .dim { color: var(--dim); font-size: 14px; }
-  .warn { color: var(--amber); }
-  button { margin-top: 16px; font: 600 16px/1 inherit; color: #021018; background: var(--cyan); border: 0; border-radius: 12px; padding: 14px 22px; width: 100%; }
-  button:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+/* a heads-up display: dark glass over a faint grid, one glowing core that shows what Jarvis is doing */
+:root{--void:#050b14;--deep:#0a1626;--glass:rgba(16,38,64,.42);--glass-hi:rgba(28,64,104,.38);--edge:rgba(120,214,255,.28);--edge-hi:rgba(120,214,255,.62);
+  --cyan:#5fd6ff;--cyan-soft:#9fe6ff;--ink:#e6f4ff;--ink2:#8fb3cc;--amber:#ffb547;--red:#ff6b6b;--green:#5ff2a6;
+  --hud:"Chakra Petch",system-ui,sans-serif;--text:"Atkinson Hyperlegible",system-ui,sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--void);color:var(--ink);font:16px/1.5 var(--text);overflow:hidden}
+body{min-height:100dvh;background:
+  radial-gradient(1200px 700px at 50% 30%,rgba(40,110,170,.28),transparent 60%),
+  radial-gradient(800px 500px at 85% 90%,rgba(255,181,71,.07),transparent 60%),
+  linear-gradient(var(--void),var(--deep))}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.35;
+  background-image:linear-gradient(rgba(95,214,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(95,214,255,.07) 1px,transparent 1px);background-size:44px 44px;
+  mask-image:radial-gradient(ellipse at 50% 40%,#000 30%,transparent 75%)}
+.app{position:relative;display:grid;grid-template-columns:260px minmax(0,1fr) 260px;grid-template-rows:auto minmax(0,1fr) auto;gap:14px;height:100dvh;padding:calc(14px + env(safe-area-inset-top)) 16px calc(12px + env(safe-area-inset-bottom));max-width:1400px;margin:0 auto}
+.glass{background:var(--glass);border:1px solid var(--edge);border-radius:14px;backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 0 0 1px rgba(0,0,0,.25),0 18px 40px rgba(0,0,0,.35);position:relative}
+.glass::after{content:"";position:absolute;inset:-1px;border-radius:14px;pointer-events:none;
+  background:linear-gradient(var(--cyan),var(--cyan)) top left/18px 2px no-repeat,linear-gradient(var(--cyan),var(--cyan)) top left/2px 18px no-repeat,
+             linear-gradient(var(--cyan),var(--cyan)) bottom right/18px 2px no-repeat,linear-gradient(var(--cyan),var(--cyan)) bottom right/2px 18px no-repeat;opacity:.8}
+.label{font:600 11px/1 var(--hud);letter-spacing:.18em;color:var(--cyan);text-transform:uppercase}
+header{grid-column:1/-1;display:flex;align-items:center;gap:16px;padding:10px 16px}
+header h1{font:600 22px/1 var(--hud);letter-spacing:.32em;margin:0;color:var(--cyan-soft);text-shadow:0 0 14px rgba(95,214,255,.55)}
+header .sub{font:400 13px/1 var(--hud);color:var(--ink2);letter-spacing:.08em}
+#clock{margin-left:auto;font:600 20px/1 var(--hud);letter-spacing:.12em;font-variant-numeric:tabular-nums}
+#link{font:600 12px/1 var(--hud);letter-spacing:.12em;padding:6px 10px;border:1px solid var(--edge);border-radius:999px;color:var(--green)}
+#link.bad{color:var(--amber);border-color:rgba(255,181,71,.5)}
+aside{display:flex;flex-direction:column;gap:14px;min-height:0;overflow:auto;scrollbar-width:none}
+.panel{padding:14px 16px}
+.panel h2{margin:0 0 10px}
+.big{font:600 34px/1 var(--hud);font-variant-numeric:tabular-nums;color:var(--ink)}
+.big small{font-size:14px;color:var(--ink2);letter-spacing:.06em;margin-left:6px}
+.rows{display:grid;grid-template-columns:1fr auto;gap:6px 10px;font-size:14px;color:var(--ink2);margin-top:10px}
+.rows b{font:600 15px/1.2 var(--hud);color:var(--ink);font-variant-numeric:tabular-nums;text-align:right}
+.rows b.warn{color:var(--amber)} .rows b.ok{color:var(--green)}
+.bar{height:6px;border-radius:3px;background:rgba(95,214,255,.12);margin-top:10px;overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--cyan-soft));box-shadow:0 0 10px var(--cyan)}
+.center{display:grid;grid-template-rows:auto minmax(0,1fr);gap:12px;min-height:0}
+.core-wrap{display:grid;place-items:center;padding:6px 0 0}
+.core{position:relative;width:190px;height:190px;cursor:pointer;border:0;background:none;padding:0}
+.core svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.core .ring{transform-origin:50% 50%}
+.r1{animation:spin 26s linear infinite}.r2{animation:spin 16s linear infinite reverse}.r3{animation:spin 9s linear infinite}
+.core .heart{filter:drop-shadow(0 0 14px var(--cyan)) drop-shadow(0 0 30px rgba(95,214,255,.6));transition:transform .3s}
+.core-state{position:absolute;inset:0;display:grid;place-items:center;font:600 12px/1 var(--hud);letter-spacing:.24em;color:var(--cyan-soft);pointer-events:none;padding-top:120px}
+body.think .r1{animation-duration:6s}body.think .r2{animation-duration:3.5s}body.think .r3{animation-duration:2s}
+body.think .heart{animation:pulse 1.1s ease-in-out infinite}
+body.listen .heart{animation:pulse .6s ease-in-out infinite;filter:drop-shadow(0 0 16px var(--amber)) drop-shadow(0 0 34px rgba(255,181,71,.6))}
+body.listen .r3 circle{stroke:var(--amber)}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{50%{transform:scale(1.08)}}
+#log{overflow-y:auto;padding:16px;min-height:0;scroll-behavior:smooth}
+.msg{margin:0 0 12px;max-width:92%;white-space:pre-wrap;word-wrap:break-word}
+.msg.me{margin-left:auto;text-align:right;color:var(--cyan-soft);font-family:var(--hud);letter-spacing:.02em}
+.msg.me::before{content:"YOU  ";font:600 10px/1 var(--hud);letter-spacing:.2em;color:var(--ink2)}
+.msg.j{border-left:2px solid var(--cyan);padding:2px 0 2px 12px}
+.msg.j::before{content:"JARVIS";display:block;font:600 10px/1.6 var(--hud);letter-spacing:.24em;color:var(--cyan)}
+.msg .steps{color:var(--ink2);font:400 12px/1.4 var(--hud);letter-spacing:.06em;margin-top:6px}
+.msg .files{margin-top:8px;font-size:13px;color:var(--ink2)}
+.msg .files{display:flex;flex-wrap:wrap;gap:8px}
+.msg a.file{color:var(--cyan-soft);text-decoration:none;border:1px solid var(--edge);border-radius:8px;padding:6px 10px;font:600 12px/1.2 var(--hud);letter-spacing:.04em}
+.mail{margin-top:10px;border:1px solid rgba(255,181,71,.45);border-radius:10px;padding:10px 12px;background:rgba(255,181,71,.05)}
+.mail .label{color:var(--amber)}.mail .mhead{font:400 13px/1.5 var(--hud);color:var(--ink2);white-space:pre-wrap;margin:6px 0}
+.mail .mbody{font-size:14px;max-height:200px;overflow:auto;border-top:1px solid var(--edge);padding-top:6px}
+.mail .mrow{display:flex;gap:8px;margin-top:10px}.mail button{font:600 12px/1 var(--hud);letter-spacing:.1em;text-transform:uppercase;padding:10px 16px;border-radius:8px;border:1px solid var(--edge);background:transparent;color:var(--ink2);cursor:pointer}
+.mail button.go{background:var(--amber);color:#1a1205;border-color:var(--amber)}
+.msg.note{color:var(--amber);font:400 13px/1.4 var(--hud);text-align:center;max-width:100%}
+.empty{color:var(--ink2);font:400 14px/1.6 var(--hud);letter-spacing:.06em;text-align:center;margin-top:24px}
+footer{grid-column:1/-1;display:grid;gap:10px}
+#chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+#chips button{flex:none;font:600 12px/1 var(--hud);letter-spacing:.1em;text-transform:uppercase;color:var(--cyan-soft);background:rgba(95,214,255,.06);border:1px solid var(--edge);border-radius:8px;padding:9px 12px;cursor:pointer}
+#chips button:hover{border-color:var(--edge-hi);background:rgba(95,214,255,.12)}
+form{display:flex;gap:10px;align-items:flex-end;padding:8px}
+textarea{flex:1;resize:none;border:0;background:transparent;color:var(--ink);font:16px/1.4 var(--text);padding:10px 8px;min-height:44px;max-height:150px}
+textarea::placeholder{color:var(--ink2)}
+textarea:focus{outline:none}
+form:focus-within{border-color:var(--edge-hi);box-shadow:0 0 0 1px var(--edge-hi),0 0 24px rgba(95,214,255,.2)}
+.btn{width:46px;height:46px;border-radius:12px;border:1px solid var(--edge);background:rgba(95,214,255,.08);color:var(--cyan-soft);display:grid;place-items:center;cursor:pointer;flex:none}
+.btn:hover{border-color:var(--edge-hi)}
+#send.stop{color:var(--red);border-color:rgba(255,107,107,.6)}
+#mic.on{color:var(--amber);border-color:rgba(255,181,71,.7);box-shadow:0 0 18px rgba(255,181,71,.35)}
+.btn svg{width:22px;height:22px}
+button:focus-visible,textarea:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+#pair{display:none;padding:12px 16px;color:var(--amber);font:400 14px/1.5 var(--hud)}
+@media (max-width:980px){
+  html,body{overflow:auto}
+  .app{grid-template-columns:1fr;grid-template-rows:none;height:auto;min-height:100dvh}
+  .center{order:2}
+  .center .glass{max-height:58dvh}
+  footer{order:3}
+  aside.left{order:4;display:grid;grid-template-columns:1fr 1fr}
+  aside.right{order:5;display:grid;grid-template-columns:1fr 1fr}
+  .core{width:130px;height:130px}.core-state{padding-top:84px;font-size:10px}
+  header .sub{display:none}
+}
+@media (max-width:520px){aside.left,aside.right{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.r1,.r2,.r3,.heart{animation:none!important}}
 </style>
+<script>
+/* Boot for the Jarvis Home Screen app at the fixed GitHub address (published by tunnel.js into jarvis/index.html, 7 Nov 2026).
+   It holds no data. It reads this phone's key (from the address after # or this page's storage), reads where.json — the Mac's
+   current tunnel address, AES-GCM-encrypted with a key only linked phones have — and starts the app with them. The app then talks
+   to the Mac directly and stays on this page, so a changed Mac address never breaks the Home Screen icon. */
+window.JARVIS_BOOT = (function () {
+  var KEY = 'jarvisPhoneKey', LAST = 'jarvisMacAt';
+  var get = function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } };
+  var put = function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} };
+  var b64 = function (s) { s = s.replace(/-/g, '+').replace(/_/g, '/'); while (s.length % 4) s += '='; var b = atob(s), u = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return u; };
+  var h = location.hash, m = /#save=([\w-]+\.[\w-]+)/.exec(h) || /#k=([\w-]+\.[\w-]+)/.exec(h), fresh = /#save=/.test(h);
+  // the key also stays in the address (after #, which never leaves the phone), so an icon made from this page carries it
+  if (m) { put(KEY, m[1]); history.replaceState(null, '', location.pathname + '#k=' + m[1]); }
+  var k = (m && m[1]) || get(KEY);
+  function notice(title, text) {
+    var d = document.createElement('div');
+    d.setAttribute('role', 'dialog'); d.setAttribute('aria-live', 'polite');
+    d.style.cssText = 'position:fixed;inset:0;z-index:99;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(2,10,18,.88);color:#d9f4ff;font:16px/1.5 -apple-system,Helvetica,Arial,sans-serif;text-align:center';
+    d.innerHTML = '<div style="max-width:420px;border:1px solid rgba(120,220,255,.35);border-radius:18px;padding:22px;background:rgba(120,220,255,.07)"><h2 style="margin:0 0 8px;color:#7fe3ff;font-size:20px"></h2><p style="margin:0"></p><button type="button" style="margin-top:16px;width:100%;padding:14px;border:0;border-radius:12px;background:#7fe3ff;color:#021018;font:600 16px -apple-system,Helvetica,Arial,sans-serif">OK</button></div>';
+    d.querySelector('h2').textContent = title; d.querySelector('p').textContent = text;
+    var add = function () { document.body.appendChild(d); }; if (document.body) add(); else document.addEventListener('DOMContentLoaded', add);
+    return new Promise(function (res) { d.querySelector('button').onclick = function () { d.remove(); res(); }; });
+  }
+  if (!k) { notice('This phone is not linked', 'Open the Jarvis link Claude sent you, once. After that this icon opens Jarvis by itself.'); return new Promise(function () {}); }
+  var parts = k.split('.'), dev = parts[0], s = parts[1];
+  function where() {
+    return fetch('where.json?t=' + Date.now(), { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error('where ' + r.status); return r.json(); })
+      .then(function (w) { return crypto.subtle.importKey('raw', b64(s), 'AES-GCM', false, ['decrypt']).then(function (ck) { return crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(w.iv) }, ck, b64(w.ct)); }); })
+      .then(function (buf) { var u = JSON.parse(new TextDecoder().decode(buf)).url; put(LAST, u); JV.base = u; return u; });
+  }
+  var JV = { base: get(LAST) || '', dev: dev, refresh: where };
+  var ready = where().catch(function () { return JV.base; }).then(function () { return JV; });
+  if (fresh) return notice('Jarvis is set up on this phone', 'Add it to your Home Screen now: tap Share, then Add to Home Screen. This icon finds your Mac by itself, even when the Mac’s address changes.').then(function () { return ready; });
+  return ready;
+})();
+
+</script>
 </head>
 <body>
-<main>
-  <svg class="core" viewBox="0 0 132 132" aria-hidden="true">
-    <circle cx="66" cy="66" r="62" stroke-opacity=".25" stroke-width="1"/>
-    <g class="spin"><circle cx="66" cy="66" r="50" stroke-width="3" stroke-dasharray="40 22" stroke-opacity=".8"/></g>
-    <circle cx="66" cy="66" r="30" stroke-width="1.5" stroke-opacity=".6"/>
-    <circle cx="66" cy="66" r="12" fill="#7fe3ff" fill-opacity=".85" stroke="none"/>
-  </svg>
-  <div class="panel" role="status" aria-live="polite">
-    <h1 id="h">Jarvis</h1>
-    <p id="msg">Finding your Mac…</p>
-    <p class="dim" id="sub"></p>
-    <button id="go" hidden>Try again</button>
-  </div>
-</main>
+<div class="app">
+  <header class="glass">
+    <h1>JARVIS</h1><span class="sub">personal assistant · Tufiel</span>
+    <span id="link">LINKING</span>
+    <span id="clock">--:--</span>
+  </header>
+
+  <aside class="left">
+    <section class="glass panel" aria-label="Dispatch plan">
+      <h2 class="label">Dispatch plan</h2>
+      <div class="big" id="loads">--<small>loads 14.2 kg</small></div>
+      <div class="rows"><span>19 kg on trucks</span><b id="d19">--</b><span>5 kg on trucks</span><b id="d5">--</b><span>below 14.2 floor</span><b id="below" class="warn">--</b><span>bookings &gt; 7 days</span><b id="backlog">--</b></div>
+      <div class="rows"><span id="asOn" style="grid-column:1/-1;font-size:12px"></span></div>
+    </section>
+    <section class="glass panel" aria-label="Mail">
+      <h2 class="label">Mail waiting on you</h2>
+      <div class="big" id="mail">--<small>to answer</small></div>
+      <div class="rows"><span>overdue</span><b id="overdue" class="warn">--</b><span>drafts ready</span><b id="drafted" class="ok">--</b></div>
+    </section>
+  </aside>
+
+  <section class="center">
+    <div class="core-wrap">
+      <button class="core" id="core" aria-label="Talk to Jarvis">
+        <svg viewBox="0 0 200 200" aria-hidden="true">
+          <g class="ring r1"><circle cx="100" cy="100" r="94" fill="none" stroke="rgba(95,214,255,.35)" stroke-width="1" stroke-dasharray="2 6"/></g>
+          <g class="ring r2"><circle cx="100" cy="100" r="80" fill="none" stroke="rgba(95,214,255,.6)" stroke-width="3" stroke-dasharray="60 22 8 22"/></g>
+          <g class="ring r3"><circle cx="100" cy="100" r="64" fill="none" stroke="#5fd6ff" stroke-width="1.5" stroke-dasharray="120 40"/></g>
+          <g class="heart" style="transform-origin:100px 100px">
+            <circle cx="100" cy="100" r="44" fill="rgba(95,214,255,.08)" stroke="#9fe6ff" stroke-width="2"/>
+            <circle cx="100" cy="100" r="26" fill="rgba(159,230,255,.9)"/>
+            <circle cx="100" cy="100" r="16" fill="#e6f8ff"/>
+          </g>
+        </svg>
+        <span class="core-state" id="coreState">READY</span>
+      </button>
+    </div>
+    <div class="glass" style="display:flex;flex-direction:column;min-height:0">
+      <div id="log" aria-live="polite"><div class="empty" id="empty">Tap the core or type below. Ask about your work, your files and mails, research, or anything else.</div></div>
+      <div id="pair"></div>
+    </div>
+  </section>
+
+  <aside class="right">
+    <section class="glass panel" aria-label="LLRO system">
+      <h2 class="label">LLRO system</h2>
+      <div class="big" id="reports">--<small>reports in</small></div>
+      <div class="bar"><i id="repBar" style="width:0"></i></div>
+      <div class="rows"><span>fetcher heard</span><b id="fetcher">--</b><span>open alerts</span><b id="alerts">--</b><span>dashboard updated</span><b id="dash">--</b></div>
+    </section>
+    <section class="glass panel" aria-label="Memory">
+      <h2 class="label">Memory</h2>
+      <div class="rows"><span>files read</span><b id="mFiles">--</b><span>mails read</span><b id="mMails">--</b><span>web pages</span><b id="mWeb">--</b><span>tasks waiting</span><b id="tasks">--</b></div>
+    </section>
+  </aside>
+
+  <footer>
+    <div id="chips"></div>
+    <form id="f" class="glass" autocomplete="off">
+      <button type="button" id="mic" class="btn" aria-label="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
+      <textarea id="q" rows="1" placeholder="Speak or type a command" aria-label="Message"></textarea>
+      <button type="submit" id="send" class="btn" aria-label="Send"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    </form>
+  </footer>
+</div>
 <script>
-(function () {
+/* On the Mac and through the tunnel this page talks to its own server. Published on GitHub (the fixed Home Screen address) it is
+   started by JARVIS_BOOT, which finds the Mac's current address and gives this phone's key; the app then never leaves that page. */
+(window.JARVIS_BOOT || Promise.resolve(null)).then(function (JV) {
+  'use strict';
   var $ = function (id) { return document.getElementById(id); };
-  var KEY = 'jarvisPhoneKey';
-  function say(h, m, sub, btn) { $('h').textContent = h; $('msg').textContent = m; $('sub').textContent = sub || ''; $('go').hidden = !btn; if (btn) $('go').textContent = btn; }
-  function store(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
-  function stored() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
-  var b64 = function (s) { s = s.replace(/-/g, '+').replace(/_/g, '/'); while (s.length % 4) s += '='; var b = atob(s), u = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return u; };
-
-  // 1) just linked: the Mac sent this phone's key here (#save=). Kept in this page's storage and in the address itself,
-  //    so a Home Screen icon made from this page carries it too (the part after # never leaves the phone).
-  var h = location.hash, m = /#save=([\w-]+\.[\w-]+)/.exec(h) || /#k=([\w-]+\.[\w-]+)/.exec(h);
-  if (m) { store(m[1]); history.replaceState(null, '', location.pathname + '#k=' + m[1]); }
-  var k = (m && m[1]) || stored();
-  if (/#save=/.test(h)) {
-    say('Jarvis is set up on this phone', 'Add it to your Home Screen now: tap Share, then Add to Home Screen.', 'This address never changes. It finds your Mac by itself, even after the Mac restarts.', 'Open Jarvis');
-    $('go').onclick = function () { open(); };
-    return;
+  var log = $('log'), q = $('q'), f = $('f'), send = $('send'), mic = $('mic'), linkEl = $('link'), coreState = $('coreState');
+  var job = null, timer = null, KEY = 'jarvis.history';
+  var CHIPS = ['Morning brief', 'WhatsApp: who needs a reply?', 'Social: anything new?', 'My calendar today', 'Remind me about ', 'My reminders', 'What was I working on yesterday?', "Today's indent plan", 'Mail waiting on me', 'Search the internet: ', 'Make a PPT on ', 'Make a Word note on ', 'Research in my files: '];
+  function ls(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem(k) || 'null'); localStorage.setItem(k, JSON.stringify(v)); } catch (e) { return null; } }
+  function mode(m, label) { document.body.classList.remove('think', 'listen'); if (m) document.body.classList.add(m); coreState.textContent = label || 'READY'; }
+  function add(who, text, extra) {
+    var e = $('empty'); if (e) e.remove();
+    var d = document.createElement('div'); d.className = 'msg ' + who; d.appendChild(document.createTextNode(text));
+    if (extra && extra.files && extra.files.length) { var fl = document.createElement('div'); fl.className = 'files'; extra.files.forEach(function (p) { var l = document.createElement('a'); l.href = (JV ? JV.base : '') + '/api/jarvis/file?f=' + encodeURIComponent(p); l.className = 'file'; l.textContent = '⬇ ' + String(p).split('/').pop(); l.setAttribute('download', '');
+        if (JV) l.onclick = function (ev) { ev.preventDefault(); var nm = String(p).split('/').pop(); fetch(l.href, { headers: { 'X-Jarvis-Device': JV.dev } }).then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.blob(); }).then(function (b) { var u = URL.createObjectURL(b), a = document.createElement('a'); a.href = u; a.download = nm; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(u); a.remove(); }, 60000); }).catch(function (e) { add('note', 'Could not download ' + nm + ': ' + e.message); }); }; fl.appendChild(l); }); d.appendChild(fl); }
+    if (extra && extra.mails && extra.mails.length) extra.mails.forEach(function (m) { d.appendChild(mailCard(m)); });
+    if (extra && extra.was && extra.was.length) extra.was.forEach(function (m) { d.appendChild(waCard(m)); });
+    log.appendChild(d); log.scrollTop = log.scrollHeight; return d;
   }
-  if (!k) { say('This phone is not linked', 'Open the Jarvis link Claude sent you, once. After that this page opens Jarvis by itself.', ''); return; }
+  function mailCard(m) {
+    var c = document.createElement('div'); c.className = 'mail';
+    var h = document.createElement('div'); h.className = 'label'; h.textContent = 'Mail ready — not sent'; c.appendChild(h);
+    var t = document.createElement('div'); t.className = 'mhead'; t.textContent = 'To: ' + (m.to || []).join(', ') + ((m.cc || []).length ? '  ·  Cc: ' + m.cc.join(', ') : '') + '\nSubject: ' + (m.subject || '') + ((m.attach || []).length ? '\nAttached: ' + m.attach.map(function (p) { return String(p).split('/').pop(); }).join(', ') : ''); c.appendChild(t);
+    var b = document.createElement('div'); b.className = 'mbody'; b.textContent = m.body || ''; c.appendChild(b);
+    var row = document.createElement('div'); row.className = 'mrow';
+    var s = document.createElement('button'); s.type = 'button'; s.className = 'go'; s.textContent = 'Send';
+    var x = document.createElement('button'); x.type = 'button'; x.textContent = 'Drop';
+    s.onclick = function () { s.disabled = x.disabled = true; s.textContent = 'Sending…'; api('mailSend', { id: m.id }).then(function (r) { h.textContent = /^Sent/.test(r.say) ? 'Sent' : 'Not sent'; add('j', r.say); remember('j', r.say); row.remove(); }).catch(function (e) { s.disabled = x.disabled = false; s.textContent = 'Send'; add('note', e.message); }); };
+    x.onclick = function () { api('mailDrop', { id: m.id }).then(function () { h.textContent = 'Dropped — not sent'; row.remove(); }); };
+    row.appendChild(s); row.appendChild(x); c.appendChild(row); return c;
+  }
+  function waCard(m) {
+    var c = document.createElement('div'); c.className = 'mail';
+    var h = document.createElement('div'); h.className = 'label'; h.textContent = 'WhatsApp reply ready — not sent'; c.appendChild(h);
+    var t = document.createElement('div'); t.className = 'mhead'; t.textContent = 'To: ' + m.chat; c.appendChild(t);
+    var b = document.createElement('div'); b.className = 'mbody'; b.textContent = m.text || ''; c.appendChild(b);
+    var row = document.createElement('div'); row.className = 'mrow';
+    var s = document.createElement('button'); s.type = 'button'; s.className = 'go'; s.textContent = 'Send on WhatsApp';
+    var x = document.createElement('button'); x.type = 'button'; x.textContent = 'Drop';
+    s.onclick = function () { s.disabled = x.disabled = true; s.textContent = 'Sending…'; api('waSend', { id: m.id }).then(function (r) { h.textContent = /^Sent/.test(r.say) ? 'Sent' : 'Not sent'; add('j', r.say); remember('j', r.say); row.remove(); }).catch(function (e) { s.disabled = x.disabled = false; s.textContent = 'Send on WhatsApp'; add('note', e.message); }); };
+    x.onclick = function () { api('waDrop', { id: m.id }).then(function () { h.textContent = 'Dropped — not sent'; row.remove(); }); };
+    row.appendChild(s); row.appendChild(x); c.appendChild(row); return c;
+  }
+  // the morning brief (made by the Mac at 9:45); "Morning brief" makes a fresh one when there is none for today
+  function showBrief(make) {
+    api('brief').then(function (r) {
+      var b = r.data, today = new Date(Date.now() + 330 * 60000).toISOString().slice(0, 10);
+      if (b && b.day === today && b.say) { add('j', 'MORNING BRIEF · ' + hm(b.at) + '\n\n' + b.say); return; }
+      if (!make) return;
+      var p = add('j', 'Making your morning brief… (a minute or two)'); busy(true);
+      api('briefNow').then(function (x) { p.remove(); add('j', 'MORNING BRIEF\n\n' + (x.say || '')); speak(x.say); busy(false); }).catch(function (e) { p.firstChild.nodeValue = 'Could not make it: ' + e.message; busy(false); });
+    }).catch(function () {});
+  }
+  function remember(who, text) { var h = ls(KEY) || []; h.push([who, text]); ls(KEY, h.slice(-60)); }
+  (ls(KEY) || []).forEach(function (m) { add(m[0], m[1]); });
+  CHIPS.forEach(function (c) { var b = document.createElement('button'); b.type = 'button'; b.textContent = c.replace(/: $| about $| on $/, ''); b.onclick = function () { if (c === 'Morning brief') { showBrief(true); return; } if (/: $|about $| on $/.test(c)) { q.value = c; q.focus(); } else ask(c); }; $('chips').appendChild(b); });
 
-  function open() {
-    say('Jarvis', 'Finding your Mac…', '');
-    var parts = k.split('.'), dev = parts[0], s = parts[1];
-    fetch('where.json?t=' + Date.now(), { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error('where ' + r.status); return r.json(); })
-      .then(function (w) { return crypto.subtle.importKey('raw', b64(s), 'AES-GCM', false, ['decrypt']).then(function (ck) { return crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(w.iv) }, ck, b64(w.ct)); }); })
-      .then(function (buf) {
-        var w = JSON.parse(new TextDecoder().decode(buf));
-        say('Jarvis', 'Connecting…', '');
-        location.replace(w.url + '/jarvis.html#dev=' + dev);
+  function api(cmd, args) {
+    var go = function () {
+      return fetch((JV ? JV.base : '') + '/api/jarvis', { method: 'POST', credentials: JV ? 'omit' : 'same-origin', headers: JV ? { 'Content-Type': 'application/json', 'X-Jarvis-Device': JV.dev } : { 'Content-Type': 'application/json' }, body: JSON.stringify({ cmd: cmd, args: args || {} }) })
+        .then(function (r) { return r.json().then(function (j) { if (!r.ok) throw new Error(j.error || ('HTTP ' + r.status)); return j; }); });
+    };
+    // from GitHub: if the Mac's address has changed, look it up again and try once more
+    return go().catch(function (e) { if (!JV || /linked|Not available/.test(e.message)) throw e; return JV.refresh().then(go); });
+  }
+  function busy(on) { send.classList.toggle('stop', on); send.setAttribute('aria-label', on ? 'Stop' : 'Send'); if (on) mode('think', 'THINKING'); else mode(); }
+  function speak(t) { if (!window.speechSynthesis || !t) return; try { var u = new SpeechSynthesisUtterance(String(t).replace(/[*#`|]/g, ' ').slice(0, 600)); u.lang = 'en-IN'; speechSynthesis.cancel(); speechSynthesis.speak(u); } catch (e) {} }
+  function ask(text) {
+    text = String(text || '').trim(); if (!text) return;
+    if (job) stop();
+    add('me', text); remember('me', text); q.value = ''; q.style.height = '';
+    var pending = add('j', 'Working on it…'); busy(true);
+    api('chatStart', { text: text }).then(function (r) {
+      if (!r.job) { pending.firstChild.nodeValue = r.say || 'Done.'; remember('j', r.say || 'Done.'); busy(false); return; }
+      job = r.job; if (r.background) pending.firstChild.nodeValue = 'This takes a few minutes. I will put it here when it is ready.'; poll(pending);
+    }).catch(function (e) { pending.firstChild.nodeValue = 'I could not reach your Mac: ' + e.message; busy(false); online(); });
+  }
+  function poll(el) {
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      if (!job) return;
+      api('chatPoll', { id: job }).then(function (p) {
+        if (p.state === 'gone') { el.firstChild.nodeValue = 'That request was lost (the server restarted). Please ask again.'; job = null; busy(false); return; }
+        if (p.state === 'working') { el.firstChild.nodeValue = p.text || 'Working on it…'; var s = el.querySelector('.steps'); if (!s) { s = document.createElement('div'); s.className = 'steps'; el.appendChild(s); } s.textContent = (p.steps || []).join(' · ').toUpperCase(); log.scrollTop = log.scrollHeight; poll(el); return; }
+        var res = p.result || {}, say = res.say || p.error || (p.state === 'stopped' ? 'Stopped.' : 'Done.');
+        el.remove(); add('j', say, { files: res.files, mails: res.mails, was: res.was }); remember('j', say); speak(say); job = null; busy(false); hud();
+      }).catch(function () { poll(el); });
+    }, 1400);
+  }
+  function stop() { if (!job) return; api('chatStop', { id: job }).catch(function () {}); job = null; busy(false); }
+  f.onsubmit = function (e) { e.preventDefault(); if (job) { stop(); return; } ask(q.value); };
+  q.addEventListener('keydown', function (e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); f.onsubmit(e); } });
+  q.addEventListener('input', function () { q.style.height = 'auto'; q.style.height = Math.min(150, q.scrollHeight) + 'px'; });
+
+  // voice
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition, rec = null;
+  function listen() {
+    if (!SR) { q.focus(); return; }
+    if (rec) { rec.stop(); return; }
+    rec = new SR(); rec.lang = 'en-IN'; rec.interimResults = true; rec.continuous = false;
+    mic.classList.add('on'); mode('listen', 'LISTENING');
+    rec.onresult = function (e) { var t = ''; for (var i = 0; i < e.results.length; i++) t += e.results[i][0].transcript; q.value = t; if (e.results[e.results.length - 1].isFinal) { rec.stop(); ask(t); } };
+    rec.onend = function () { mic.classList.remove('on'); rec = null; if (!job) mode(); };
+    rec.onerror = function () { mic.classList.remove('on'); rec = null; if (!job) mode(); };
+    rec.start();
+  }
+  mic.onclick = listen; $('core').onclick = function () { if (job) stop(); else listen(); };
+  if (!SR) mic.style.display = 'none';
+
+  // side panels
+  function n(x) { return x == null ? '--' : Number(x).toLocaleString('en-IN'); }
+  function hm(iso) { if (!iso) return '--'; var d = new Date(iso); return d.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: false }); }
+  function hud() {
+    api('hud').then(function (h) {
+      linkEl.textContent = 'MAC ONLINE'; linkEl.className = '';
+      if (h.indent) { $('loads').firstChild.nodeValue = n(h.indent.loads); $('d19').textContent = n(h.indent.d19); $('d5').textContent = n(h.indent.d5); $('below').textContent = n(h.indent.below); $('backlog').textContent = n(h.indent.backlog); $('asOn').textContent = 'stock as on ' + (h.indent.asOn || '--'); }
+      if (h.mail) { $('mail').firstChild.nodeValue = n(h.mail.waiting); $('overdue').textContent = n(h.mail.overdue); $('drafted').textContent = n(h.mail.drafted); }
+      var r = h.reports || {}; $('reports').firstChild.nodeValue = (r.have == null ? '--' : r.have + '/' + r.need); $('repBar').style.width = r.need ? Math.round(100 * r.have / r.need) + '%' : '0';
+      $('fetcher').textContent = h.fetcherMin == null ? '--' : h.fetcherMin <= 1 ? 'now' : h.fetcherMin + ' min'; $('fetcher').className = h.fetcherMin > 15 ? 'warn' : 'ok';
+      $('alerts').textContent = n(h.alerts); $('alerts').className = h.alerts ? 'warn' : 'ok'; $('dash').textContent = hm(h.dashboard);
+      if (h.memory) { $('mFiles').textContent = n(h.memory.files); $('mMails').textContent = n(h.memory.mails); $('mWeb').textContent = n(h.memory.web); }
+      $('tasks').textContent = n(h.tasks);
+    }).catch(function (e) { online(e); });
+  }
+  function online(e) {
+    var msg = e ? e.message : '';
+    if (/linked|403|401/.test(msg)) { linkEl.textContent = 'NOT LINKED'; linkEl.className = 'bad'; var p = $('pair'); p.style.display = 'block'; p.textContent = 'This phone is not linked yet. Open the latest Jarvis link Claude sent you (it works once); Jarvis then stays signed in here for 30 days.'; }
+    else if (msg) { linkEl.textContent = 'MAC OFFLINE'; linkEl.className = 'bad'; }
+  }
+  function tick() { var d = new Date(); $('clock').textContent = d.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: false }); }
+  tick(); setInterval(tick, 15000);
+
+  var m = !JV && /#pair=([\w-]+)/.exec(location.hash), dv = !JV && /#dev=([\w-]+)/.exec(location.hash);
+  if (m) {
+    fetch('/api/phone/redeem', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token: m[1] }) })
+      .then(function (r) { return r.json(); }).then(function (j) {
+        history.replaceState(null, '', location.pathname);
+        // the phone's lasting key goes to the fixed Jarvis address (GitHub), which always finds the Mac's current address
+        if (!j.error && j.home && j.dev) { location.replace(j.home + '#save=' + j.dev + '.' + j.s); return; }
+        add('note', j.error ? j.error : 'This phone is linked. Add Jarvis to your Home Screen: Share › Add to Home Screen.'); hud();
       })
-      .catch(function (e) {
-        if (/OperationError/.test(String(e && e.name)) ) say('This phone needs a new link', 'Open the newest Jarvis link Claude sent you, once.', '');
-        else say('Your Mac is not answering', 'It may be asleep, offline, or restarting. Jarvis comes back by itself when the Mac is on.', String(e && e.message || e).slice(0, 80), 'Try again');
-        $('go').onclick = open;
-      });
-  }
-  open();
-})();
+      .catch(function () { hud(); });
+  } else if (dv) {
+    // came from the fixed Jarvis address with this phone's key: signed in again at the Mac's current address
+    fetch('/api/phone/device', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ dev: dv[1] }) })
+      .then(function (r) { return r.json(); }).then(function (j) { history.replaceState(null, '', location.pathname); if (j.error) add('note', j.error); hud(); })
+      .catch(function () { history.replaceState(null, '', location.pathname); hud(); });
+  } else hud();
+  setInterval(hud, 120000);
+  showBrief(false);
+});
 </script>
 </body>
 </html>
