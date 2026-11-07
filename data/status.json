@@ -1,12 +1,5 @@
 {
  "app": "llro-status",
- "updated": "2026-11-07T05:11:48.700Z",
- "open": [
-  {
-   "key": "preflight",
-   "level": "warn",
-   "since": "2026-11-07T03:36:13.117Z",
-   "say": "Morning self-check found something that needs you on the Mac"
-  }
- ]
+ "updated": "2026-11-07T05:15:37.921Z",
+ "open": []
 }
