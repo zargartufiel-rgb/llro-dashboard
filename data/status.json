@@ -1,24 +1,12 @@
 {
  "app": "llro-status",
- "updated": "2026-11-09T12:28:08.154Z",
+ "updated": "2026-11-09T12:29:28.555Z",
  "open": [
   {
    "key": "signin",
    "level": "warn",
    "since": "2026-11-09T08:58:39.008Z",
    "say": "Sign-in needed on the Mac: LPG MIS, ARB, HP Gas web, Spotfire, Dealer evaluation"
-  },
-  {
-   "key": "publish",
-   "level": "error",
-   "since": "2026-11-09T09:10:27.613Z",
-   "say": "The dashboard could not be updated"
-  },
-  {
-   "key": "agentstuck",
-   "level": "warn",
-   "since": "2026-11-09T12:07:22.036Z",
-   "say": "Report fetcher stuck on one job in Chrome"
   },
   {
    "key": "preflight",
