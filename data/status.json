@@ -1,5 +1,12 @@
 {
  "app": "llro-status",
- "updated": "2026-11-11T13:55:54.241Z",
- "open": []
+ "updated": "2026-11-11T14:01:08.765Z",
+ "open": [
+  {
+   "key": "signin",
+   "level": "warn",
+   "since": "2026-11-11T14:00:08.759Z",
+   "say": "Sign-in needed on the Mac: LPG MIS, ARB"
+  }
+ ]
 }
