@@ -1,12 +1,18 @@
 {
  "app": "llro-status",
- "updated": "2026-11-12T07:22:26.810Z",
+ "updated": "2026-11-12T08:12:26.855Z",
  "open": [
   {
    "key": "signin",
    "level": "warn",
    "since": "2026-11-12T07:22:26.777Z",
    "say": "Sign-in needed on the Mac: ARB"
+  },
+  {
+   "key": "preflight",
+   "level": "warn",
+   "since": "2026-11-12T08:12:05.434Z",
+   "say": "Morning self-check found something that needs you on the Mac"
   }
  ]
 }
