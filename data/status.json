@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-13T05:46:03.816Z",
+ "updated": "2026-11-13T06:01:28.444Z",
  "open": [
   {
    "key": "signin",
@@ -19,6 +19,12 @@
    "level": "warn",
    "since": "2026-11-13T05:45:03.811Z",
    "say": "Morning self-check found something that needs you on the Mac"
+  },
+  {
+   "key": "incomplete",
+   "level": "warn",
+   "since": "2026-11-13T06:01:28.423Z",
+   "say": "Today's reports are not complete"
   }
  ]
 }
