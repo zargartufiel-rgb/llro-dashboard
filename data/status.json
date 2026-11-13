@@ -1,12 +1,18 @@
 {
  "app": "llro-status",
- "updated": "2026-11-13T04:07:14.644Z",
+ "updated": "2026-11-13T04:13:14.746Z",
  "open": [
   {
    "key": "mailsync",
    "level": "warn",
    "since": "2026-11-13T04:02:14.688Z",
    "say": "Mailed reports are not reaching the Mac: open OneDrive on the Mac and sign in"
+  },
+  {
+   "key": "signin",
+   "level": "warn",
+   "since": "2026-11-13T04:12:14.739Z",
+   "say": "Sign-in needed on the Mac: ARB"
   }
  ]
 }
