@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-13T06:01:28.444Z",
+ "updated": "2026-11-13T08:08:34.318Z",
  "open": [
   {
    "key": "signin",
@@ -15,16 +15,16 @@
    "say": "LLRO needs attention: see the server console on the Mac"
   },
   {
-   "key": "preflight",
-   "level": "warn",
-   "since": "2026-11-13T05:45:03.811Z",
-   "say": "Morning self-check found something that needs you on the Mac"
-  },
-  {
    "key": "incomplete",
    "level": "warn",
    "since": "2026-11-13T06:01:28.423Z",
    "say": "Today's reports are not complete"
+  },
+  {
+   "key": "preflight",
+   "level": "warn",
+   "since": "2026-11-13T08:08:12.594Z",
+   "say": "Morning self-check found something that needs you on the Mac"
   }
  ]
 }
