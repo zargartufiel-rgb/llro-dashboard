@@ -1,12 +1,12 @@
 {
  "app": "llro-status",
- "updated": "2026-11-14T08:51:18.748Z",
+ "updated": "2026-11-14T11:02:10.925Z",
  "open": [
   {
    "key": "signin",
    "level": "warn",
    "since": "2026-11-14T05:41:54.634Z",
-   "say": "Sign-in needed on the Mac: ARB"
+   "say": "Sign-in needed on the Mac: ARB, Dealer evaluation"
   },
   {
    "key": "verify",
@@ -19,6 +19,12 @@
    "level": "warn",
    "since": "2026-11-14T08:50:18.738Z",
    "say": "Today's reports are not complete"
+  },
+  {
+   "key": "publish",
+   "level": "error",
+   "since": "2026-11-14T11:01:10.922Z",
+   "say": "The dashboard could not be updated"
   }
  ]
 }
