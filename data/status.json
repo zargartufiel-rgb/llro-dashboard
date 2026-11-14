@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-14T12:07:05.363Z",
+ "updated": "2026-11-14T12:10:46.141Z",
  "open": [
   {
    "key": "signin",
@@ -19,12 +19,6 @@
    "level": "warn",
    "since": "2026-11-14T08:50:18.738Z",
    "say": "Today's reports are not complete"
-  },
-  {
-   "key": "publish",
-   "level": "error",
-   "since": "2026-11-14T11:01:10.922Z",
-   "say": "The dashboard could not be updated"
   },
   {
    "key": "preflight",
