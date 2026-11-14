@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-14T04:35:29.045Z",
+ "updated": "2026-11-14T04:38:41.704Z",
  "open": [
   {
    "key": "signin",
@@ -13,12 +13,6 @@
    "level": "warn",
    "since": "2026-11-14T04:15:21.217Z",
    "say": "LLRO needs attention: see the server console on the Mac"
-  },
-  {
-   "key": "dashlate",
-   "level": "warn",
-   "since": "2026-11-14T04:25:00.895Z",
-   "say": "LLRO Dashboard not up by 09:55 IST — see the Mac notice for the reason"
   },
   {
    "key": "preflight",
