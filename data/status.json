@@ -1,13 +1,7 @@
 {
  "app": "llro-status",
- "updated": "2026-11-14T04:27:42.089Z",
+ "updated": "2026-11-14T04:29:54.964Z",
  "open": [
-  {
-   "key": "jobsignin",
-   "level": "warn",
-   "since": "2026-11-13T12:33:29.891Z",
-   "say": "Sign-in needed on the Mac: https://hpgasweb.hpcl.co.in"
-  },
   {
    "key": "signin",
    "level": "warn",
@@ -43,6 +37,12 @@
    "level": "warn",
    "since": "2026-11-14T04:26:42.727Z",
    "say": "Morning self-check found something that needs you on the Mac"
+  },
+  {
+   "key": "jobsignin",
+   "level": "warn",
+   "since": "2026-11-14T04:28:54.522Z",
+   "say": "Sign-in needed on the Mac: Dealer evaluation"
   }
  ]
 }
