@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-14T14:31:05.811Z",
+ "updated": "2026-11-14T14:51:05.851Z",
  "open": [
   {
    "key": "verify",
@@ -13,12 +13,6 @@
    "level": "warn",
    "since": "2026-11-14T08:50:18.738Z",
    "say": "Today's reports are not complete"
-  },
-  {
-   "key": "preflight",
-   "level": "warn",
-   "since": "2026-11-14T12:02:47.049Z",
-   "say": "Morning self-check found something that needs you on the Mac"
   },
   {
    "key": "signin",
