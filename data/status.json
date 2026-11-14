@@ -1,24 +1,48 @@
 {
  "app": "llro-status",
- "updated": "2026-11-13T11:21:39.599Z",
+ "updated": "2026-11-14T04:26:40.231Z",
  "open": [
+  {
+   "key": "jobsignin",
+   "level": "warn",
+   "since": "2026-11-13T12:33:29.891Z",
+   "say": "Sign-in needed on the Mac: https://hpgasweb.hpcl.co.in"
+  },
   {
    "key": "signin",
    "level": "warn",
-   "since": "2026-11-13T05:32:14.684Z",
-   "say": "Sign-in needed on the Mac: ARB"
-  },
-  {
-   "key": "incomplete",
-   "level": "warn",
-   "since": "2026-11-13T06:01:28.423Z",
-   "say": "Today's reports are not complete"
+   "since": "2026-11-14T01:35:29.724Z",
+   "say": "Sign-in needed on the Mac: LPG MIS, ARB, HP Gas web, Spotfire, Dealer evaluation"
   },
   {
    "key": "preflight",
    "level": "warn",
-   "since": "2026-11-13T08:08:12.594Z",
+   "since": "2026-11-14T03:54:36.692Z",
    "say": "Morning self-check found something that needs you on the Mac"
+  },
+  {
+   "key": "indentcheck",
+   "level": "warn",
+   "since": "2026-11-14T04:15:21.217Z",
+   "say": "LLRO needs attention: see the server console on the Mac"
+  },
+  {
+   "key": "agentstuck",
+   "level": "warn",
+   "since": "2026-11-14T04:15:21.243Z",
+   "say": "Report fetcher stuck on one job in Chrome"
+  },
+  {
+   "key": "mailsync",
+   "level": "warn",
+   "since": "2026-11-14T04:15:21.296Z",
+   "say": "Mailed reports are not reaching the Mac: open OneDrive on the Mac and sign in"
+  },
+  {
+   "key": "dashlate",
+   "level": "warn",
+   "since": "2026-11-14T04:25:00.895Z",
+   "say": "LLRO Dashboard not up by 09:55 IST — see the Mac notice for the reason"
   }
  ]
 }
