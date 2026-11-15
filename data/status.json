@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-14T16:33:16.848Z",
+ "updated": "2026-11-15T03:17:22.168Z",
  "open": [
   {
    "key": "verify",
@@ -15,10 +15,10 @@
    "say": "Today's reports are not complete"
   },
   {
-   "key": "preflight",
+   "key": "macRestart",
    "level": "warn",
-   "since": "2026-11-14T14:52:02.126Z",
-   "say": "Morning self-check found something that needs you on the Mac"
+   "since": "2026-11-14T17:39:06.742Z",
+   "say": "LLRO needs attention: see the server console on the Mac"
   }
  ]
 }
