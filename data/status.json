@@ -1,13 +1,7 @@
 {
  "app": "llro-status",
- "updated": "2026-11-15T12:52:03.197Z",
+ "updated": "2026-11-15T13:02:03.223Z",
  "open": [
-  {
-   "key": "signin",
-   "level": "warn",
-   "since": "2026-11-15T06:01:52.525Z",
-   "say": "Sign-in needed on the Mac: ARB, HP Gas web"
-  },
   {
    "key": "ims",
    "level": "warn",
