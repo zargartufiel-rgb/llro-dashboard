@@ -1,18 +1,12 @@
 {
  "app": "llro-status",
- "updated": "2026-11-15T06:50:51.498Z",
+ "updated": "2026-11-15T07:40:29.821Z",
  "open": [
   {
    "key": "signin",
    "level": "warn",
    "since": "2026-11-15T06:01:52.525Z",
    "say": "Sign-in needed on the Mac: ARB"
-  },
-  {
-   "key": "ims",
-   "level": "warn",
-   "since": "2026-11-15T06:49:51.489Z",
-   "say": "LLRO needs attention: see the server console on the Mac"
   }
  ]
 }
