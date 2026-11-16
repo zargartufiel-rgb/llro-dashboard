@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-16T13:01:01.055Z",
+ "updated": "2026-11-16T13:02:39.899Z",
  "open": [
   {
    "key": "signin",
@@ -13,6 +13,12 @@
    "level": "warn",
    "since": "2026-11-16T13:00:01.050Z",
    "say": "Sign-in needed on the Mac: https://hpgasweb.hpcl.co.in"
+  },
+  {
+   "key": "preflight",
+   "level": "warn",
+   "since": "2026-11-16T13:01:39.895Z",
+   "say": "Morning self-check found something that needs you on the Mac"
   }
  ]
 }
