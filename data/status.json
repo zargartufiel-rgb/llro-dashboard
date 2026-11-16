@@ -1,18 +1,18 @@
 {
  "app": "llro-status",
- "updated": "2026-11-16T09:59:39.346Z",
+ "updated": "2026-11-16T13:01:01.055Z",
  "open": [
-  {
-   "key": "preflight",
-   "level": "warn",
-   "since": "2026-11-16T06:43:29.512Z",
-   "say": "Morning self-check found something that needs you on the Mac"
-  },
   {
    "key": "signin",
    "level": "warn",
    "since": "2026-11-16T08:39:39.143Z",
-   "say": "Sign-in needed on the Mac: ARB"
+   "say": "Sign-in needed on the Mac: LPG MIS, ARB"
+  },
+  {
+   "key": "jobsignin",
+   "level": "warn",
+   "since": "2026-11-16T13:00:01.050Z",
+   "say": "Sign-in needed on the Mac: https://hpgasweb.hpcl.co.in"
   }
  ]
 }
