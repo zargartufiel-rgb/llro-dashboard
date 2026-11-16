@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-16T13:39:01.433Z",
+ "updated": "2026-11-16T14:06:08.093Z",
  "open": [
   {
    "key": "signin",
@@ -9,10 +9,10 @@
    "say": "Sign-in needed on the Mac: ARB"
   },
   {
-   "key": "preflight",
+   "key": "jobsignin",
    "level": "warn",
-   "since": "2026-11-16T13:01:39.895Z",
-   "say": "Morning self-check found something that needs you on the Mac"
+   "since": "2026-11-16T14:00:26.754Z",
+   "say": "Sign-in needed on the Mac: https://hpgasweb.hpcl.co.in"
   }
  ]
 }
