@@ -1,12 +1,18 @@
 {
  "app": "llro-status",
- "updated": "2026-11-16T07:19:37.600Z",
+ "updated": "2026-11-16T07:32:05.395Z",
  "open": [
   {
    "key": "preflight",
    "level": "warn",
    "since": "2026-11-16T06:43:29.512Z",
    "say": "Morning self-check found something that needs you on the Mac"
+  },
+  {
+   "key": "ims",
+   "level": "warn",
+   "since": "2026-11-16T07:31:05.384Z",
+   "say": "LLRO needs attention: see the server console on the Mac"
   }
  ]
 }
