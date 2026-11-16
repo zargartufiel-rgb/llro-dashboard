@@ -1,18 +1,12 @@
 {
  "app": "llro-status",
- "updated": "2026-11-16T13:02:39.899Z",
+ "updated": "2026-11-16T13:06:58.287Z",
  "open": [
   {
    "key": "signin",
    "level": "warn",
    "since": "2026-11-16T08:39:39.143Z",
-   "say": "Sign-in needed on the Mac: LPG MIS, ARB"
-  },
-  {
-   "key": "jobsignin",
-   "level": "warn",
-   "since": "2026-11-16T13:00:01.050Z",
-   "say": "Sign-in needed on the Mac: https://hpgasweb.hpcl.co.in"
+   "say": "Sign-in needed on the Mac: ARB, HP Gas web"
   },
   {
    "key": "preflight",
