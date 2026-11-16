@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-16T03:26:45.870Z",
+ "updated": "2026-11-16T03:28:44.214Z",
  "open": [
   {
    "key": "signin",
@@ -13,6 +13,12 @@
    "level": "warn",
    "since": "2026-11-16T03:26:03.542Z",
    "say": "Morning self-check found something that needs you on the Mac"
+  },
+  {
+   "key": "jobsignin",
+   "level": "warn",
+   "since": "2026-11-16T03:27:44.208Z",
+   "say": "Sign-in needed on the Mac: HP Gas web"
   }
  ]
 }
