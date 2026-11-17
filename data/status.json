@@ -1,12 +1,12 @@
 {
  "app": "llro-status",
- "updated": "2026-11-17T14:22:56.847Z",
+ "updated": "2026-11-17T14:30:19.236Z",
  "open": [
   {
    "key": "signin",
    "level": "warn",
    "since": "2026-11-17T04:38:00.974Z",
-   "say": "Sign-in needed on the Mac: ARB, HP Gas web"
+   "say": "Sign-in needed on the Mac: ARB, HP Gas web, Dealer evaluation"
   },
   {
    "key": "preflight",
