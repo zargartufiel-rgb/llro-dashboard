@@ -1,13 +1,7 @@
 {
  "app": "llro-status",
- "updated": "2026-11-17T03:36:40.309Z",
+ "updated": "2026-11-17T03:38:56.846Z",
  "open": [
-  {
-   "key": "jobsignin",
-   "level": "warn",
-   "since": "2026-11-16T14:30:16.796Z",
-   "say": "Sign-in needed on the Mac: https://hpgasweb.hpcl.co.in"
-  },
   {
    "key": "ims",
    "level": "warn",
@@ -25,6 +19,12 @@
    "level": "warn",
    "since": "2026-11-17T03:06:51.632Z",
    "say": "Report fetcher stuck on one job in Chrome"
+  },
+  {
+   "key": "preflight",
+   "level": "warn",
+   "since": "2026-11-17T03:37:56.838Z",
+   "say": "Morning self-check found something that needs you on the Mac"
   }
  ]
 }
