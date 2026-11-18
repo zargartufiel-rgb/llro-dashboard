@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-18T03:36:01.760Z",
+ "updated": "2026-11-18T03:37:39.296Z",
  "open": [
   {
    "key": "ims",
@@ -19,6 +19,12 @@
    "level": "warn",
    "since": "2026-11-18T03:35:01.758Z",
    "say": "Morning self-check found something that needs you on the Mac"
+  },
+  {
+   "key": "jobsignin",
+   "level": "warn",
+   "since": "2026-11-18T03:36:39.293Z",
+   "say": "Sign-in needed on the Mac: Spotfire"
   }
  ]
 }
