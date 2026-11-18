@@ -1,5 +1,18 @@
 {
  "app": "llro-status",
- "updated": "2026-11-18T05:07:36.802Z",
- "open": []
+ "updated": "2026-11-18T05:31:36.794Z",
+ "open": [
+  {
+   "key": "signin",
+   "level": "warn",
+   "since": "2026-11-18T05:30:36.789Z",
+   "say": "Sign-in needed on the Mac: Spotfire"
+  },
+  {
+   "key": "ims",
+   "level": "warn",
+   "since": "2026-11-18T05:30:58.552Z",
+   "say": "LLRO needs attention: see the server console on the Mac"
+  }
+ ]
 }
