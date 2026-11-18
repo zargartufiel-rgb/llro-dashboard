@@ -37,7 +37,7 @@ header{grid-column:1/-1;display:flex;align-items:center;gap:16px;padding:10px 16
 header h1{font:600 22px/1 var(--hud);letter-spacing:.32em;margin:0;color:var(--cyan-soft);text-shadow:0 0 14px rgba(95,214,255,.55)}
 header .sub{font:400 13px/1 var(--hud);color:var(--ink2);letter-spacing:.08em}
 #clock{margin-left:auto;font:600 20px/1 var(--hud);letter-spacing:.12em;font-variant-numeric:tabular-nums}
-#link{font:600 12px/1 var(--hud);letter-spacing:.12em;padding:6px 10px;border:1px solid var(--edge);border-radius:999px;color:var(--green)}
+#link{white-space:nowrap;font:600 12px/1 var(--hud);letter-spacing:.12em;padding:6px 10px;border:1px solid var(--edge);border-radius:999px;color:var(--green)}
 #link.bad{color:var(--amber);border-color:rgba(255,181,71,.5)}
 aside{display:flex;flex-direction:column;gap:14px;min-height:0;overflow:auto;scrollbar-width:none}
 .panel{padding:14px 16px}
@@ -98,6 +98,35 @@ button:focus-visible,textarea:focus-visible{outline:2px solid var(--cyan);outlin
 #clear{position:absolute;top:10px;right:12px;z-index:2;font:600 11px/1 var(--hud);letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);background:rgba(5,11,20,.55);border:1px solid var(--edge);border-radius:8px;padding:8px 10px;cursor:pointer}
 #clear:hover{color:var(--cyan-soft);border-color:var(--edge-hi)}
 #pair{display:none;padding:12px 16px;color:var(--amber);font:400 14px/1.5 var(--hud)}
+.tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--edge);border-radius:10px;overflow:hidden}
+.seg button{font:600 11px/1 var(--hud);letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);background:transparent;border:0;padding:9px 12px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:rgba(95,214,255,.18);color:var(--cyan-soft);box-shadow:inset 0 -2px 0 var(--cyan)}
+.seg button:not(:last-child){border-right:1px solid var(--edge)}
+.tog{font:600 11px/1 var(--hud);letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);background:transparent;border:1px solid var(--edge);border-radius:10px;padding:9px 12px;cursor:pointer}
+.tog[aria-pressed="true"]{color:var(--amber);border-color:rgba(255,181,71,.7);background:rgba(255,181,71,.08)}
+.hint{font:400 12px/1.3 var(--hud);color:var(--ink2);letter-spacing:.04em;margin-left:auto}
+#tray{display:none;gap:8px;flex-wrap:wrap;padding:8px 8px 0}
+#tray.on{display:flex}
+.att{display:flex;align-items:center;gap:8px;border:1px solid var(--edge);border-radius:10px;padding:6px 8px;background:rgba(95,214,255,.06);font:600 12px/1.2 var(--hud);color:var(--ink);max-width:260px}
+.att img{width:34px;height:34px;object-fit:cover;border-radius:6px}
+.att .ic{width:34px;height:34px;border-radius:6px;display:grid;place-items:center;background:rgba(95,214,255,.12);color:var(--cyan-soft);font-size:10px;letter-spacing:.08em}
+.att .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.att small{display:block;color:var(--ink2);font-weight:400}
+.att button{background:none;border:0;color:var(--ink2);cursor:pointer;font-size:16px;padding:2px 4px}
+.att.busy{opacity:.6}.att.bad{border-color:rgba(255,107,107,.6)}
+.inbox{display:flex;flex-direction:column;flex:1;min-width:0}
+.inbox textarea{min-width:0;width:100%}
+footer,.center,.app>*{min-width:0}
+form.drop{border-color:var(--amber)!important;box-shadow:0 0 0 1px var(--amber),0 0 24px rgba(255,181,71,.25)!important}
+.msg .by{display:inline-block;margin-top:6px;font:600 10px/1 var(--hud);letter-spacing:.16em;color:var(--ink2);text-transform:uppercase}
+.msg details{margin-top:6px;color:var(--ink2);font-size:13px}.msg summary{cursor:pointer;font:600 10px/1.6 var(--hud);letter-spacing:.16em;text-transform:uppercase}
+.msg .ups{color:var(--ink2);font:400 12px/1.4 var(--hud);margin-top:2px}
+.dec{font-size:13px;color:var(--ink2);border-top:1px solid var(--edge);padding-top:8px;margin-top:8px}
+.dec:first-of-type{border-top:0;margin-top:0;padding-top:0}
+.dec b{font:600 11px/1.4 var(--hud);color:var(--cyan-soft);letter-spacing:.06em}
+.dec .did{color:var(--ink)}
+#apOn{margin-top:10px;width:100%}
 @media (max-width:980px){
   html,body{overflow:auto}
   .app{grid-template-columns:1fr;grid-template-rows:none;height:auto;min-height:100dvh}
@@ -109,7 +138,7 @@ button:focus-visible,textarea:focus-visible{outline:2px solid var(--cyan);outlin
   .core{width:130px;height:130px}.core-state{padding-top:84px;font-size:10px}
   header .sub{display:none}
 }
-@media (max-width:520px){aside.left,aside.right{grid-template-columns:1fr}}
+@media (max-width:520px){aside.left,aside.right{grid-template-columns:1fr}.btn{width:40px;height:40px;border-radius:10px}form{gap:6px;padding:6px}.hint{margin-left:0;width:100%}}
 @media (prefers-reduced-motion:reduce){.r1,.r2,.r3,.heart{animation:none!important}}
 </style>
 <script>
@@ -202,6 +231,11 @@ window.JARVIS_BOOT = (function () {
       <div class="bar"><i id="repBar" style="width:0"></i></div>
       <div class="rows"><span>fetcher heard</span><b id="fetcher">--</b><span>open alerts</span><b id="alerts">--</b><span>dashboard updated</span><b id="dash">--</b></div>
     </section>
+    <section class="glass panel" aria-label="Decisions">
+      <h2 class="label">Jarvis decided</h2>
+      <div id="decs"><div class="dec">Every half hour I check the system and fix what I can.</div></div>
+      <button type="button" class="tog" id="apOn" aria-pressed="true">Autopilot on</button>
+    </section>
     <section class="glass panel" aria-label="Memory">
       <h2 class="label">Memory</h2>
       <div class="rows"><span>files read</span><b id="mFiles">--</b><span>mails read</span><b id="mMails">--</b><span>web pages</span><b id="mWeb">--</b><span>tasks waiting</span><b id="tasks">--</b></div>
@@ -210,10 +244,27 @@ window.JARVIS_BOOT = (function () {
 
   <footer>
     <div id="chips"></div>
+    <div class="tools">
+      <div class="seg" role="group" aria-label="How Jarvis answers">
+        <button type="button" data-mode="auto" aria-pressed="true" title="Quick answers; Jarvis picks the best model">Auto</button>
+        <button type="button" data-mode="think" aria-pressed="false" title="Slower, most careful answer: thinks it through and checks every figure">Think</button>
+        <button type="button" data-mode="research" aria-pressed="false" title="Searches the web and your files widely, cross-checks, and writes a cited Word report">Research</button>
+      </div>
+      <button type="button" class="tog" id="talk" aria-pressed="false" title="Hands-free: after Jarvis answers it listens again">Talk mode</button>
+      <button type="button" class="tog" id="lang" aria-pressed="false" title="Language Jarvis listens for">English</button>
+      <span class="hint" id="model"></span>
+    </div>
     <form id="f" class="glass" autocomplete="off">
-      <button type="button" id="mic" class="btn" aria-label="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
-      <textarea id="q" rows="1" placeholder="Speak or type a command" aria-label="Message"></textarea>
-      <button type="submit" id="send" class="btn" aria-label="Send"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <div class="inbox">
+        <div id="tray" aria-label="Attached files"></div>
+        <div style="display:flex;gap:10px;align-items:flex-end">
+          <button type="button" id="attach" class="btn" aria-label="Attach files or photos" title="Attach photos, PDF, Word, Excel, CSV (up to 25 MB each)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5l-8.6 8.6a5.5 5.5 0 0 1-7.8-7.8l8.6-8.6a3.7 3.7 0 0 1 5.2 5.2l-8.6 8.6a1.8 1.8 0 0 1-2.6-2.6l7.9-7.9"/></svg></button>
+          <input type="file" id="file" multiple hidden accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.xlsm,.csv,.txt,.md,.ppt,.pptx,.json,.rtf">
+          <button type="button" id="mic" class="btn" aria-label="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
+          <textarea id="q" rows="1" placeholder="Speak, type, or attach a file" aria-label="Message"></textarea>
+          <button type="submit" id="send" class="btn" aria-label="Send"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
     </form>
   </footer>
 </div>
@@ -224,17 +275,20 @@ window.JARVIS_BOOT = (function () {
   'use strict';
   var $ = function (id) { return document.getElementById(id); };
   var log = $('log'), q = $('q'), f = $('f'), send = $('send'), mic = $('mic'), linkEl = $('link'), coreState = $('coreState');
-  var job = null, timer = null, KEY = 'jarvis.history';
-  var CHIPS = ['Morning brief', 'WhatsApp: who needs a reply?', 'Social: anything new?', 'My calendar today', 'Remind me about ', 'My reminders', 'What was I working on yesterday?', "Today's indent plan", 'Mail waiting on me', 'Search the internet: ', 'Make a PPT on ', 'Make a Word note on ', 'Research in my files: '];
+  var job = null, timer = null, KEY = 'jarvis.history', atts = [], MODE = ls('jarvis.mode') || 'auto', TALK = !!ls('jarvis.talk'), LANG = ls('jarvis.lang') || 'en-IN';
+  var CHIPS = ['Morning brief', 'What did you fix today?', 'WhatsApp: who needs a reply?', 'Social: anything new?', 'My calendar today', 'Remind me about ', 'My reminders', 'What was I working on yesterday?', "Today's indent plan", 'Mail waiting on me', 'Search the internet: ', 'Research: ', 'Think hard: ', 'Make a PPT on ', 'Make a Word note on ', 'Research in my files: '];
   function ls(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem(k) || 'null'); localStorage.setItem(k, JSON.stringify(v)); } catch (e) { return null; } }
   function mode(m, label) { document.body.classList.remove('think', 'listen'); if (m) document.body.classList.add(m); coreState.textContent = label || 'READY'; }
   function add(who, text, extra) {
     var e = $('empty'); if (e) e.remove();
     var d = document.createElement('div'); d.className = 'msg ' + who; d.appendChild(document.createTextNode(text));
+    if (extra && extra.ups && extra.ups.length) { var u = document.createElement('div'); u.className = 'ups'; u.textContent = '📎 ' + extra.ups.join(' · '); d.appendChild(u); }
     if (extra && extra.files && extra.files.length) { var fl = document.createElement('div'); fl.className = 'files'; extra.files.forEach(function (p) { var l = document.createElement('a'); l.href = (JV ? JV.base : '') + '/api/jarvis/file?f=' + encodeURIComponent(p); l.className = 'file'; l.textContent = '⬇ ' + String(p).split('/').pop(); l.setAttribute('download', '');
         if (JV) l.onclick = function (ev) { ev.preventDefault(); var nm = String(p).split('/').pop(); fetch(l.href, { headers: { 'X-Jarvis-Device': JV.dev } }).then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.blob(); }).then(function (b) { var u = URL.createObjectURL(b), a = document.createElement('a'); a.href = u; a.download = nm; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(u); a.remove(); }, 60000); }).catch(function (e) { add('note', 'Could not download ' + nm + ': ' + e.message); }); }; fl.appendChild(l); }); d.appendChild(fl); }
     if (extra && extra.mails && extra.mails.length) extra.mails.forEach(function (m) { d.appendChild(mailCard(m)); });
     if (extra && extra.was && extra.was.length) extra.was.forEach(function (m) { d.appendChild(waCard(m)); });
+    if (extra && extra.thought) { var th = document.createElement('details'), sm = document.createElement('summary'); sm.textContent = 'How I thought about it'; th.appendChild(sm); th.appendChild(document.createTextNode(extra.thought)); d.appendChild(th); }
+    if (extra && extra.by) { var by = document.createElement('span'); by.className = 'by'; by.textContent = extra.by; d.appendChild(by); }
     log.appendChild(d); log.scrollTop = log.scrollHeight; return d;
   }
   function mailCard(m) {
@@ -295,13 +349,31 @@ window.JARVIS_BOOT = (function () {
     return go().catch(function (e) { if (!JV || /linked|Not available/.test(e.message)) throw e; return JV.refresh().then(go); });
   }
   function busy(on) { send.classList.toggle('stop', on); send.setAttribute('aria-label', on ? 'Stop' : 'Send'); if (on) mode('think', 'THINKING'); else mode(); }
-  function speak(t) { if (!window.speechSynthesis || !t) return; try { var u = new SpeechSynthesisUtterance(String(t).replace(/[*#`|]/g, ' ').slice(0, 600)); u.lang = 'en-IN'; speechSynthesis.cancel(); speechSynthesis.speak(u); } catch (e) {} }
+  /* the answer read aloud in sentences (a long answer is not cut off mid-way), in Hindi when the answer is in Hindi; in Talk mode
+     Jarvis listens again as soon as it has finished speaking */
+  function voiceFor(lang) { var vs = (window.speechSynthesis && speechSynthesis.getVoices()) || [], pick = function (re) { return vs.filter(function (v) { return re.test(v.lang); }); };
+    var c = lang === 'hi-IN' ? pick(/^hi/i) : pick(/^en-IN/i).concat(pick(/^en-GB/i), pick(/^en/i));
+    return c.filter(function (v) { return /premium|enhanced|natural|google|neural/i.test(v.name); })[0] || c[0] || null; }
+  function speak(t) {
+    if (!window.speechSynthesis || !t) { relisten(); return; }
+    try {
+      var txt = String(t).replace(/[*#`|_>]/g, ' ').replace(/https?:\/\/\S+/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 2400);
+      var lang = /[\u0900-\u097F]/.test(txt) ? 'hi-IN' : 'en-IN', v = voiceFor(lang);
+      var parts = txt.match(/[^.!?।]+[.!?।]*\s*/g) || [txt]; speechSynthesis.cancel();
+      parts.forEach(function (p, i) { var u = new SpeechSynthesisUtterance(p.trim()); u.lang = lang; if (v) u.voice = v; u.rate = 1.03; if (i === parts.length - 1) u.onend = relisten; speechSynthesis.speak(u); });
+    } catch (e) { relisten(); }
+  }
+  function relisten() { if (TALK && !job) setTimeout(function () { if (TALK && !job && !rec) listen(); }, 450); }
   function ask(text) {
-    text = String(text || '').trim(); if (!text) return;
+    text = String(text || '').trim();
+    if (atts.some(function (a) { return a.busy; })) { add('note', 'Wait a moment: the file is still going to your Mac.'); return; }
+    var ready = atts.filter(function (a) { return a.path; }), files = ready.map(function (a) { return a.path; }), names = ready.map(function (a) { return a.name; });
+    if (!text && files.length) text = files.length > 1 ? 'Look at the attached files and tell me what matters in them.' : 'Look at the attached file and tell me what matters in it.';
+    if (!text) return;
     if (job) stop();
-    add('me', text); remember('me', text); q.value = ''; q.style.height = '';
-    var pending = add('j', 'Working on it…'); busy(true);
-    api('chatStart', { text: text }).then(function (r) {
+    add('me', text, { ups: names }); remember('me', text + (names.length ? '  📎 ' + names.join(', ') : '')); q.value = ''; q.style.height = ''; atts = []; tray();
+    var pending = add('j', MODE === 'research' ? 'Researching… I search widely, read the sources and write a report (a few minutes).' : MODE === 'think' ? 'Thinking it through…' : 'Working on it…'); busy(true);
+    api('chatStart', { text: text, files: files, mode: MODE }).then(function (r) {
       if (!r.job) { pending.firstChild.nodeValue = r.say || 'Done.'; remember('j', r.say || 'Done.'); busy(false); return; }
       job = r.job; if (r.background) pending.firstChild.nodeValue = 'This takes a few minutes. I will put it here when it is ready.'; poll(pending);
     }).catch(function (e) { pending.firstChild.nodeValue = 'I could not reach your Mac: ' + e.message; busy(false); online(); });
@@ -314,7 +386,9 @@ window.JARVIS_BOOT = (function () {
         if (p.state === 'gone') { el.firstChild.nodeValue = 'That request was lost (the server restarted). Please ask again.'; job = null; busy(false); return; }
         if (p.state === 'working') { el.firstChild.nodeValue = p.text || 'Working on it…'; var s = el.querySelector('.steps'); if (!s) { s = document.createElement('div'); s.className = 'steps'; el.appendChild(s); } s.textContent = (p.steps || []).join(' · ').toUpperCase(); log.scrollTop = log.scrollHeight; poll(el); return; }
         var res = p.result || {}, say = res.say || p.error || (p.state === 'stopped' ? 'Stopped.' : 'Done.');
-        el.remove(); add('j', say, { files: res.files, mails: res.mails, was: res.was }); remember('j', say); speak(say); job = null; busy(false); hud();
+        var by = res.by === 'local' ? 'Mac model · ' + (res.model || 'Qwen') : res.by === 'claude' ? 'Claude' : '';
+        if (by && res.mode && res.mode !== 'auto') by += ' · ' + res.mode;
+        el.remove(); add('j', say, { files: res.files, mails: res.mails, was: res.was, by: by, thought: res.thought }); remember('j', say); job = null; busy(false); speak(say); hud();
       }).catch(function () { poll(el); });
     }, 1400);
   }
@@ -328,7 +402,8 @@ window.JARVIS_BOOT = (function () {
   function listen() {
     if (!SR) { q.focus(); return; }
     if (rec) { rec.stop(); return; }
-    rec = new SR(); rec.lang = 'en-IN'; rec.interimResults = true; rec.continuous = false;
+    if (window.speechSynthesis) speechSynthesis.cancel();
+    rec = new SR(); rec.lang = LANG; rec.interimResults = true; rec.continuous = false;
     mic.classList.add('on'); mode('listen', 'LISTENING');
     rec.onresult = function (e) { var t = ''; for (var i = 0; i < e.results.length; i++) t += e.results[i][0].transcript; q.value = t; if (e.results[e.results.length - 1].isFinal) { rec.stop(); ask(t); } };
     rec.onend = function () { mic.classList.remove('on'); rec = null; if (!job) mode(); };
@@ -336,7 +411,86 @@ window.JARVIS_BOOT = (function () {
     rec.start();
   }
   mic.onclick = listen; $('core').onclick = function () { if (job) stop(); else listen(); };
-  if (!SR) mic.style.display = 'none';
+  if (!SR) { mic.style.display = 'none'; $('talk').style.display = 'none'; $('lang').style.display = 'none'; }
+
+  // modes: Auto (quick), Think (most careful), Research (searches widely, writes a cited report)
+  function setMode(m) { MODE = m; ls('jarvis.mode', m); Array.prototype.forEach.call(document.querySelectorAll('.seg button'), function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-mode') === m)); }); q.placeholder = m === 'research' ? 'What should I research? (web + your files, cited report)' : m === 'think' ? 'Ask a hard question — I will think it through' : 'Speak, type, or attach a file'; }
+  Array.prototype.forEach.call(document.querySelectorAll('.seg button'), function (b) { b.onclick = function () { setMode(b.getAttribute('data-mode')); }; });
+  setMode(MODE);
+  function setTalk(v) { TALK = v; ls('jarvis.talk', v); $('talk').setAttribute('aria-pressed', String(v)); $('talk').textContent = v ? 'Talk mode on' : 'Talk mode'; }
+  $('talk').onclick = function () { setTalk(!TALK); if (TALK && !job && !rec) listen(); };
+  setTalk(TALK);
+  function setLang(l) { LANG = l; ls('jarvis.lang', l); $('lang').setAttribute('aria-pressed', String(l === 'hi-IN')); $('lang').textContent = l === 'hi-IN' ? 'हिंदी' : 'English'; }
+  $('lang').onclick = function () { setLang(LANG === 'hi-IN' ? 'en-IN' : 'hi-IN'); };
+  setLang(LANG);
+
+  // attachments: the paperclip, drag and drop onto the box, or paste a picture; each file goes to the Mac at once
+  function size(n) { return n > 1048576 ? (n / 1048576).toFixed(1) + ' MB' : Math.max(1, Math.round(n / 1024)) + ' KB'; }
+  function tray() {
+    var t = $('tray'); t.innerHTML = ''; t.classList.toggle('on', atts.length > 0);
+    atts.forEach(function (a, i) {
+      var c = document.createElement('div'); c.className = 'att' + (a.busy ? ' busy' : '') + (a.err ? ' bad' : '');
+      if (a.thumb) { var im = document.createElement('img'); im.src = a.thumb; im.alt = ''; c.appendChild(im); } else { var ic = document.createElement('span'); ic.className = 'ic'; ic.textContent = (a.name.split('.').pop() || 'FILE').slice(0, 4).toUpperCase(); c.appendChild(ic); }
+      var nm = document.createElement('span'); nm.className = 'nm'; nm.textContent = a.name; var sm = document.createElement('small'); sm.textContent = a.err ? a.err : a.busy ? 'sending to your Mac…' : size(a.bytes); nm.appendChild(sm); c.appendChild(nm);
+      var x = document.createElement('button'); x.type = 'button'; x.setAttribute('aria-label', 'Remove ' + a.name); x.textContent = '×'; x.onclick = function () { atts.splice(i, 1); tray(); }; c.appendChild(x);
+      t.appendChild(c);
+    });
+  }
+  function shrink(file) {   // a big photo is made smaller (longest side 1800 px) before it travels; other files go as they are
+    return new Promise(function (res) {
+      if (!/^image\/(jpeg|png|webp|heic|heif)$/i.test(file.type) || file.size < 1500000) return res(file);
+      var img = new Image(), u = URL.createObjectURL(file);
+      img.onload = function () { var k = Math.min(1, 1800 / Math.max(img.width, img.height)), cv = document.createElement('canvas'); cv.width = Math.round(img.width * k); cv.height = Math.round(img.height * k); cv.getContext('2d').drawImage(img, 0, 0, cv.width, cv.height); URL.revokeObjectURL(u); cv.toBlob(function (b) { res(b ? new File([b], file.name.replace(/\.\w+$/, '') + '.jpg', { type: 'image/jpeg' }) : file); }, 'image/jpeg', 0.85); };
+      img.onerror = function () { URL.revokeObjectURL(u); res(file); }; img.src = u;
+    });
+  }
+  function addFiles(list) {
+    Array.prototype.slice.call(list || [], 0, 8).forEach(function (file0) {
+      var a = { name: file0.name || 'pasted.png', bytes: file0.size, busy: true }; atts.push(a); tray();
+      if (file0.size > 25e6) { a.busy = false; a.err = 'too big (25 MB max)'; tray(); return; }
+      shrink(file0).then(function (file) {
+        a.name = file.name || a.name; a.bytes = file.size;
+        var rd = new FileReader();
+        rd.onload = function () {
+          var data = String(rd.result || ''); if (/^data:image\//.test(data) && data.length < 9e6) a.thumb = data;
+          api('upload', { name: a.name, type: file.type, data: data.replace(/^data:[^,]*,/, '') }).then(function (r) { a.busy = false; if (r.file) { a.path = r.file.path; a.bytes = r.file.bytes; } else a.err = r.say || 'not saved'; tray(); })
+            .catch(function (e) { a.busy = false; a.err = e.message; tray(); });
+        };
+        rd.onerror = function () { a.busy = false; a.err = 'could not read the file'; tray(); };
+        rd.readAsDataURL(file);
+      });
+    });
+  }
+  $('attach').onclick = function () { $('file').click(); };
+  $('file').onchange = function () { addFiles(this.files); this.value = ''; };
+  ['dragenter', 'dragover'].forEach(function (ev) { f.addEventListener(ev, function (e) { e.preventDefault(); f.classList.add('drop'); }); });
+  ['dragleave', 'drop'].forEach(function (ev) { f.addEventListener(ev, function (e) { e.preventDefault(); f.classList.remove('drop'); if (ev === 'drop' && e.dataTransfer) addFiles(e.dataTransfer.files); }); });
+  q.addEventListener('paste', function (e) { var it = e.clipboardData && e.clipboardData.files; if (it && it.length) { e.preventDefault(); addFiles(it); } });
+
+  // what Jarvis decided on its own (autopilot), its notes for him, and the models it is using
+  function decisions() {
+    api('decisions', { n: 4 }).then(function (r) {
+      var box = $('decs'); box.innerHTML = ''; var L = r.data || [];
+      (r.notes || []).slice(-2).forEach(function (n) { var d = document.createElement('div'); d.className = 'dec'; d.innerHTML = '<b></b><div class="did"></div>'; d.querySelector('b').textContent = 'NOTE · ' + hm(n.at); d.querySelector('.did').textContent = n.text; box.appendChild(d); });
+      if (!L.length && !(r.notes || []).length) box.innerHTML = '<div class="dec">Every half hour I check the system and fix what I can.</div>';
+      L.slice(0, 3).forEach(function (x) {
+        var d = document.createElement('div'); d.className = 'dec'; var did = (x.did || []).filter(function (y) { return !y.held; });
+        d.innerHTML = '<b></b><div class="did"></div><div class="why"></div>';
+        d.querySelector('b').textContent = hm(x.at) + (did.length ? ' · ACTED' : x.saw === 'all well' ? ' · ALL WELL' : ' · WATCHED');
+        d.querySelector('.did').textContent = did.length ? did.map(function (y) { return y.action.replace(/_/g, ' ') + (y.arg ? ': ' + y.arg : ''); }).join('; ') : (x.saw === 'all well' ? 'Nothing needed.' : 'No action needed from me.');
+        d.querySelector('.why').textContent = x.think || (x.saw !== 'all well' ? x.saw : '');
+        box.appendChild(d);
+      });
+      var b = $('apOn'); b.setAttribute('aria-pressed', String(r.on !== false)); b.textContent = r.on !== false ? 'Autopilot on' : 'Autopilot off';
+    }).catch(function () {});
+  }
+  $('apOn').onclick = function () { var on = $('apOn').getAttribute('aria-pressed') !== 'true'; api('autopilot', { on: on }).then(function (r) { add('note', r.say); decisions(); }).catch(function (e) { add('note', e.message); }); };
+  function models() {
+    api('brain').then(function (r) { var b = r.data || {}, l = b.local || {}, c = b.claude || {};
+      var cm = String(c.model || '').replace(/^claude-/, '').replace(/-(\d+)-(\d+)$/, ' $1.$2').replace(/^\w/, function (x) { return x.toUpperCase(); });
+      var t = (c.set && c.on ? 'Claude ' + cm + ' + ' : '') + 'Mac: ' + (l.ready ? l.model : 'starting') + (l.upgrade ? ' (' + l.upgrade + ')' : '');
+      $('model').textContent = t; }).catch(function () {});
+  }
 
   // side panels
   function n(x) { return x == null ? '--' : Number(x).toLocaleString('en-IN'); }
@@ -351,6 +505,7 @@ window.JARVIS_BOOT = (function () {
       $('alerts').textContent = n(h.alerts); $('alerts').className = h.alerts ? 'warn' : 'ok'; $('dash').textContent = hm(h.dashboard);
       if (h.memory) { $('mFiles').textContent = n(h.memory.files); $('mMails').textContent = n(h.memory.mails); $('mWeb').textContent = n(h.memory.web); }
       $('tasks').textContent = n(h.tasks);
+      decisions(); models();
     }).catch(function (e) { online(e); });
   }
   function online(e) {
