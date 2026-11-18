@@ -1,12 +1,5 @@
 {
  "app": "llro-status",
- "updated": "2026-11-18T05:36:36.707Z",
- "open": [
-  {
-   "key": "ims",
-   "level": "warn",
-   "since": "2026-11-18T05:30:58.552Z",
-   "say": "LLRO needs attention: see the server console on the Mac"
-  }
- ]
+ "updated": "2026-11-18T05:40:36.682Z",
+ "open": []
 }
