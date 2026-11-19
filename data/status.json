@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-19T10:41:28.736Z",
+ "updated": "2026-11-19T10:42:44.057Z",
  "open": [
   {
    "key": "signin",
@@ -13,6 +13,12 @@
    "level": "error",
    "since": "2026-11-19T10:40:28.734Z",
    "say": "The dashboard could not be updated"
+  },
+  {
+   "key": "preflight",
+   "level": "warn",
+   "since": "2026-11-19T10:41:44.054Z",
+   "say": "Morning self-check found something that needs you on the Mac"
   }
  ]
 }
