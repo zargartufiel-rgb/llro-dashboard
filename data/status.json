@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-19T10:33:29.231Z",
+ "updated": "2026-11-19T10:41:28.736Z",
  "open": [
   {
    "key": "signin",
@@ -9,10 +9,10 @@
    "say": "Sign-in needed on the Mac: ARB"
   },
   {
-   "key": "preflight",
-   "level": "warn",
-   "since": "2026-11-19T10:33:16.096Z",
-   "say": "Morning self-check found something that needs you on the Mac"
+   "key": "publish",
+   "level": "error",
+   "since": "2026-11-19T10:40:28.734Z",
+   "say": "The dashboard could not be updated"
   }
  ]
 }
