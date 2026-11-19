@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-19T03:22:27.780Z",
+ "updated": "2026-11-19T03:24:59.085Z",
  "open": [
   {
    "key": "signin",
@@ -19,6 +19,12 @@
    "level": "warn",
    "since": "2026-11-19T03:07:08.778Z",
    "say": "Sign-in needed on the Mac: Dealer evaluation"
+  },
+  {
+   "key": "preflight",
+   "level": "warn",
+   "since": "2026-11-19T03:23:59.082Z",
+   "say": "Morning self-check found something that needs you on the Mac"
   }
  ]
 }
