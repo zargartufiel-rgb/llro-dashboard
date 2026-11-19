@@ -1,18 +1,12 @@
 {
  "app": "llro-status",
- "updated": "2026-11-19T10:42:44.057Z",
+ "updated": "2026-11-19T10:51:41.841Z",
  "open": [
   {
    "key": "signin",
    "level": "warn",
    "since": "2026-11-19T06:35:40.074Z",
    "say": "Sign-in needed on the Mac: ARB"
-  },
-  {
-   "key": "publish",
-   "level": "error",
-   "since": "2026-11-19T10:40:28.734Z",
-   "say": "The dashboard could not be updated"
   },
   {
    "key": "preflight",
