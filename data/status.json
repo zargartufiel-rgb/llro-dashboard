@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-20T10:23:29.181Z",
+ "updated": "2026-11-20T10:33:48.123Z",
  "open": [
   {
    "key": "signin",
@@ -19,6 +19,12 @@
    "level": "warn",
    "since": "2026-11-20T10:23:25.819Z",
    "say": "Morning self-check found something that needs you on the Mac"
+  },
+  {
+   "key": "stale",
+   "level": "warn",
+   "since": "2026-11-20T10:33:41.950Z",
+   "say": "LLRO needs attention: see the server console on the Mac"
   }
  ]
 }
