@@ -1,12 +1,12 @@
 {
  "app": "llro-status",
- "updated": "2026-11-20T13:36:47.577Z",
+ "updated": "2026-11-20T14:27:07.306Z",
  "open": [
   {
    "key": "signin",
    "level": "warn",
    "since": "2026-11-20T06:03:53.055Z",
-   "say": "Sign-in needed on the Mac: ARB"
+   "say": "Sign-in needed on the Mac: LPG MIS, ARB, Spotfire, Dealer evaluation"
   },
   {
    "key": "ims",
@@ -15,16 +15,22 @@
    "say": "LLRO needs attention: see the server console on the Mac"
   },
   {
-   "key": "preflight",
-   "level": "warn",
-   "since": "2026-11-20T10:23:25.819Z",
-   "say": "Morning self-check found something that needs you on the Mac"
-  },
-  {
    "key": "stale",
    "level": "warn",
    "since": "2026-11-20T10:33:41.950Z",
    "say": "LLRO needs attention: see the server console on the Mac"
+  },
+  {
+   "key": "agentstuck",
+   "level": "warn",
+   "since": "2026-11-20T14:14:52.720Z",
+   "say": "Report fetcher stuck on one job in Chrome"
+  },
+  {
+   "key": "preflight",
+   "level": "warn",
+   "since": "2026-11-20T14:26:24.655Z",
+   "say": "Morning self-check found something that needs you on the Mac"
   }
  ]
 }
