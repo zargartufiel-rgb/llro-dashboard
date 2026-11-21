@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-21T05:49:35.476Z",
+ "updated": "2026-11-21T06:04:35.530Z",
  "open": [
   {
    "key": "ims",
@@ -13,6 +13,12 @@
    "level": "warn",
    "since": "2026-11-21T03:59:02.785Z",
    "say": "Morning self-check found something that needs you on the Mac"
+  },
+  {
+   "key": "signin",
+   "level": "warn",
+   "since": "2026-11-21T06:03:35.526Z",
+   "say": "Sign-in needed on the Mac: ARB"
   }
  ]
 }
