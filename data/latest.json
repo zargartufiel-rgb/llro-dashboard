@@ -1,14 +1,14 @@
 {
  "app": "llro-dashboard",
  "v": 4,
- "version": "20261121T042417Z",
- "updatedAt": "2026-11-21T04:24:17.374Z",
- "note": "Daily data for 20 Nov 2026",
+ "version": "20261122T041038Z",
+ "updatedAt": "2026-11-22T04:10:38.802Z",
+ "note": "Daily data for 21 Nov 2026",
  "enc": true,
  "salt": "cGU4lrzrNpjLplZwUJRMrw==",
  "iter": 250000,
  "check": "TExSMRq7t2Fu7TrRdxMRJMEb1JZ+sI8hKN/1dhVbucjo1fYe+orQ",
- "state": "data/state-20261121T042417Z.bin",
+ "state": "data/state-20261122T041038Z.bin",
  "days": {
   "2026-10-05": "data/day-2026-10-05-20261006T160937Z.bin",
   "2026-10-06": "data/day-2026-10-06-20261009T114753Z.bin",
@@ -56,12 +56,13 @@
   "2026-11-17": "data/day-2026-11-17-20261118T043735Z.bin",
   "2026-11-18": "data/day-2026-11-18-20261119T043347Z.bin",
   "2026-11-19": "data/day-2026-11-19-20261120T063040Z.bin",
-  "2026-11-20": "data/day-2026-11-20-20261121T042417Z.bin"
+  "2026-11-20": "data/day-2026-11-20-20261121T042417Z.bin",
+  "2026-11-21": "data/day-2026-11-21-20261122T041038Z.bin"
  },
  "gh": {
   "owner": "zargartufiel-rgb",
   "repo": "llro-dashboard",
   "branch": "main"
  },
- "last": "2026-11-20"
+ "last": "2026-11-21"
 }
