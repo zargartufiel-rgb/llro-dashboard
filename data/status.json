@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-22T04:05:39.144Z",
+ "updated": "2026-11-22T04:16:31.131Z",
  "open": [
   {
    "key": "jobsignin",
@@ -25,6 +25,12 @@
    "level": "warn",
    "since": "2026-11-22T04:03:12.124Z",
    "say": "Morning self-check found something that needs you on the Mac"
+  },
+  {
+   "key": "dashSweep",
+   "level": "warn",
+   "since": "2026-11-22T04:15:58.639Z",
+   "say": "LLRO needs attention: see the server console on the Mac"
   }
  ]
 }
