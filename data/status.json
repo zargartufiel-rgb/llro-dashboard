@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-22T04:03:45.199Z",
+ "updated": "2026-11-22T04:05:39.144Z",
  "open": [
   {
    "key": "jobsignin",
@@ -19,12 +19,6 @@
    "level": "warn",
    "since": "2026-11-22T03:23:32.016Z",
    "say": "LLRO needs attention: see the server console on the Mac"
-  },
-  {
-   "key": "jobsignin",
-   "level": "warn",
-   "since": "2026-11-22T04:00:14.333Z",
-   "say": "Sign-in needed on the Mac: https://hpgasweb.hpcl.co.in"
   },
   {
    "key": "preflight",
