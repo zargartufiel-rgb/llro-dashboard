@@ -1,13 +1,7 @@
 {
  "app": "llro-status",
- "updated": "2026-11-22T05:52:51.654Z",
+ "updated": "2026-11-22T06:02:29.803Z",
  "open": [
-  {
-   "key": "signin",
-   "level": "warn",
-   "since": "2026-11-22T03:11:30.996Z",
-   "say": "Sign-in needed on the Mac: ARB"
-  },
   {
    "key": "wrong",
    "level": "warn",
@@ -19,12 +13,6 @@
    "level": "warn",
    "since": "2026-11-22T04:03:12.124Z",
    "say": "Morning self-check found something that needs you on the Mac"
-  },
-  {
-   "key": "dashSweep",
-   "level": "warn",
-   "since": "2026-11-22T04:15:58.639Z",
-   "say": "LLRO needs attention: see the server console on the Mac"
   }
  ]
 }
