@@ -1,13 +1,7 @@
 {
  "app": "llro-status",
- "updated": "2026-11-22T03:33:42.784Z",
+ "updated": "2026-11-22T04:03:45.199Z",
  "open": [
-  {
-   "key": "preflight",
-   "level": "warn",
-   "since": "2026-11-22T02:27:47.279Z",
-   "say": "Morning self-check found something that needs you on the Mac"
-  },
   {
    "key": "jobsignin",
    "level": "warn",
@@ -25,6 +19,18 @@
    "level": "warn",
    "since": "2026-11-22T03:23:32.016Z",
    "say": "LLRO needs attention: see the server console on the Mac"
+  },
+  {
+   "key": "jobsignin",
+   "level": "warn",
+   "since": "2026-11-22T04:00:14.333Z",
+   "say": "Sign-in needed on the Mac: https://hpgasweb.hpcl.co.in"
+  },
+  {
+   "key": "preflight",
+   "level": "warn",
+   "since": "2026-11-22T04:03:12.124Z",
+   "say": "Morning self-check found something that needs you on the Mac"
   }
  ]
 }
