@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-22T14:55:05.634Z",
+ "updated": "2026-11-22T16:11:36.700Z",
  "open": [
   {
    "key": "wrong",
@@ -15,16 +15,16 @@
    "say": "Sign-in needed on the Mac: LPG MIS, ARB, HP Gas web, Dealer evaluation"
   },
   {
-   "key": "preflight",
-   "level": "warn",
-   "since": "2026-11-22T12:51:16.729Z",
-   "say": "Morning self-check found something that needs you on the Mac"
-  },
-  {
    "key": "ims",
    "level": "warn",
    "since": "2026-11-22T14:30:48.946Z",
    "say": "LLRO needs attention: see the server console on the Mac"
+  },
+  {
+   "key": "preflight",
+   "level": "warn",
+   "since": "2026-11-22T16:11:28.760Z",
+   "say": "Morning self-check found something that needs you on the Mac"
   }
  ]
 }
