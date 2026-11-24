@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-24T03:43:42.568Z",
+ "updated": "2026-11-24T03:46:06.726Z",
  "open": [
   {
    "key": "wrong",
@@ -15,22 +15,22 @@
    "say": "LLRO needs attention: see the server console on the Mac"
   },
   {
-   "key": "preflight",
-   "level": "warn",
-   "since": "2026-11-23T17:00:16.564Z",
-   "say": "Morning self-check found something that needs you on the Mac"
-  },
-  {
    "key": "signin",
    "level": "warn",
    "since": "2026-11-24T01:39:09.986Z",
    "say": "Sign-in needed on the Mac: LPG MIS, ARB, HP Gas web, Spotfire, Dealer evaluation"
   },
   {
-   "key": "agentstuck",
+   "key": "preflight",
    "level": "warn",
-   "since": "2026-11-24T03:33:00.356Z",
-   "say": "Report fetcher stuck on one job in Chrome"
+   "since": "2026-11-24T03:43:43.355Z",
+   "say": "Morning self-check found something that needs you on the Mac"
+  },
+  {
+   "key": "jobsignin",
+   "level": "warn",
+   "since": "2026-11-24T03:45:06.723Z",
+   "say": "Sign-in needed on the Mac: LPG MIS"
   }
  ]
 }
