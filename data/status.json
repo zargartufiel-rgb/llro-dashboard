@@ -1,18 +1,12 @@
 {
  "app": "llro-status",
- "updated": "2026-11-25T03:30:05.283Z",
+ "updated": "2026-11-25T03:40:05.292Z",
  "open": [
   {
    "key": "wrong",
    "level": "warn",
    "since": "2026-11-22T03:23:32.016Z",
    "say": "LLRO needs attention: see the server console on the Mac"
-  },
-  {
-   "key": "signin",
-   "level": "warn",
-   "since": "2026-11-25T01:37:44.488Z",
-   "say": "Sign-in needed on the Mac: ARB"
   },
   {
    "key": "preflight",
