@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-25T04:24:55.455Z",
+ "updated": "2026-11-25T04:27:34.122Z",
  "open": [
   {
    "key": "wrong",
@@ -21,9 +21,9 @@
    "say": "LLRO needs attention: see the server console on the Mac"
   },
   {
-   "key": "verifypub",
+   "key": "dashSweep",
    "level": "warn",
-   "since": "2026-11-25T04:23:55.446Z",
+   "since": "2026-11-25T04:27:26.085Z",
    "say": "LLRO needs attention: see the server console on the Mac"
   }
  ]
