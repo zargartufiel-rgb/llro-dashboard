@@ -1,8 +1,8 @@
 /* LLRO Dashboard service worker: the app works offline with the last data it saw.
    15 Nov 2026: on a slow mobile connection the page waited for the whole 1.7 MB page every time ("not working"). Now the saved
    page opens at once when the network is slow (4 s) and the newer page is saved in the background for next time (the app
-   itself notices a new build and offers to reload); data files rewritten in place wait at most 8 s before the saved copy is used. */
-var V = 'llro-app-67e0fd0848', DATA = 'llro-data';
+   itself notices a new build and reloads itself onto it, 25 Nov 2026); data files rewritten in place wait at most 8 s before the saved copy is used. */
+var V = 'llro-app-b904be2fd9', DATA = 'llro-data';
 var SHELL = ['./', './index.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
 self.addEventListener('install', function (e) { e.waitUntil(caches.open(V).then(function (c) { return c.addAll(SHELL.map(function (u) { return new Request(u, { cache: 'reload' }); })); /* past the browser's HTTP cache, so the saved page is this build */ }).then(function () { return self.skipWaiting(); })); });
 self.addEventListener('activate', function (e) { e.waitUntil(caches.keys().then(function (ks) { return Promise.all(ks.filter(function (k) { return k.indexOf('llro-app-') === 0 && k !== V; }).map(function (k) { return caches.delete(k); })); }).then(function () { return self.clients.claim(); })); });
