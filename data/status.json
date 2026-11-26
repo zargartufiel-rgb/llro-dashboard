@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-26T03:36:16.857Z",
+ "updated": "2026-11-26T03:38:47.583Z",
  "open": [
   {
    "key": "wrong",
@@ -13,12 +13,6 @@
    "level": "warn",
    "since": "2026-11-25T11:43:46.775Z",
    "say": "Sign-in needed on the Mac: Spotfire"
-  },
-  {
-   "key": "jobsignin",
-   "level": "warn",
-   "since": "2026-11-25T14:33:58.595Z",
-   "say": "Sign-in needed on the Mac: https://hpgasweb.hpcl.co.in"
   },
   {
    "key": "signin",
