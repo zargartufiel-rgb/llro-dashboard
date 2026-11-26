@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-26T13:54:16.382Z",
+ "updated": "2026-11-26T16:04:16.473Z",
  "open": [
   {
    "key": "wrong",
@@ -18,7 +18,7 @@
    "key": "signin",
    "level": "warn",
    "since": "2026-11-26T05:05:22.791Z",
-   "say": "Sign-in needed on the Mac: LPG MIS, ARB"
+   "say": "Sign-in needed on the Mac: ARB"
   },
   {
    "key": "preflight",
