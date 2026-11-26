@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-26T03:38:47.583Z",
+ "updated": "2026-11-26T03:41:20.330Z",
  "open": [
   {
    "key": "wrong",
@@ -13,12 +13,6 @@
    "level": "warn",
    "since": "2026-11-25T11:43:46.775Z",
    "say": "Sign-in needed on the Mac: Spotfire"
-  },
-  {
-   "key": "signin",
-   "level": "warn",
-   "since": "2026-11-26T01:39:11.866Z",
-   "say": "Sign-in needed on the Mac: LPG MIS, ARB, HP Gas web, Dealer evaluation"
   },
   {
    "key": "preflight",
