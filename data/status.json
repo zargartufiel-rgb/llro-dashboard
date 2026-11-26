@@ -1,18 +1,12 @@
 {
  "app": "llro-status",
- "updated": "2026-11-26T03:41:20.330Z",
+ "updated": "2026-11-26T03:44:08.887Z",
  "open": [
   {
    "key": "wrong",
    "level": "warn",
    "since": "2026-11-22T03:23:32.016Z",
    "say": "LLRO needs attention: see the server console on the Mac"
-  },
-  {
-   "key": "jobsignin",
-   "level": "warn",
-   "since": "2026-11-25T11:43:46.775Z",
-   "say": "Sign-in needed on the Mac: Spotfire"
   },
   {
    "key": "preflight",
