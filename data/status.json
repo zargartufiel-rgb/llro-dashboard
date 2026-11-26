@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-26T13:05:16.449Z",
+ "updated": "2026-11-26T13:20:45.752Z",
  "open": [
   {
    "key": "wrong",
@@ -27,10 +27,10 @@
    "say": "The dashboard could not be updated"
   },
   {
-   "key": "jobsignin",
+   "key": "preflight",
    "level": "warn",
-   "since": "2026-11-26T13:04:16.445Z",
-   "say": "Sign-in needed on the Mac: https://hpgasweb.hpcl.co.in"
+   "since": "2026-11-26T13:07:46.914Z",
+   "say": "Morning self-check found something that needs you on the Mac"
   }
  ]
 }
