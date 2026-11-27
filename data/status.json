@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-27T03:37:41.421Z",
+ "updated": "2026-11-27T03:40:38.230Z",
  "open": [
   {
    "key": "wrong",
@@ -13,18 +13,6 @@
    "level": "warn",
    "since": "2026-11-26T04:18:57.712Z",
    "say": "LLRO needs attention: see the server console on the Mac"
-  },
-  {
-   "key": "signin",
-   "level": "warn",
-   "since": "2026-11-27T01:39:27.967Z",
-   "say": "Sign-in needed on the Mac: LPG MIS, ARB"
-  },
-  {
-   "key": "preflight",
-   "level": "warn",
-   "since": "2026-11-27T03:25:35.112Z",
-   "say": "Morning self-check found something that needs you on the Mac"
   },
   {
    "key": "jobsignin",
