@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-27T13:56:01.115Z",
+ "updated": "2026-11-27T14:04:31.315Z",
  "open": [
   {
    "key": "wrong",
@@ -19,12 +19,6 @@
    "level": "warn",
    "since": "2026-11-27T07:42:23.315Z",
    "say": "A report could not be fetched today"
-  },
-  {
-   "key": "ims",
-   "level": "warn",
-   "since": "2026-11-27T13:00:20.422Z",
-   "say": "LLRO needs attention: see the server console on the Mac"
   },
   {
    "key": "preflight",
