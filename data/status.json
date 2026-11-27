@@ -1,17 +1,11 @@
 {
  "app": "llro-status",
- "updated": "2026-11-27T03:43:04.440Z",
+ "updated": "2026-11-27T04:18:53.925Z",
  "open": [
   {
    "key": "wrong",
    "level": "warn",
    "since": "2026-11-22T03:23:32.016Z",
-   "say": "LLRO needs attention: see the server console on the Mac"
-  },
-  {
-   "key": "dashSweep",
-   "level": "warn",
-   "since": "2026-11-26T04:18:57.712Z",
    "say": "LLRO needs attention: see the server console on the Mac"
   }
  ]
