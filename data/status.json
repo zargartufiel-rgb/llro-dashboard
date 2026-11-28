@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-28T06:02:48.867Z",
+ "updated": "2026-11-28T06:04:54.675Z",
  "open": [
   {
    "key": "wrong",
@@ -19,6 +19,12 @@
    "level": "warn",
    "since": "2026-11-28T04:57:57.398Z",
    "say": "LLRO needs attention: see the server console on the Mac"
+  },
+  {
+   "key": "incomplete",
+   "level": "warn",
+   "since": "2026-11-28T06:03:54.671Z",
+   "say": "Today's reports are not complete"
   }
  ]
 }
