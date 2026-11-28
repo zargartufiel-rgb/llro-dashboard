@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-28T10:27:28.795Z",
+ "updated": "2026-11-28T10:34:57.974Z",
  "open": [
   {
    "key": "wrong",
@@ -30,13 +30,7 @@
    "key": "signin",
    "level": "warn",
    "since": "2026-11-28T06:13:54.672Z",
-   "say": "Sign-in needed on the Mac: ARB, HP Gas web"
-  },
-  {
-   "key": "preflight",
-   "level": "warn",
-   "since": "2026-11-28T10:27:02.381Z",
-   "say": "Morning self-check found something that needs you on the Mac"
+   "say": "Sign-in needed on the Mac: ARB"
   }
  ]
 }
