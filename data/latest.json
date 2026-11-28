@@ -1,14 +1,14 @@
 {
  "app": "llro-dashboard",
  "v": 4,
- "version": "20261128T051302Z",
- "updatedAt": "2026-11-28T05:13:03.508Z",
+ "version": "20261128T052453Z",
+ "updatedAt": "2026-11-28T05:24:53.227Z",
  "note": "Daily data for 27 Nov 2026",
  "enc": true,
  "salt": "cGU4lrzrNpjLplZwUJRMrw==",
  "iter": 250000,
  "check": "TExSMRq7t2Fu7TrRdxMRJMEb1JZ+sI8hKN/1dhVbucjo1fYe+orQ",
- "state": "data/state-20261128T051302Z.bin",
+ "state": "data/state-20261128T052453Z.bin",
  "days": {
   "2026-10-05": "data/day-2026-10-05-20261006T160937Z.bin",
   "2026-10-06": "data/day-2026-10-06-20261009T114753Z.bin",
@@ -64,7 +64,7 @@
   "2026-11-25": "data/day-2026-11-25-20261126T121039Z.bin",
   "2026-11-26": "data/day-2026-11-26-20261127T122022Z.bin",
   "2026-04-01": "data/day-2026-04-01-20261128T044955Z.bin",
-  "2026-11-27": "data/day-2026-11-27-20261128T051302Z.bin"
+  "2026-11-27": "data/day-2026-11-27-20261128T052453Z.bin"
  },
  "gh": {
   "owner": "zargartufiel-rgb",
