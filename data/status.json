@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-28T05:11:31.524Z",
+ "updated": "2026-11-28T05:14:44.801Z",
  "open": [
   {
    "key": "wrong",
@@ -13,18 +13,6 @@
    "level": "warn",
    "since": "2026-11-27T07:42:23.315Z",
    "say": "A report could not be fetched today"
-  },
-  {
-   "key": "signin",
-   "level": "warn",
-   "since": "2026-11-28T01:36:54.373Z",
-   "say": "Sign-in needed on the Mac: ARB, HP Gas web, Dealer evaluation"
-  },
-  {
-   "key": "indentcheck",
-   "level": "warn",
-   "since": "2026-11-28T04:04:04.825Z",
-   "say": "LLRO needs attention: see the server console on the Mac"
   },
   {
    "key": "verifypub",
