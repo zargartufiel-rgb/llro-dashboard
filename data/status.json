@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-28T04:54:56.253Z",
+ "updated": "2026-11-28T04:58:44.891Z",
  "open": [
   {
    "key": "wrong",
@@ -43,6 +43,12 @@
    "level": "warn",
    "since": "2026-11-28T04:52:00.686Z",
    "say": "Morning self-check found something that needs you on the Mac"
+  },
+  {
+   "key": "dashSweep",
+   "level": "warn",
+   "since": "2026-11-28T04:57:57.398Z",
+   "say": "LLRO needs attention: see the server console on the Mac"
   }
  ]
 }
