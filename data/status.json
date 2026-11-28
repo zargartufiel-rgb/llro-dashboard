@@ -1,6 +1,6 @@
 {
  "app": "llro-status",
- "updated": "2026-11-28T13:23:47.667Z",
+ "updated": "2026-11-28T13:24:56.617Z",
  "open": [
   {
    "key": "wrong",
@@ -43,6 +43,12 @@
    "level": "warn",
    "since": "2026-11-28T13:22:47.666Z",
    "say": "Report fetcher stuck on one job in Chrome"
+  },
+  {
+   "key": "preflight",
+   "level": "warn",
+   "since": "2026-11-28T13:23:56.614Z",
+   "say": "Morning self-check found something that needs you on the Mac"
   }
  ]
 }
